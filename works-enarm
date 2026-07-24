@@ -1,1 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ventus Climate Dashboard — Ellis</title>
+  <meta name="description" content="Case study: Ventus Climate Dashboard by Ellis, Product Designer & UX Strategy.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#F8F6F3',
+            ink: '#18181B',
+            soft: '#F0EDE8',
+            primary: '#C85A3A',
+            neon: '#D4F23D',
+          },
+          fontFamily: {
+            heading: ['"Syne"', 'sans-serif'],
+            body: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8F6F3; color: #18181B; }
+    ::selection { background: #D4F23D; color: #18181B; }
+  </style>
+</head>
+<body class="min-h-screen bg-canvas font-body text-ink selection:bg-neon selection:text-ink">
+
+  <nav class="sticky top-0 z-50 w-full bg-canvas/80 backdrop-blur-md border-b border-ink/5">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2 group">
+        <div class="w-3 h-3 rounded-full bg-primary"></div>
+        <span class="font-heading text-xl font-bold tracking-tight">ELLIS.</span>
+      </a>
+      <a href="../index.html#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md hover:scale-[1.02] active:scale-95 transition-transform">
+        Work with me
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Header del caso -->
+    <header class="pt-24 pb-16 lg:pt-36">
+      <div class="mx-auto max-w-5xl px-6 lg:px-12">
+        <a href="../index.html#work" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ink/40 hover:text-primary mb-8 transition-colors">← Back to works</a>
+        <span class="inline-block bg-neon text-ink px-3 py-1 text-[10px] font-bold uppercase tracking-tighter rounded-md mb-6">App Design / Strategy</span>
+        <h1 class="font-heading text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.05]">Ventus Climate Dashboard</h1>
+        <p class="mt-8 text-xl lg:text-2xl text-ink/70 max-w-3xl leading-relaxed">Reinventing how industrial teams monitor atmospheric shift in real-time. A strategic redesign focused on reducing cognitive load and empowering faster decisions.</p>
+      </div>
+    </header>
+
+    <!-- Imagen hero -->
+    <section class="mx-auto max-w-7xl px-6 lg:px-12 mb-24">
+      <div class="relative overflow-hidden rounded-3xl ring-1 ring-ink/5 shadow-xl">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1600&auto=format&fit=crop" alt="Ventus Dashboard" class="w-full object-cover" loading="eager">
+      </div>
+    </section>
+
+    <!-- Contenido tipo blog / caso -->
+    <article class="mx-auto max-w-3xl px-6 lg:px-12 pb-32">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
+        <!-- Sidebar con metadatos -->
+        <aside class="md:col-span-4">
+          <div class="sticky top-28 space-y-8">
+            <div>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Role</h3>
+              <p class="font-bold">Product Design Lead</p>
+            </div>
+            <div>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Timeline</h3>
+              <p class="font-bold">Q1 — Q2 2024</p>
+            </div>
+            <div>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Services</h3>
+              <p class="font-bold">UX Strategy, System Design, Prototyping</p>
+            </div>
+            <a href="../index.html#contact" class="inline-block bg-primary text-white px-5 py-3 text-sm font-bold rounded-lg hover:scale-[1.02] active:scale-95 transition-transform mt-2">
+              Discuss a project
+            </a>
+          </div>
+        </aside>
+
+        <!-- Cuerpo del artículo -->
+        <div class="md:col-span-8 space-y-12">
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">The Problem</h2>
+            <p class="text-ink/80 leading-relaxed">
+              Industrial climate monitoring relied on fragmented dashboards. Operators had to cross-reference four separate systems to understand a single atmospheric event. The result: delayed responses, missed signals, and high cognitive load.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Strategic Approach</h2>
+            <p class="text-ink/80 leading-relaxed mb-4">
+              Before sketching a single screen, we mapped the decision-making hierarchy of floor operators. We identified three critical paths: alert triage, trend analysis, and cross-team reporting. The new interface prioritizes these paths through a modular grid system.
+            </p>
+            <p class="text-ink/80 leading-relaxed">
+              I led a component-based design system in Figma, ensuring engineering velocity and accessibility compliance (WCAG AA) from the first sprint.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Outcome</h2>
+            <p class="text-ink/80 leading-relaxed">
+              Alert response time decreased by 42%. Operators reported a significant reduction in mental fatigue during 8-hour shifts. The modular system is now being adopted by two additional product lines within the organization.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Reflection</h2>
+            <p class="text-ink/80 leading-relaxed">
+              The biggest lesson: complexity shouldn't be hidden, it should be structured. By aligning the visual hierarchy with the user's mental model, we didn't just make a prettier dashboard—we rebuilt trust in the system.
+            </p>
+          </section>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="bg-ink text-white/30 text-xs py-10 border-t border-white/5">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12 flex justify-between items-center">
+      <p>© 2024 Ellis Design Studio</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-white">Dribbble</a>
+        <a href="#" class="hover:text-white">Twitter</a>
+        <a href="#" class="hover:text-white">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
