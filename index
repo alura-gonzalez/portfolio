@@ -1,1 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ellis — Product Designer & UX Strategy</title>
+  <meta name="description" content="Portfolio of a senior product designer focusing on complex systems, UX strategy, and meaningful digital experiences."/>
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#F8F6F3',
+            ink: '#18181B',
+            soft: '#F0EDE8',
+            primary: '#C85A3A',     /* tono cálido/acento */
+            neon: '#D4F23D',        /* verde neón para destacar */
+          },
+          fontFamily: {
+            heading: ['"Syne"', 'sans-serif'],
+            body: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8F6F3; color: #18181B; }
+    ::selection { background: #D4F23D; color: #18181B; }
+  </style>
+</head>
+<body class="min-h-screen bg-canvas font-body text-ink selection:bg-neon selection:text-ink">
+
+  <!-- Nav -->
+  <nav class="sticky top-0 z-50 w-full bg-canvas/80 backdrop-blur-md border-b border-ink/5">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 group">
+        <div class="w-3 h-3 rounded-full bg-primary"></div>
+        <span class="font-heading text-xl font-bold tracking-tight">ELLIS.</span>
+      </a>
+      <div class="hidden sm:flex items-center gap-8">
+        <a href="#work" class="text-sm font-medium hover:text-primary transition-colors">Selected Works</a>
+        <a href="#philosophy" class="text-sm font-medium hover:text-primary transition-colors">Philosophy</a>
+        <a href="#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+      </div>
+      <a href="#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md ring-1 ring-primary hover:scale-[1.02] active:scale-95 transition-transform">
+        Work with me
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-6 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+          
+          <!-- Texto -->
+          <div class="lg:col-span-8">
+            <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tighter">
+              Building meaningful '<span id="rotating-word" class="italic text-primary inline-block min-w-[10ch]">experiences</span>' that bring business impact.
+            </h1>
+            <p class="mt-8 max-w-xl text-lg leading-relaxed text-ink/70">
+              Product Designer & UX Strategist focusing on complex systems, design systems, and delightful micro-interactions. Currently leading experience architecture at Novus Labs.
+            </p>
+          </div>
+
+          <!-- Card de status -->
+          <div class="hidden lg:col-span-4 lg:flex items-end justify-end">
+            <div class="group relative">
+              <div class="absolute -inset-3 rounded-2xl border border-dashed border-primary/20 transition-transform group-hover:rotate-3 duration-300"></div>
+              <div class="relative bg-neon/20 px-6 py-8 ring-1 ring-ink/5 rounded-xl">
+                <p class="font-heading text-xs font-bold uppercase tracking-widest text-primary">Current Status</p>
+                <p class="mt-2 text-2xl font-semibold">Available for Q3</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected Works -->
+    <section id="work" class="bg-soft/30 py-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-12">
+        <div class="flex items-end justify-between border-b border-ink/5 pb-8">
+          <h2 class="font-heading text-4xl font-bold tracking-tight">Selected Works</h2>
+          <span class="text-xs font-medium uppercase tracking-widest text-ink/40">01 — 04</span>
+        </div>
+
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
+          
+          <!-- Proyecto 1 -->
+          <a href="works/ventus.html" class="group block cursor-pointer">
+            <div class="relative overflow-hidden bg-white ring-1 ring-ink/5 rounded-xl">
+              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop" alt="Ventus" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" loading="lazy">
+              <div class="absolute top-4 right-4 translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                <span class="bg-neon px-3 py-1 text-[10px] font-bold uppercase tracking-tighter ring-1 ring-ink/10 rounded-md">App Design</span>
+              </div>
+            </div>
+            <div class="mt-6 space-y-2">
+              <h3 class="text-2xl font-bold">Ventus Climate Dashboard</h3>
+              <p class="max-w-md text-sm text-ink/60 leading-relaxed">Reinventing how industrial teams monitor atmospheric shift in real-time through a unified strategy layer.</p>
+            </div>
+          </a>
+
+          <!-- Proyecto 2 -->
+          <a href="works/kinetik.html" class="group block cursor-pointer md:mt-24">
+            <div class="relative overflow-hidden bg-white ring-1 ring-ink/5 rounded-xl">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636500cff5f?q=80&w=1200&auto=format&fit=crop" alt="Kinetik" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <div class="mt-6 space-y-2">
+              <h3 class="text-2xl font-bold">Kinetik Sound System</h3>
+              <p class="max-w-md text-sm text-ink/60 leading-relaxed">A tactile interface for professional audio synthesis, bridging physical controls and digital workflows.</p>
+            </div>
+          </a>
+
+          <!-- Proyecto 3 -->
+          <a href="works/monolith.html" class="group block cursor-pointer">
+            <div class="relative overflow-hidden bg-white ring-1 ring-ink/5 rounded-xl">
+              <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=1200&auto=format&fit=crop" alt="Monolith" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <div class="mt-6 space-y-2">
+              <h3 class="text-2xl font-bold">Monolith Archive</h3>
+              <p class="max-w-md text-sm text-ink/60 leading-relaxed">Editorial-first shopping experience for high-end furniture designers, rooted in UX research.</p>
+            </div>
+          </a>
+
+          <!-- Proyecto 4 -->
+          <a href="works/yield.html" class="group block cursor-pointer md:-mt-24">
+            <div class="relative overflow-hidden bg-white ring-1 ring-ink/5 rounded-xl">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" alt="Yield" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <div class="mt-6 space-y-2">
+              <h3 class="text-2xl font-bold">Yield Finance</h3>
+              <p class="max-w-md text-sm text-ink/60 leading-relaxed">Lowering the barrier to entry for decentralized asset management with strategic onboarding flows.</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section id="philosophy" class="py-24 lg:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+          
+          <div>
+            <h2 class="font-heading text-4xl lg:text-5xl font-bold leading-tight tracking-tight">Beyond pixels, I build narratives that scale.</h2>
+            <div class="mt-12 space-y-8">
+              <div class="flex items-start gap-4">
+                <div class="flex w-8 h-8 shrink-0 items-center justify-center rounded-full bg-neon font-heading text-xs font-bold">1</div>
+                <div>
+                  <h4 class="text-xl font-bold">Discovery & Strategy</h4>
+                  <p class="mt-2 max-w-md text-sm leading-relaxed text-ink/60">Deep diving into user behavior and business requirements to find the core friction points before any pixel is placed.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="flex w-8 h-8 shrink-0 items-center justify-center rounded-full bg-primary/20 font-heading text-xs font-bold text-primary">2</div>
+                <div>
+                  <h4 class="text-xl font-bold">Systemic Design</h4>
+                  <p class="mt-2 max-w-md text-sm leading-relaxed text-ink/60">Creating component-based systems that ensure consistency, accessibility, and engineering velocity.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="flex w-8 h-8 shrink-0 items-center justify-center rounded-full bg-neon font-heading text-xs font-bold">3</div>
+                <div>
+                  <h4 class="text-xl font-bold">Refined Motion</h4>
+                  <p class="mt-2 max-w-md text-sm leading-relaxed text-ink/60">Using animation to guide attention and provide feedback without overwhelming the user journey.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col justify-center">
+            <div class="relative bg-white p-8 lg:p-12 ring-1 ring-ink/5 rounded-2xl shadow-sm">
+              <div class="absolute -top-3 -left-3 w-8 h-8 bg-primary rounded-lg rotate-[-12deg]"></div>
+              <blockquote class="italic text-lg lg:text-xl leading-relaxed text-ink/80">
+                "Ellis brings a rare combination of visual precision and strategic thinking. They didn't just redesign our product; they redefined how our users think about our service."
+              </blockquote>
+              <div class="mt-8 flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-soft ring-1 ring-ink/5"></div>
+                <div>
+                  <p class="font-bold text-sm">Jordan Hayes</p>
+                  <p class="text-[10px] font-medium uppercase tracking-widest text-ink/40">Design Director, Vecto</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-ink text-white py-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-12 text-center">
+        <h2 class="font-heading text-5xl lg:text-7xl font-bold tracking-tighter leading-none">
+          Have an idea? Let's make it <span class="text-neon">real.</span>
+        </h2>
+        <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
+          <a href="mailto:hello@ellis.design" class="inline-flex items-center bg-primary px-6 py-3 text-base font-bold rounded-lg ring-1 ring-primary hover:scale-105 active:scale-95 transition-transform">
+            hello@ellis.design
+          </a>
+          <a href="#" class="text-sm font-bold uppercase tracking-widest text-white/60 hover:text-neon transition-colors">View Resume</a>
+        </div>
+        <div class="mt-20 pt-10 border-t border-white/10 flex flex-wrap justify-between items-center gap-4 text-xs text-white/30">
+          <p>© 2024 Ellis Design Studio</p>
+          <div class="flex gap-8">
+            <a href="#" class="hover:text-white transition-colors">Dribbble</a>
+            <a href="#" class="hover:text-white transition-colors">Twitter/X</a>
+            <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Script para rotación de palabras -->
+  <script>
+    const words = ['experiences', 'products', 'interfaces', 'solutions', 'journeys', 'platforms'];
+    let i = 0;
+    const el = document.getElementById('rotating-word');
+    setInterval(() => {
+      i = (i + 1) % words.length;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(8px)';
+      setTimeout(() => {
+        el.textContent = words[i];
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, 300);
+    }, 3000);
+  </script>
+</body>
+</html>
