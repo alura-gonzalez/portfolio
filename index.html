@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Laura — Product Designer & UX Strategy</title>
+  <title>Ellis — Product Designer & UX Strategy</title>
   <meta name="description" content="Portfolio of a senior product designer focusing on complex systems, UX strategy, and meaningful digital experiences."/>
   
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -19,13 +17,13 @@
       theme: {
         extend: {
           colors: {
-                  canvas: '#F8F6F3',
-                  ink: '#00374E',
-                  soft: '#F0EDE8',
-                  primary: '#002EF5', /* tono cálido/acento */
-                  neon: '#D4F23D', /* verde neón para destacar */
-                  steel: '#456F80', /* si lo necesitas en otro lugar */
-                   },
+            canvas: '#F8F6F3',
+            ink: '#00374E',
+            soft: '#F0EDE8',
+            primary: '#002EF5',
+            neon: '#D4F23D',
+            steel: '#456F80',
+          },
           fontFamily: {
             heading: ['"Syne"', 'sans-serif'],
             body: ['"Plus Jakarta Sans"', 'sans-serif'],
@@ -38,7 +36,11 @@
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8F6F3; color: #00374E; }
-::selection { background: #D4F23D; color: #00374E; }
+    ::selection { background: #D4F23D; color: #00374E; }
+    #rotating-word {
+      display: inline-block;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-canvas font-body text-ink selection:bg-neon selection:text-ink">
@@ -46,14 +48,12 @@
   <!-- Nav -->
   <nav class="sticky top-0 z-50 w-full bg-canvas/80 backdrop-blur-md border-b border-ink/5">
     <div class="mx-auto max-w-7xl px-6 lg:px-12 h-20 flex items-center justify-between">
-      <!-- CAMBIO: logo + texto -->
-      <a href="/portfolio/index.html" class="flex items-center gap-3 group" aria-label="Inicio — Laur Gonzalez Portfolio">
+      <a href="/portfolio/index.html" class="flex items-center gap-3 group" aria-label="Inicio — LAURA PORTFOLIO">
         <img src="assets/logo.png" alt="Logo" class="h-8 w-auto shrink-0" loading="eager">
-        <span class="font-heading text-lg font-semibold tracking-tight text-[#00374E] hidden sm:inline whitespace-nowrap">
-          Laura Gonzalez Portfolio
+        <span class="font-heading text-lg font-semibold tracking-tight text-[#00374E] hidden sm:inline whitespace-nowrap uppercase">
+          LAURA PORTFOLIO
         </span>
       </a>
-      <!-- /CAMBIO -->
       <div class="hidden sm:flex items-center gap-8">
         <a href="#work" class="text-sm font-medium hover:text-primary transition-colors">Selected Works</a>
         <a href="#philosophy" class="text-sm font-medium hover:text-primary transition-colors">Philosophy</a>
@@ -70,18 +70,15 @@
     <section class="py-20 lg:py-28">
       <div class="mx-auto max-w-7xl px-6 lg:px-12">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
-          
-          <!-- Texto -->
           <div class="lg:col-span-8">
             <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tighter">
-  Building meaningful <span id="rotating-word" class="italic text-primary inline-block">experiences</span> that bring business impact.
+              Building meaningful <span id="rotating-word" class="italic text-primary inline-block relative">experiences</span> that bring business impact.
             </h1>
             <p class="mt-8 max-w-xl text-lg leading-relaxed text-ink/70">
-              Product Designer & UX Strategist — where empathy, data, and craft meet user behavior to drive impact.
+              Product & UX Designer with 7+ years of experience crafting digital products for SaaS, B2C, and B2B companies — bridging user needs and business goals from discovery to delivery.
             </p>
           </div>
 
-          <!-- Card de status -->
           <div class="hidden lg:col-span-4 lg:flex items-end justify-end">
             <div class="group relative">
               <div class="absolute -inset-3 rounded-2xl border border-dashed border-primary/20 transition-transform group-hover:rotate-3 duration-300"></div>
@@ -95,10 +92,165 @@
       </div>
     </section>
 
-        <!-- Selected Works -->
+    <!-- Selected Works -->
     <section id="work" class="bg-soft/30 py-24">
       <div class="mx-auto max-w-7xl px-6 lg:px-12">
         <div class="flex items-end justify-between border-b border-ink/5 pb-8">
           <h2 class="font-heading text-4xl font-bold tracking-tight">Selected Works</h2>
           <span class="text-xs font-medium uppercase tracking-widest text-ink/40">01 — 06</span>
         </div>
+
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
+          <a href="works-safari-nursery.html" class="group block cursor-pointer">
+            <div class="relative overflow-hidden bg-white ring-1 ring-ink/5 rounded-xl">
+              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop" alt="Safari Nursery" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <div class="mt-6 space-y-2">
+              <h3 class="text-2xl font-bold">Safari Nursery</h3>
+              <p class="max-w-md text-sm text-ink/60 leading-relaxed">A nurturing experience design system for early childhood environments.</p>
+            </div>
+          </a>
+
+          <a href="works-bag-storage.html" class="group block cursor-pointer md:mt-24">
+            <div class="relative overflow-hidden bg-white ring-1 ring-ink/5 rounded-xl">
+              <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=1200&auto=format&fit=crop" alt="Bag Storage" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <div class="mt-6 space-y-2">
+              <h3 class="text-2xl font-bold">Bag Storage</h3>
+              <p class="max-w-md text-sm text-ink/60 leading-relaxed">Optimizing storage systems through intuitive product architecture.</p>
+            </div>
+          </a>
+
+          <a href="works-research-to-growth.html" class="group block cursor-pointer">
+            <div class="relative overflow-hidden bg-white ring-1 ring-ink/5 rounded-xl">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636500cff5f?q=80&w=1200&auto=format&fit=crop" alt="Research to Growth" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <div class="mt-6 space-y-2">
+              <h3 class="text-2xl font-bold">Research to Growth</h3>
+              <p class="max-w-md text-sm text-ink/60 leading-relaxed">Turning research insights into strategic growth frameworks.</p>
+            </div>
+          </a>
+
+          <a href="works-enarm.html" class="group block cursor-pointer md:mt-24">
+            <div class="relative overflow-hidden bg-white ring-1 ring-ink/5 rounded-xl">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" alt="Enarm" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <div class="mt-6 space-y-2">
+              <h3 class="text-2xl font-bold">Enarm</h3>
+              <p class="max-w-md text-sm text-ink/60 leading-relaxed">Simplifying complex medical interfaces for critical care workflows.</p>
+            </div>
+          </a>
+
+          <a href="works-legal-records-tracker.html" class="group block cursor-pointer">
+            <div class="relative overflow-hidden bg-white ring-1 ring-ink/5 rounded-xl">
+              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop" alt="Legal Records Tracker" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <div class="mt-6 space-y-2">
+              <h3 class="text-2xl font-bold">Legal Records Tracker</h3>
+              <p class="max-w-md text-sm text-ink/60 leading-relaxed">Building transparency into legal record management systems.</p>
+            </div>
+          </a>
+
+          <a href="works-the-lever.html" class="group block cursor-pointer md:-mt-24">
+            <div class="relative overflow-hidden bg-white ring-1 ring-ink/5 rounded-xl">
+              <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=1200&auto=format&fit=crop" alt="The Lever" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <div class="mt-6 space-y-2">
+              <h3 class="text-2xl font-bold">The Lever</h3>
+              <p class="max-w-md text-sm text-ink/60 leading-relaxed">Strategic design that moves the needle on product outcomes.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section id="philosophy" class="py-24 lg:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+          <div>
+            <h2 class="font-heading text-4xl lg:text-5xl font-bold leading-tight tracking-tight">Beyond pixels, I build narratives that scale.</h2>
+            <div class="mt-12 space-y-8">
+              <div class="flex items-start gap-4">
+                <div class="flex w-8 h-8 shrink-0 items-center justify-center rounded-full bg-neon font-heading text-xs font-bold">1</div>
+                <div>
+                  <h4 class="text-xl font-bold">Discovery & Strategy</h4>
+                  <p class="mt-2 max-w-md text-sm leading-relaxed text-ink/60">Deep diving into user behavior and business requirements to find the core friction points before any pixel is placed.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="flex w-8 h-8 shrink-0 items-center justify-center rounded-full bg-primary/20 font-heading text-xs font-bold text-primary">2</div>
+                <div>
+                  <h4 class="text-xl font-bold">Systemic Design</h4>
+                  <p class="mt-2 max-w-md text-sm leading-relaxed text-ink/60">Creating component-based systems that ensure consistency, accessibility, and engineering velocity.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="flex w-8 h-8 shrink-0 items-center justify-center rounded-full bg-neon font-heading text-xs font-bold">3</div>
+                <div>
+                  <h4 class="text-xl font-bold">Refined Motion</h4>
+                  <p class="mt-2 max-w-md text-sm leading-relaxed text-ink/60">Using animation to guide attention and provide feedback without overwhelming the user journey.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col justify-center">
+            <div class="relative bg-white p-8 lg:p-12 ring-1 ring-ink/5 rounded-2xl shadow-sm">
+              <div class="absolute -top-3 -left-3 w-8 h-8 bg-primary rounded-lg rotate-[-12deg]"></div>
+              <blockquote class="italic text-lg lg:text-xl leading-relaxed text-ink/80">
+                "Ellis brings a rare combination of visual precision and strategic thinking. They didn't just redesign our product; they redefined how our users think about our service."
+              </blockquote>
+              <div class="mt-8 flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-soft ring-1 ring-ink/5"></div>
+                <div>
+                  <p class="font-bold text-sm">Jordan Hayes</p>
+                  <p class="text-[10px] font-medium uppercase tracking-widest text-ink/40">Design Director, Vecto</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-ink text-white py-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-12 text-center">
+        <h2 class="font-heading text-5xl lg:text-7xl font-bold tracking-tighter leading-none">
+          Have an idea? Let's make it <span class="text-neon">real.</span>
+        </h2>
+        <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
+          <a href="mailto:hello@ellis.design" class="inline-flex items-center bg-primary px-6 py-3 text-base font-bold rounded-lg ring-1 ring-primary hover:scale-105 active:scale-95 transition-transform">
+            hello@ellis.design
+          </a>
+          <a href="#" class="text-sm font-bold uppercase tracking-widest text-white/60 hover:text-neon transition-colors">View Resume</a>
+        </div>
+        <div class="mt-20 pt-10 border-t border-white/10 flex flex-wrap justify-between items-center gap-4 text-xs text-white/30">
+          <p>© 2026 Laura Portfolio powered by Inkling, a multimodal AI model created by Thinking Machines 💜</p>
+          <div class="flex gap-8">
+            <a href="#" class="hover:text-white transition-colors">Medium/X</a>
+            <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const words = ['experiences', 'products', 'interfaces', 'solutions', 'journeys', 'platforms'];
+    let i = 0;
+    const el = document.getElementById('rotating-word');
+    setInterval(() => {
+      i = (i + 1) % words.length;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(8px)';
+      setTimeout(() => {
+        el.textContent = words[i];
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, 350);
+    }, 3000);
+  </script>
+</body>
+</html>
