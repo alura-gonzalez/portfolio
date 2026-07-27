@@ -1,86 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Safari Nursery — Laura Portfolio</title>
-  <meta name="description" content="Case study: Safari Nursery by Laura, Product Designer & UX Strategy.">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: { canvas: '#F8F6F3', ink: '#00374E', soft: '#F0EDE8', primary: '#002EF5', neon: '#D4F23D' },
-          fontFamily: { heading: ['"Syne"', 'sans-serif'], body: ['"Plus Jakarta Sans"', 'sans-serif'] },
-        }
-      }
-    }
-  </script>
-  <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8F6F3; color: #00374E; }
-    ::selection { background: #D4F23D; color: #00374E; }
-  </style>
-</head>
-<body class="min-h-screen bg-canvas font-body text-ink selection:bg-neon selection:text-ink">
-
-  <!-- Nav igual a Index -->
-  <nav class="sticky top-0 z-50 w-full bg-[#E7F3F6]/80 backdrop-blur-md border-b border-ink/5">
-    <div class="mx-auto max-w-7xl px-6 lg:px-12 h-20 flex items-center justify-between">
-      <a href="/portfolio/index.html" class="flex items-center gap-3 group" aria-label="Inicio — LAURA PORTFOLIO">
-        <img src="assets/logo.png" alt="Logo" class="h-8 w-auto shrink-0" loading="eager">
-        <span class="font-heading text-lg font-semibold tracking-tight text-[#00374E] hidden sm:inline whitespace-nowrap uppercase">
-          LAURA PORTFOLIO
-        </span>
-      </a>
-      <div class="hidden sm:flex items-center gap-8">
-        <a href="/portfolio/index.html#work" class="text-sm font-medium hover:text-primary transition-colors">Selected Works</a>
-        <a href="/portfolio/index.html#philosophy" class="text-sm font-medium hover:text-primary transition-colors">Philosophy</a>
-        <a href="/portfolio/index.html#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
-      </div>
-      <a href="/portfolio/index.html#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md ring-1 ring-primary hover:scale-[1.02] active:scale-95 transition-transform">
-        Work with me
-      </a>
-    </div>
-  </nav>
-
-  <main>
-    <!-- Header -->
-    <header class="pt-24 pb-12 lg:pt-36">
-      <div class="mx-auto max-w-5xl px-6 lg:px-12">
-        <a href="/portfolio/index.html#work" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ink/40 hover:text-primary mb-8 transition-colors">← Back to works</a>
-        <span class="inline-block bg-neon text-ink px-3 py-1 text-[10px] font-bold uppercase tracking-tighter rounded-md mb-6">Ed-Tech Sector</span>
-        <h1 class="font-heading text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.05]">Safari Nursery</h1>
-        <p class="mt-8 text-xl lg:text-2xl text-ink/70 max-w-3xl leading-relaxed">Driving retention through emotional engagement: +3.5pp Day 1 Retention · 65–70% Sustained Engagement.</p>
-      </div>
-    </header>
-
-    <!-- Hero image - más pequeña -->
-    <section class="mx-auto max-w-5xl px-6 lg:px-12 mb-16">
-      <div class="relative overflow-hidden rounded-3xl ring-1 ring-ink/5 shadow-xl max-h-[400px] flex items-center justify-center bg-soft/50">
-        <img src="assets/Safari-BAE-l.png" alt="Safari Nursery" class="w-full h-full object-contain" loading="eager">
-      </div>
-    </section>
-
-    <!-- NDA Notice - VERSIÓN CORTA AL INICIO -->
-    <section class="mx-auto max-w-5xl px-6 lg:px-12 mb-16">
-      <div class="bg-soft/80 rounded-2xl p-5 border border-ink/10">
-        <div class="flex items-start gap-3">
-          <span class="text-lg">⚠️</span>
-          <div>
-            <h3 class="font-heading text-base font-bold tracking-tight">Full case study available upon request</h3>
-            <p class="text-[#456F80] leading-relaxed text-sm mt-1">
-              This summary is NDA-protected. The full version includes research findings, user flows, and stakeholder presentations.
-            </p>
-            <a href="mailto:alura.gonzalez@gmail.com?subject=Safari%20Nursery%20Full%20Case%20Study%20Request" class="inline-block mt-2 text-primary font-bold text-sm hover:underline">
-              Request access →
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Artículo completo -->
     <article class="mx-auto max-w-5xl px-6 lg:px-12 pb-16">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
@@ -97,7 +14,7 @@
             </div>
             <div>
               <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Services</h3>
-              <p class="font-bold">UX Strategy · Growth Design · AI-Assisted Prototyping</p>
+              <p class="font-bold">UX Strategy · Growth Design · Game Design</p>
             </div>
             <a href="/portfolio/index.html#contact" class="inline-block bg-primary text-white px-5 py-3 text-sm font-bold rounded-lg hover:scale-[1.02] active:scale-95 transition-transform mt-2">Discuss a project</a>
           </div>
@@ -206,38 +123,22 @@
             </ul>
           </section>
 
+          <!-- NDA Notice - VERSIÓN COMPLETA AL FINAL DEL CONTENIDO (dentro del article) -->
+          <section class="mt-16 pt-8 border-t border-ink/10">
+            <div class="bg-soft/50 rounded-2xl p-8 border border-ink/5">
+              <h3 class="font-heading text-xl font-bold tracking-tight mb-3">⚠️ Full Case Study Available Upon Request</h3>
+              <p class="text-[#456F80] leading-relaxed text-sm">
+                This case study contains proprietary and confidential information about the product's strategy, user research, and internal metrics. The full version — including research findings, user flows, and stakeholder presentations — is protected under NDA.
+              </p>
+              <p class="text-[#456F80] leading-relaxed text-sm mt-4 font-semibold">
+                📩 To request access, please contact me directly:
+              </p>
+              <a href="mailto:alura.gonzalez@gmail.com?subject=Safari%20Nursery%20Full%20Case%20Study%20Request" class="inline-block mt-4 text-primary font-bold text-sm hover:underline">
+                Contact me →
+              </a>
+            </div>
+          </section>
+
         </div>
       </div>
     </article>
-
-    <!-- NDA Notice - VERSIÓN COMPLETA AL FINAL -->
-    <section class="mx-auto max-w-5xl px-6 lg:px-12 pb-32">
-      <div class="bg-soft/50 rounded-2xl p-8 border border-ink/5">
-        <h3 class="font-heading text-xl font-bold tracking-tight mb-3">⚠️ Full Case Study Available Upon Request</h3>
-        <p class="text-[#456F80] leading-relaxed text-sm">
-          This case study contains proprietary and confidential information about the product's strategy, user research, and internal metrics. The full version — including research findings, user flows, and stakeholder presentations — is protected under NDA.
-        </p>
-        <p class="text-[#456F80] leading-relaxed text-sm mt-4 font-semibold">
-          📩 To request access, please contact me directly:
-        </p>
-        <a href="mailto:alura.gonzalez@gmail.com?subject=Safari%20Nursery%20Full%20Case%20Study%20Request" class="inline-block mt-4 text-primary font-bold text-sm hover:underline">
-          Contact me →
-        </a>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-ink text-white/30 text-xs py-10 border-t border-white/5">
-    <div class="mx-auto max-w-7xl px-6 lg:px-12 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <p>© 2026 Laura Portfolio powered by Inkling, a multimodal AI model created by Thinking Machines 💜</p>
-      <div class="flex gap-8">
-        <a href="https://medium.com/@alura-gonzalez" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Medium</a>
-        <a href="https://www.linkedin.com/in/laura-gonzalez-0102/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
-
-</body>
-</html>
