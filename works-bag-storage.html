@@ -45,6 +45,22 @@
       overflow: hidden;
     }
 
+    /* Imágenes a tamaño completo - alto automático */
+    .case-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0.75rem;
+    }
+
+    .image-container {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      background-color: #F0EDE8;
+      border: 1px solid rgba(0, 55, 78, 0.05);
+    }
+
     @media (max-width: 768px) {
       .md\:col-span-8 {
         padding-left: 0;
@@ -80,16 +96,17 @@
     <header class="pt-24 pb-12 lg:pt-36">
       <div class="mx-auto max-w-5xl px-6 lg:px-12">
         <a href="/portfolio/index.html#work" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ink/40 hover:text-primary mb-8 transition-colors">← Back to works</a>
-        <span class="inline-block bg-neon text-ink px-3 py-1 text-[10px] font-bold uppercase tracking-tighter rounded-md mb-6">Travel Tech</span>
+        <span class="inline-block bg-neon text-ink px-3 py-1 text-[10px] font-bold uppercase tracking-tighter rounded-md mb-6">Service Sector</span>
         <h1 class="font-heading text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.05]">Bounce: The Bag Storage</h1>
-        <p class="mt-8 text-xl lg:text-2xl text-ink/70 max-w-3xl leading-relaxed">A payment flow audit that identified friction points and delivered an 8% lift in conversion rate.</p>
+        <!-- Subtítulo expandido a todo el ancho -->
+        <p class="mt-8 text-xl lg:text-2xl text-ink/70 max-w-full leading-relaxed">A payment flow audit that identified friction points and delivered an 8% lift in conversion rate.</p>
       </div>
     </header>
 
     <!-- Hero image -->
     <section class="mx-auto max-w-5xl px-6 lg:px-12 mb-16">
-      <div class="relative overflow-hidden rounded-3xl ring-1 ring-ink/5 shadow-xl max-h-[400px] flex items-center justify-center bg-soft/50">
-        <img src="assets/bounce.png" alt="Bounce" class="w-full h-full object-contain" loading="eager">
+      <div class="image-container">
+        <img src="assets/bounce-hero.png" alt="Bounce" class="case-image" loading="eager">
       </div>
     </section>
 
@@ -121,14 +138,14 @@
           <!-- The Challenge -->
           <section>
             <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">The Challenge</h2>
-  <p class="text-[#456F80] leading-relaxed">
-    <a href="https://bounce.com" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">Bounce</a> is a luggage storage service that allows travelers to leave their belongings in safe locations while exploring a city before check-in or after checkout.
-  </p>
+            <p class="text-[#456F80] leading-relaxed">
+              <a href="https://bounce.com" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">Bounce</a> is a luggage storage service that allows travelers to leave their belongings in safe locations while exploring a city before check-in or after checkout.
+            </p>
             <p class="text-[#456F80] leading-relaxed mt-4">
               The payment flow is one of the most critical steps in the user journey — it's where conversion actually happens. However, the existing flow had friction points that were causing users to drop off before completing their booking.
             </p>
             <p class="text-[#456F80] leading-relaxed mt-4">
-              <strong>The opportunity:</strong> Identify and remove friction in the payment flow to increase conversion rates and revenue.
+              The opportunity: Identify and remove friction in the payment flow to increase conversion rates and revenue.
             </p>
           </section>
 
@@ -136,12 +153,12 @@
           <section>
             <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">My Role &amp; Approach</h2>
             <p class="text-[#456F80] leading-relaxed">
-              As <strong>Product Designer</strong>, I conducted a focused audit of the payment flow to identify friction points and opportunities for improvement.
+              As Product Designer, I conducted a focused audit of the payment flow to identify friction points and opportunities for improvement.
             </p>
             <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2 mt-4">
-              <li><strong>Lightweight & fast:</strong> A focused audit, not a full redesign.</li>
-              <li><strong>Data-informed:</strong> Prioritize changes based on impact vs. effort.</li>
-              <li><strong>Actionable:</strong> Deliver recommendations that could be implemented quickly.</li>
+              <li>Lightweight & fast: A focused audit, not a full redesign.</li>
+              <li>Data-informed: Prioritize changes based on impact vs. effort.</li>
+              <li>Actionable: Deliver recommendations that could be implemented quickly.</li>
             </ul>
           </section>
 
@@ -149,45 +166,45 @@
           <section>
             <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Discovery &amp; Audit</h2>
             <p class="text-[#456F80] leading-relaxed">
-              I audited the entire payment flow and identified <strong>8 areas of opportunity</strong>.
+              I audited the entire payment flow and identified 8 areas of opportunity.
             </p>
 
             <!-- 1. Spot visual reference -->
             <div class="mt-8">
-              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">🔴 1. Keep visual reference of the selected spot</h3>
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">1. Keep visual reference of the selected spot</h3>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>The problem:</strong> When users entered the payment flow, they lost visual reference of the spot they had selected. This increased cognitive load and uncertainty.
+                The problem: When users entered the payment flow, they lost visual reference of the spot they had selected. This increased cognitive load and uncertainty.
               </p>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>The solution:</strong> Keep the spot's preview photo visible throughout the payment flow so users can confirm they selected the correct location.
+                The solution: Keep the spot's preview photo visible throughout the payment flow so users can confirm they selected the correct location.
               </p>
-              <div class="mt-4 rounded-xl overflow-hidden ring-1 ring-ink/5 bg-soft/50 max-h-[300px] flex items-center justify-center">
-                <img src="assets/bounce-spot-reference.png" alt="Spot visual reference" class="w-full h-full object-contain" loading="lazy">
+              <div class="mt-4 image-container">
+                <img src="assets/bounce-spot-reference.png" alt="Spot visual reference" class="case-image" loading="lazy">
               </div>
             </div>
 
             <!-- 2. Social proof -->
             <div class="mt-8">
-              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">🔴 2. Keep social proof visible</h3>
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">2. Keep social proof visible</h3>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>The problem:</strong> Reassurance is a critical strategy that enhances conversions in experiences like this one. Users need to feel they're making the right decision.
+                The problem: Reassurance is a critical strategy that enhances conversions in experiences like this one. Users need to feel they're making the right decision.
               </p>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>The solution:</strong> Keep social proof elements (reviews, ratings, number of bookings) top and center to help users confirm they are in good hands.
+                The solution: Keep social proof elements (reviews, ratings, number of bookings) top and center to help users confirm they are in good hands.
               </p>
-              <div class="mt-4 rounded-xl overflow-hidden ring-1 ring-ink/5 bg-soft/50 max-h-[300px] flex items-center justify-center">
-                <img src="assets/bounce-social-proof.png" alt="Social proof" class="w-full h-full object-contain" loading="lazy">
+              <div class="mt-4 image-container">
+                <img src="assets/bounce-social-proof.png" alt="Social proof" class="case-image" loading="lazy">
               </div>
             </div>
 
             <!-- 3. Key information -->
             <div class="mt-8">
-              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">🔴 3. Keep key information accessible</h3>
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">3. Keep key information accessible</h3>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>The problem:</strong> Users were losing access to important information about the spot when they entered the payment flow.
+                The problem: Users were losing access to important information about the spot when they entered the payment flow.
               </p>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>The solution:</strong> Keep the following information visible and accessible:
+                The solution: Keep the following information visible and accessible:
               </p>
               <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-1 mt-2">
                 <li>Spot address (even if not fully exposed)</li>
@@ -196,86 +213,86 @@
                 <li>How the service works</li>
                 <li>Reviews (can be under a hidden format but still available)</li>
               </ul>
-              <div class="mt-4 rounded-xl overflow-hidden ring-1 ring-ink/5 bg-soft/50 max-h-[300px] flex items-center justify-center">
-                <img src="assets/bounce-key-info.png" alt="Key information" class="w-full h-full object-contain" loading="lazy">
+              <div class="mt-4 image-container">
+                <img src="assets/bounce-key-info.png" alt="Key information" class="case-image" loading="lazy">
               </div>
             </div>
 
             <!-- 4. Illusion of progress -->
             <div class="mt-8">
-              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">🔴 4. Add illusion of progress</h3>
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">4. Add illusion of progress</h3>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>The problem:</strong> Users didn't know how many steps were ahead of them, which created uncertainty and friction.
+                The problem: Users didn't know how many steps were ahead of them, which created uncertainty and friction.
               </p>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>The solution:</strong> By giving the illusion of progress, the steps feel quicker. An experience that saves time is often rated better.
+                The solution: By giving the illusion of progress, the steps feel quicker. An experience that saves time is often rated better.
               </p>
-              <div class="mt-4 rounded-xl overflow-hidden ring-1 ring-ink/5 bg-soft/50 max-h-[300px] flex items-center justify-center">
-                <img src="assets/bounce-progress.png" alt="Illusion of progress" class="w-full h-full object-contain" loading="lazy">
+              <div class="mt-4 image-container">
+                <img src="assets/bounce-progress.png" alt="Illusion of progress" class="case-image" loading="lazy">
               </div>
             </div>
 
             <!-- 5. Scarcity elements -->
             <div class="mt-8">
-              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">🔴 5. Add scarcity elements as a nudge</h3>
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">5. Add scarcity elements as a nudge</h3>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>The problem:</strong> Users lacked urgency to complete the booking.
+                The problem: Users lacked urgency to complete the booking.
               </p>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>The solution:</strong> People tend to mimic the actions of others and want more of what they can't have. Adding scarcity elements (e.g., "only 2 spots left") increases users' intent to book.
+                The solution: People tend to mimic the actions of others and want more of what they can't have. Adding scarcity elements (e.g., "only 2 spots left") increases users' intent to book.
               </p>
-              <div class="mt-4 rounded-xl overflow-hidden ring-1 ring-ink/5 bg-soft/50 max-h-[300px] flex items-center justify-center">
-                <img src="assets/bounce-scarcity.png" alt="Scarcity elements" class="w-full h-full object-contain" loading="lazy">
+              <div class="mt-4 image-container">
+                <img src="assets/bounce-scarcity.png" alt="Scarcity elements" class="case-image" loading="lazy">
               </div>
             </div>
 
             <!-- 6. Third-party login -->
             <div class="mt-8">
-              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">🔴 6. Add third-party login options</h3>
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">6. Add third-party login options</h3>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>The problem:</strong> Users were being asked to create an account or log in, which added friction to the payment flow.
+                The problem: Users were being asked to create an account or log in, which added friction to the payment flow.
               </p>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>The solution:</strong> Typically, users are already logged in to an account on their device. Adding third-party login options (Google, Facebook) can significantly reduce barriers.
+                The solution: Typically, users are already logged in to an account on their device. Adding third-party login options (Google, Facebook) can significantly reduce barriers.
               </p>
-              <div class="mt-4 rounded-xl overflow-hidden ring-1 ring-ink/5 bg-soft/50 max-h-[300px] flex items-center justify-center">
-                <img src="assets/bounce-third-party.png" alt="Third-party login" class="w-full h-full object-contain" loading="lazy">
+              <div class="mt-4 image-container">
+                <img src="assets/bounce-third-party.png" alt="Third-party login" class="case-image" loading="lazy">
               </div>
             </div>
 
             <!-- 7. H1 supporting copy -->
             <div class="mt-8">
-              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">🔴 7. Add supporting copy to H1 as trust signals</h3>
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">7. Add supporting copy to H1 as trust signals</h3>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>The problem:</strong> The H1 heading lacked context, which made the experience feel less reliable.
+                The problem: The H1 heading lacked context, which made the experience feel less reliable.
               </p>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>The solution:</strong> A common pattern among competitors is using supporting copy for the H1. This brief text provides more context and makes the experience more trustworthy.
+                The solution: A common pattern among competitors is using supporting copy for the H1. This brief text provides more context and makes the experience more trustworthy.
               </p>
-              <div class="mt-4 rounded-xl overflow-hidden ring-1 ring-ink/5 bg-soft/50 max-h-[300px] flex items-center justify-center">
-                <img src="assets/bounce-h1-support.png" alt="H1 supporting copy" class="w-full h-full object-contain" loading="lazy">
+              <div class="mt-4 image-container">
+                <img src="assets/bounce-supportive-copy.png" alt="H1 supporting copy" class="case-image" loading="lazy">
               </div>
             </div>
 
             <!-- 8. The winning change -->
             <div class="mt-8">
-              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">🟡 8. Fix misaligned user expectations — <span class="bg-neon px-2 py-0.5 rounded text-ink text-sm">THE WINNING CHANGE</span></h3>
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">8. Fix misaligned user expectations — <span class="bg-neon px-2 py-0.5 rounded text-ink text-sm">THE WINNING CHANGE</span></h3>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>The problem:</strong> When users clicked the button <strong>"Add a credit card"</strong>, they expected to land on a page to enter their payment details. Instead, they landed on a <strong>sign-up page</strong>.
+                The problem: When users clicked the button "Add a credit card", they expected to land on a page to enter their payment details. Instead, they landed on a sign-up page.
               </p>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>Why this mattered:</strong> This created frustration and cognitive friction. Users were expecting one thing and got another — a classic "expectation violation" that increases drop-off.
+                Why this mattered: This created frustration and cognitive friction. Users were expecting one thing and got another — a classic "expectation violation" that increases drop-off.
               </p>
               <p class="text-[#456F80] leading-relaxed mt-2">
-                <strong>The solution:</strong> Change the button copy from <strong>"Add a credit card"</strong> to something that sets the right expectation — such as <strong>"Continue to payment"</strong> or <strong>"Book now"</strong> — and ensure the next screen matches that expectation.
+                The solution: Change the button copy from "Add a credit card" to something that sets the right expectation — such as "Continue to payment" or "Book now" — and ensure the next screen matches that expectation.
               </p>
               <p class="text-[#456F80] leading-relaxed mt-2 font-semibold">Why this was high-impact:</p>
               <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-1 mt-1">
-                <li><strong>Low effort:</strong> A simple copy change.</li>
-                <li><strong>High impact:</strong> It directly addresses a moment of high friction in the conversion flow.</li>
+                <li>Low effort: A simple copy change.</li>
+                <li>High impact: It directly addresses a moment of high friction in the conversion flow.</li>
               </ul>
-              <div class="mt-4 rounded-xl overflow-hidden ring-1 ring-ink/5 bg-soft/50 max-h-[300px] flex items-center justify-center">
-                <img src="assets/bounce-expectation.png" alt="Misaligned expectations" class="w-full h-full object-contain" loading="lazy">
+              <div class="mt-4 image-container">
+                <img src="assets/bounce-expectations.png" alt="Misaligned expectations" class="case-image" loading="lazy">
               </div>
             </div>
           </section>
@@ -284,7 +301,7 @@
           <section>
             <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Prioritization</h2>
             <p class="text-[#456F80] leading-relaxed">
-              While all 8 opportunities were valid, I prioritized based on <strong>impact vs. effort</strong>. The most critical issue was the misalignment between user expectations and what they actually saw.
+              While all 8 opportunities were valid, I prioritized based on impact vs. effort. The most critical issue was the misalignment between user expectations and what they actually saw.
             </p>
             <p class="text-[#456F80] leading-relaxed mt-4">
               I prefer to present low-scope / high-impact proposals first. However, for the purpose of this audit, I went in the opposite direction to keep you engaged until the end — starting with the smaller opportunities and saving the biggest impact for last.
@@ -295,10 +312,10 @@
           <section>
             <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Results</h2>
             <p class="text-[#456F80] leading-relaxed">
-              <strong>The copy change resulted in a +8% increase in conversion</strong> — a clear signal that even small changes can have outsized impact when they address a critical friction point.
+              The copy change resulted in a +8% increase in conversion — a clear signal that even small changes can have outsized impact when they address a critical friction point.
             </p>
             <p class="text-[#456F80] leading-relaxed mt-4">
-              <strong>Business implication:</strong> In a transaction-based business like Bounce, an 8% lift in conversion translates directly to increased revenue. The change required minimal engineering effort and delivered immediate results.
+              Business implication: In a transaction-based business like Bounce, an 8% lift in conversion translates directly to increased revenue. The change required minimal engineering effort and delivered immediate results.
             </p>
           </section>
 
@@ -309,9 +326,9 @@
               While the copy change was the most impactful, the other recommendations also contributed to a more cohesive and trustworthy payment experience:
             </p>
             <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2 mt-4">
-              <li><strong>Visual reference of the spot</strong> — reducing cognitive load.</li>
-              <li><strong>Social proof</strong> — keeping reviews and ratings visible throughout the flow.</li>
-              <li><strong>Scarcity elements</strong> — adding "limited availability" nudges to increase urgency.</li>
+              <li>Visual reference of the spot — reducing cognitive load.</li>
+              <li>Social proof — keeping reviews and ratings visible throughout the flow.</li>
+              <li>Scarcity elements — adding "limited availability" nudges to increase urgency.</li>
             </ul>
           </section>
 
@@ -319,10 +336,10 @@
           <section>
             <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Key Learnings</h2>
             <ol class="list-decimal pl-6 text-[#456F80] leading-relaxed space-y-3">
-              <li><strong>Expectation alignment is critical.</strong> Users need to feel that the product is predictable and reliable. When expectations are violated, trust erodes and conversion drops.</li>
-              <li><strong>Small changes can have big impact.</strong> An 8% lift came from a simple copy change — not a full redesign.</li>
-              <li><strong>Focus on moments of high friction.</strong> The payment flow is where users commit. Reducing friction here has a direct impact on revenue.</li>
-              <li><strong>Audit first, redesign later.</strong> A lightweight audit can quickly identify high-impact, low-effort opportunities.</li>
+              <li>Expectation alignment is critical. Users need to feel that the product is predictable and reliable. When expectations are violated, trust erodes and conversion drops.</li>
+              <li>Small changes can have big impact. An 8% lift came from a simple copy change — not a full redesign.</li>
+              <li>Focus on moments of high friction. The payment flow is where users commit. Reducing friction here has a direct impact on revenue.</li>
+              <li>Audit first, redesign later. A lightweight audit can quickly identify high-impact, low-effort opportunities.</li>
             </ol>
           </section>
 
