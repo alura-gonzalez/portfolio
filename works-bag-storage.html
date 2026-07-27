@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bag Storage — Ellis</title>
-  <meta name="description" content="Case study: Bag Storage by Ellis, Product Designer & UX Strategy.">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Bounce — Laura Portfolio</title>
+  <meta name="description" content="Case study: Bounce by Laura, Product Designer & Growth Strategy.">
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com/3.4.0"></script>
+  
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  
   <script>
     tailwind.config = {
       theme: {
@@ -17,107 +21,212 @@
       }
     }
   </script>
+  
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8F6F3; color: #00374E; }
     ::selection { background: #D4F23D; color: #00374E; }
+
+    /* --- FIX: Evita que el texto se corte --- */
+    .md\:col-span-8 p,
+    .md\:col-span-8 li,
+    .md\:col-span-8 blockquote,
+    .md\:col-span-8 h2,
+    .md\:col-span-8 h3,
+    .md\:col-span-8 ol,
+    .md\:col-span-8 ul {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+      max-width: 100%;
+    }
+
+    .md\:col-span-8 {
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .md\:col-span-8 {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen bg-canvas font-body text-ink selection:bg-neon selection:text-ink">
 
-  <nav class="sticky top-0 z-50 w-full bg-canvas/80 backdrop-blur-md border-b border-ink/5">
+  <!-- Nav -->
+  <nav class="sticky top-0 z-50 w-full bg-[#E7F3F6]/80 backdrop-blur-md border-b border-ink/5">
     <div class="mx-auto max-w-7xl px-6 lg:px-12 h-20 flex items-center justify-between">
-      <a href="/portfolio/index.html" class="flex items-center gap-2 group">
-        <div class="w-3 h-3 rounded-full bg-primary"></div>
-        <span class="font-heading text-xl font-bold tracking-tight">ELLIS.</span>
+      <a href="/portfolio/index.html" class="flex items-center gap-3 group" aria-label="Inicio — LAURA PORTFOLIO">
+        <img src="assets/logo.png" alt="Logo" class="h-8 w-auto shrink-0" loading="eager">
+        <span class="font-heading text-lg font-semibold tracking-tight text-[#00374E] hidden sm:inline whitespace-nowrap uppercase">
+          LAURA PORTFOLIO
+        </span>
       </a>
-      <a href="/portfolio/index.html#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md hover:scale-[1.02] active:scale-95 transition-transform">Work with me</a>
+      <div class="hidden sm:flex items-center gap-8">
+        <a href="/portfolio/index.html#work" class="text-sm font-medium hover:text-primary transition-colors">Selected Works</a>
+        <a href="/portfolio/index.html#philosophy" class="text-sm font-medium hover:text-primary transition-colors">Philosophy</a>
+        <a href="/portfolio/index.html#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+      </div>
+      <a href="/portfolio/index.html#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md ring-1 ring-primary hover:scale-[1.02] active:scale-95 transition-transform">
+        Work with me
+      </a>
     </div>
   </nav>
 
   <main>
-    <header class="pt-24 pb-16 lg:pt-36">
+    <!-- Header -->
+    <header class="pt-24 pb-12 lg:pt-36">
       <div class="mx-auto max-w-5xl px-6 lg:px-12">
         <a href="/portfolio/index.html#work" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ink/40 hover:text-primary mb-8 transition-colors">← Back to works</a>
-        <span class="inline-block bg-neon text-ink px-3 py-1 text-[10px] font-bold uppercase tracking-tighter rounded-md mb-6">Storage / Strategy</span>
-        <h1 class="font-heading text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.05]">Bag Storage</h1>
-        <p class="mt-8 text-xl lg:text-2xl text-ink/70 max-w-3xl leading-relaxed">Optimizing storage systems through intuitive product architecture, reducing friction for users who rely on speed and order.</p>
+        <span class="inline-block bg-neon text-ink px-3 py-1 text-[10px] font-bold uppercase tracking-tighter rounded-md mb-6">Service Sector</span>
+        <h1 class="font-heading text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.05]">Bounce</h1>
+        <p class="mt-8 text-xl lg:text-2xl text-ink/70 max-w-3xl leading-relaxed">How a simple copy change increased conversion by 8% in the payment flow.</p>
       </div>
     </header>
 
-    <section class="mx-auto max-w-7xl px-6 lg:px-12 mb-24">
-      <div class="relative overflow-hidden rounded-3xl ring-1 ring-ink/5 shadow-xl">
-        <img src="https://images.unsplash.com/photo-1518770660439-4636500cff5f?q=80&w=1600&auto=format&fit=crop" alt="Bag Storage" class="w-full object-cover" loading="eager">
+    <!-- Hero image - placeholder -->
+    <section class="mx-auto max-w-5xl px-6 lg:px-12 mb-16">
+      <div class="relative overflow-hidden rounded-3xl ring-1 ring-ink/5 shadow-xl max-h-[400px] flex items-center justify-center bg-soft/50">
+        <img src="assets/bounce.png" alt="Bounce" class="w-full h-full object-contain" loading="eager">
       </div>
     </section>
 
-    <article class="mx-auto max-w-3xl px-6 lg:px-12 pb-32">
+    <!-- Artículo completo -->
+    <article class="mx-auto max-w-5xl px-6 lg:px-12 pb-16">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
+        <!-- Sidebar sticky -->
         <aside class="md:col-span-4">
           <div class="sticky top-28 space-y-8">
             <div>
               <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Role</h3>
-              <p class="font-bold">Product Design Lead</p>
+              <p class="font-bold">Product Designer</p>
             </div>
             <div>
               <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Timeline</h3>
-              <p class="font-bold">Q3 — Q4 2024</p>
+              <p class="font-bold">Aug 2023</p>
             </div>
             <div>
               <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Services</h3>
-              <p class="font-bold">UX Strategy, System Design, Prototyping</p>
+              <p class="font-bold">UX Audit · Growth Design · Conversion Optimization</p>
             </div>
-            <a href="/portfolio/index.html#contact" class="inline-block bg-primary text-white px-5 py-3 text-sm font-bold rounded-lg hover:scale-[1.02] active:scale-95 transition-transform mt-2">
-              Discuss a project
-            </a>
+            <a href="/portfolio/index.html#contact" class="inline-block bg-primary text-white px-5 py-3 text-sm font-bold rounded-lg hover:scale-[1.02] active:scale-95 transition-transform mt-2">Discuss a project</a>
           </div>
         </aside>
 
+        <!-- Contenido principal -->
         <div class="md:col-span-8 space-y-12">
+
+          <!-- The Challenge -->
           <section>
-            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">The Problem</h2>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">The Challenge</h2>
             <p class="text-[#456F80] leading-relaxed">
-              Storage interfaces often force users into rigid taxonomies that don't match real-world behavior. This disconnect creates wasted time and accumulated frustration.
+              Bounce is a luggage storage service that allows travelers to leave their belongings in safe locations while exploring a city before check-in or after checkout.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              The payment flow is one of the most critical steps in the user journey — it's where conversion actually happens. However, the existing flow had friction points that were causing users to drop off before completing their booking.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              <strong>The opportunity:</strong> Identify and remove friction in the payment flow to increase conversion rates and revenue.
             </p>
           </section>
 
+          <!-- My Role & Approach -->
           <section>
-            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Strategic Approach</h2>
-            <p class="text-[#456F80] leading-relaxed mb-4">
-              We rebuilt the information architecture from usage patterns rather than organizational assumptions. The result is a flexible grid system that adapts to context.
-            </p>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">My Role &amp; Approach</h2>
             <p class="text-[#456F80] leading-relaxed">
-              Every interaction was tested for one-hand usability and cognitive load reduction.
+              As <strong>Product Designer</strong>, I conducted a focused audit of the payment flow to identify friction points and opportunities for improvement.
+            </p>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2 mt-4">
+              <li><strong>Lightweight & fast:</strong> A focused audit, not a full redesign.</li>
+              <li><strong>Data-informed:</strong> Prioritize changes based on impact vs. effort.</li>
+              <li><strong>Actionable:</strong> Deliver recommendations that could be implemented quickly.</li>
+            </ul>
+          </section>
+
+          <!-- Discovery & Audit -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Discovery &amp; Audit</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              I audited the entire payment flow and identified <strong>8 areas of opportunity</strong>:
+            </p>
+            <ol class="list-decimal pl-6 text-[#456F80] leading-relaxed space-y-3 mt-4">
+              <li><strong>Keep visual reference of the selected spot</strong> — reduce cognitive load by showing the spot's photo throughout the flow.</li>
+              <li><strong>Keep social proof visible</strong> — reviews and ratings reassure users they're making the right decision.</li>
+              <li><strong>Keep key information accessible</strong> — address, security badge, amenities.</li>
+              <li><strong>Add illusion of progress</strong> — step indicators make the flow feel faster.</li>
+              <li><strong>Add scarcity elements</strong> — "only 2 spots left" nudges users to act quickly.</li>
+              <li><strong>Add third-party login options</strong> — reduce friction by allowing Google/Facebook login.</li>
+              <li><strong>Add supporting copy to H1</strong> — brief context text builds trust.</li>
+              <li><strong>Fix misaligned user expectations</strong> — the copy change that delivered the +8% lift.</li>
+            </ol>
+          </section>
+
+          <!-- The Winning Change -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">The Winning Change</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              While all 8 opportunities were valid, I prioritized based on <strong>impact vs. effort</strong>. The most critical issue was the misalignment between user expectations and what they actually saw.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4 font-semibold">The problem:</p>
+            <p class="text-[#456F80] leading-relaxed">
+              When users clicked the button <strong>"Add a credit card"</strong>, they expected to land on a page to enter their payment details. Instead, they landed on a <strong>sign-up page</strong>.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4 font-semibold">Why this mattered:</p>
+            <p class="text-[#456F80] leading-relaxed">
+              This created frustration and cognitive friction. Users were expecting one thing and got another — a classic "expectation violation" that increases drop-off.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4 font-semibold">The solution:</p>
+            <p class="text-[#456F80] leading-relaxed">
+              Change the button copy from <strong>"Add a credit card"</strong> to something that sets the right expectation — such as <strong>"Continue to payment"</strong> or <strong>"Book now"</strong> — and ensure the next screen matches that expectation.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4 font-semibold">Why this was high-impact:</p>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-1 mt-2">
+              <li><strong>Low effort:</strong> A simple copy change.</li>
+              <li><strong>High impact:</strong> It directly addresses a moment of high friction in the conversion flow.</li>
+            </ul>
+          </section>
+
+          <!-- Results -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Results</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              <strong>The copy change resulted in a +8% increase in conversion</strong> — a clear signal that even small changes can have outsized impact when they address a critical friction point.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              <strong>Business implication:</strong> In a transaction-based business like Bounce, an 8% lift in conversion translates directly to increased revenue. The change required minimal engineering effort and delivered immediate results.
             </p>
           </section>
 
+          <!-- Key Learnings -->
           <section>
-            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Outcome</h2>
-            <p class="text-[#456F80] leading-relaxed">
-              Search efficiency improved by 28%, and user retention in the storage module increased significantly over the previous quarter.
-            </p>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Key Learnings</h2>
+            <ol class="list-decimal pl-6 text-[#456F80] leading-relaxed space-y-3">
+              <li><strong>Expectation alignment is critical.</strong> Users need to feel that the product is predictable and reliable. When expectations are violated, trust erodes and conversion drops.</li>
+              <li><strong>Small changes can have big impact.</strong> An 8% lift came from a simple copy change — not a full redesign.</li>
+              <li><strong>Focus on moments of high friction.</strong> The payment flow is where users commit. Reducing friction here has a direct impact on revenue.</li>
+              <li><strong>Audit first, redesign later.</strong> A lightweight audit can quickly identify high-impact, low-effort opportunities.</li>
+            </ol>
           </section>
 
-          <section>
-            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Reflection</h2>
-            <p class="text-[#456F80] leading-relaxed">
-              Good storage design is invisible. When users stop thinking about the container, they're free to focus on what matters inside.
-            </p>
-          </section>
         </div>
       </div>
     </article>
+
   </main>
 
+  <!-- Footer -->
   <footer class="bg-ink text-white/30 text-xs py-10 border-t border-white/5">
-    <div class="mx-auto max-w-7xl px-6 lg:px-12 flex justify-between items-center">
-      <p>© 2024 Ellis Design Studio</p>
-      <div class="flex gap-6">
-        <a href="#" class="hover:text-white">Dribbble</a>
-        <a href="#" class="hover:text-white">Twitter</a>
-        <a href="#" class="hover:text-white">LinkedIn</a>
+    <div class="mx-auto max-w-7xl px-6 lg:px-12 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p>© 2026 Laura Portfolio powered by Inkling, a multimodal AI model created by Thinking Machines 💜</p>
+      <div class="flex gap-8">
+        <a href="https://medium.com/@alura-gonzalez" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Medium</a>
+        <a href="https://www.linkedin.com/in/laura-gonzalez-0102/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">LinkedIn</a>
       </div>
     </div>
   </footer>
+
 </body>
 </html>
