@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Safari Nursery — Laura Portfolio</title>
   <meta name="description" content="Case study: Safari Nursery by Laura, Product Designer & UX Strategy.">
-  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com/3.4.0"></script>
+  
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  
   <script>
     tailwind.config = {
       theme: {
@@ -17,15 +21,42 @@
       }
     }
   </script>
+  
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8F6F3; color: #00374E; }
     ::selection { background: #D4F23D; color: #00374E; }
+
+    /* --- FIX: Evita que el texto se corte --- */
+    .md\:col-span-8 p,
+    .md\:col-span-8 li,
+    .md\:col-span-8 blockquote,
+    .md\:col-span-8 h2,
+    .md\:col-span-8 h3,
+    .md\:col-span-8 ol,
+    .md\:col-span-8 ul {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+      max-width: 100%;
+    }
+
+    .md\:col-span-8 {
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .md\:col-span-8 {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen bg-canvas font-body text-ink selection:bg-neon selection:text-ink">
 
-  <!-- Nav igual a Index -->
+  <!-- Nav -->
   <nav class="sticky top-0 z-50 w-full bg-[#E7F3F6]/80 backdrop-blur-md border-b border-ink/5">
     <div class="mx-auto max-w-7xl px-6 lg:px-12 h-20 flex items-center justify-between">
       <a href="/portfolio/index.html" class="flex items-center gap-3 group" aria-label="Inicio — LAURA PORTFOLIO">
@@ -56,7 +87,7 @@
       </div>
     </header>
 
-    <!-- Hero image - más pequeña -->
+    <!-- Hero image -->
     <section class="mx-auto max-w-5xl px-6 lg:px-12 mb-16">
       <div class="relative overflow-hidden rounded-3xl ring-1 ring-ink/5 shadow-xl max-h-[400px] flex items-center justify-center bg-soft/50">
         <img src="assets/Safari-BAE-l.png" alt="Safari Nursery" class="w-full h-full object-contain" loading="eager">
@@ -81,23 +112,132 @@
       </div>
     </section>
 
-<!-- Artículo completo -->
-<article class="mx-auto max-w-5xl px-6 lg:px-12 pb-16">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
-@@ -97,7 +14,7 @@ <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Tim
-</div>
-<div>
-<h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Services</h3>
-              <p class="font-bold">UX Strategy · Growth Design · AI-Assisted Prototyping</p>
+    <!-- Artículo completo -->
+    <article class="mx-auto max-w-5xl px-6 lg:px-12 pb-16">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
+        <!-- Sidebar sticky -->
+        <aside class="md:col-span-4">
+          <div class="sticky top-28 space-y-8">
+            <div>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Role</h3>
+              <p class="font-bold">Product Design Lead</p>
+            </div>
+            <div>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Timeline</h3>
+              <p class="font-bold">Jun – Aug 2025</p>
+            </div>
+            <div>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Services</h3>
               <p class="font-bold">UX Strategy · Growth Design · Game Design</p>
-</div>
-<a href="/portfolio/index.html#contact" class="inline-block bg-primary text-white px-5 py-3 text-sm font-bold rounded-lg hover:scale-[1.02] active:scale-95 transition-transform mt-2">Discuss a project</a>
-</div>
-@@ -206,38 +123,22 @@ <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Next Steps</h2>
-</ul>
-</section>
+            </div>
+            <a href="/portfolio/index.html#contact" class="inline-block bg-primary text-white px-5 py-3 text-sm font-bold rounded-lg hover:scale-[1.02] active:scale-95 transition-transform mt-2">Discuss a project</a>
+          </div>
+        </aside>
 
-          <!-- NDA Notice - VERSIÓN COMPLETA AL FINAL DEL CONTENIDO (dentro del article) -->
+        <!-- Contenido principal -->
+        <div class="md:col-span-8 space-y-12">
+
+          <!-- The Challenge -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">The Challenge</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              A leading EdTech platform with millions of users faced a familiar growth problem: high early engagement, but low retention. While "Safari Workshop" was a top destination for new users on Day 0, the drop-off after their first session was significant.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              The opportunity was clear: turn a popular feature into a habit-forming experience that drives repeat visits and long-term loyalty.
+            </p>
+          </section>
+
+          <!-- My Role & Approach -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">My Role &amp; Approach</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              As Product Design Lead, I led a cross-functional team through a 4-sprint cycle to design, build, and validate a new feature — the "Nursery" — within Safari Workshop.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              My focus was not just on creating a fun experience, but on addressing a business challenge: how might we reduce the drop-off after Day 0 by transforming a popular destination into a retention driver?
+            </p>
+          </section>
+
+          <!-- Discovery & Hypothesis -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Discovery &amp; Hypothesis</h2>
+            <p class="text-[#456F80] leading-relaxed font-semibold">Data signals:</p>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-1 mt-2">
+              <li>Safari Workshop had high Day 0 traffic, but users weren't returning.</li>
+              <li>The existing experience lacked emotional hooks or progression systems.</li>
+            </ul>
+            <p class="text-[#456F80] leading-relaxed font-semibold mt-4">Hypothesis:</p>
+            <blockquote class="border-l-4 border-primary pl-6 italic text-[#456F80] leading-relaxed mt-2">
+              "If we introduce a caretaker-driven experience with emotional connection and progressive discovery, we will increase Day 1 retention by creating a reason for users to return."
+            </blockquote>
+          </section>
+
+          <!-- Design Strategy -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Design Strategy</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              Safari Nursery was built around a core loop anchored in three behavioral drivers:
+            </p>
+            <ol class="list-decimal pl-6 text-[#456F80] leading-relaxed space-y-2 mt-4">
+              <li><strong>Emotional investment</strong> — Players adopt and care for a baby animal, creating ownership and personal connection.</li>
+              <li><strong>Progressive discovery</strong> — Each visit reveals new information and deepens the bond.</li>
+              <li><strong>Intrinsic motivation</strong> — The experience is playful and rewarding, not transactional.</li>
+            </ol>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              Why this was a growth play: The design wasn't just about "fun" — it was about habit formation. By giving users a reason to return (checking on their cub, discovering new favorites), we increased the likelihood of Day 1 and Day 7 retention.
+            </p>
+          </section>
+
+          <!-- Validation & Iteration -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Validation &amp; Iteration</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              We rapidly prototyped the experience using ChatGPT to accelerate the design-to-prototype cycle — generating multiple variations of interface layouts, interaction patterns, and component configurations in days rather than weeks. This allowed us to validate navigation and emotional engagement early, with enough time to iterate before launch.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              We then conducted playtests with 20+ target users (children aged 4-7). The sessions validated our navigation approach and revealed opportunities to deepen emotional connection through visual distinctiveness (collars, fur colors) and exaggerated character reactions.
+            </p>
+          </section>
+
+          <!-- Results -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Results</h2>
+            <p class="text-[#456F80] leading-relaxed font-semibold">Engagement:</p>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-1 mt-2">
+              <li><strong>33%</strong> of Safari visitors engaged with the Nursery at launch.</li>
+              <li>Within a week, that grew to <strong>68%</strong>, and stabilized at <strong>65–70%</strong> over 4 months.</li>
+            </ul>
+            <p class="text-[#456F80] leading-relaxed font-semibold mt-4">Retention (the numbers that mattered):</p>
+            <blockquote class="border-l-4 border-neon pl-6 text-[#456F80] leading-relaxed mt-2">
+              "Users who engaged with the Nursery were <strong>+3.5 percentage points</strong> more likely to return on Day 1 compared to those who only visited Safari (controlling for Day 0 activity)."
+            </blockquote>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              Business implication: Retention is a critical metric for subscription-based EdTech products. A +3.5pp lift in D1 retention represents a meaningful increase in user lifetime value — and a clear signal that the design intervention had impact.
+            </p>
+          </section>
+
+          <!-- Key Learnings -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Key Learnings</h2>
+            <ol class="list-decimal pl-6 text-[#456F80] leading-relaxed space-y-2">
+              <li><strong>Emotional hooks drive retention.</strong> Users don't just return for content — they return for connection.</li>
+              <li><strong>Small interventions can have outsized impact.</strong> A 3.5pp lift came from a focused, low-cost design change.</li>
+              <li><strong>Data-informed design is not just about dashboards.</strong> It's about forming clear hypotheses and validating them through both quantitative and qualitative feedback.</li>
+            </ol>
+          </section>
+
+          <!-- Next Steps -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Next Steps</h2>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2">
+              <li><strong>Integrate AI-driven personalization</strong> — recommending activities and content based on each user's interaction history and preferences.</li>
+              <li><strong>Extend the Nursery model to other animal species</strong> within the Safari feature, creating a cohesive ecosystem of caretaking experiences.</li>
+              <li><strong>Introduce growth mechanics</strong> — allowing baby animals to evolve over time based on the user's engagement and care efforts, deepening emotional investment and long-term retention.</li>
+            </ul>
+          </section>
+
+          <!-- NDA Notice - VERSIÓN COMPLETA AL FINAL DEL CONTENIDO -->
           <section class="mt-16 pt-8 border-t border-ink/10">
             <div class="bg-soft/50 rounded-2xl p-8 border border-ink/5">
               <h3 class="font-heading text-xl font-bold tracking-tight mb-3">⚠️ Full Case Study Available Upon Request</h3>
@@ -113,25 +253,9 @@
             </div>
           </section>
 
-</div>
-</div>
-</article>
-
-    <!-- NDA Notice - VERSIÓN COMPLETA AL FINAL -->
-    <section class="mx-auto max-w-5xl px-6 lg:px-12 pb-32">
-      <div class="bg-soft/50 rounded-2xl p-8 border border-ink/5">
-        <h3 class="font-heading text-xl font-bold tracking-tight mb-3">⚠️ Full Case Study Available Upon Request</h3>
-        <p class="text-[#456F80] leading-relaxed text-sm">
-          This case study contains proprietary and confidential information about the product's strategy, user research, and internal metrics. The full version — including research findings, user flows, and stakeholder presentations — is protected under NDA.
-        </p>
-        <p class="text-[#456F80] leading-relaxed text-sm mt-4 font-semibold">
-          📩 To request access, please contact me directly:
-        </p>
-        <a href="mailto:alura.gonzalez@gmail.com?subject=Safari%20Nursery%20Full%20Case%20Study%20Request" class="inline-block mt-4 text-primary font-bold text-sm hover:underline">
-          Contact me →
-        </a>
+        </div>
       </div>
-    </section>
+    </article>
 
   </main>
 
