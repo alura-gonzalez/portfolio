@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Safari Nursery — Ellis</title>
-  <meta name="description" content="Case study: Safari Nursery by Ellis, Product Designer & UX Strategy.">
+  <title>Safari Nursery — Laura Portfolio</title>
+  <meta name="description" content="Case study: Safari Nursery by Laura, Product Designer & UX Strategy.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <script>
@@ -24,15 +24,27 @@
   </style>
 </head>
 <body class="min-h-screen bg-canvas font-body text-ink selection:bg-neon selection:text-ink">
-  <nav class="sticky top-0 z-50 w-full bg-canvas/80 backdrop-blur-md border-b border-ink/5">
+
+  <!-- Nav igual a Index -->
+  <nav class="sticky top-0 z-50 w-full bg-[#E7F3F6]/80 backdrop-blur-md border-b border-ink/5">
     <div class="mx-auto max-w-7xl px-6 lg:px-12 h-20 flex items-center justify-between">
-      <a href="/portfolio/index.html" class="flex items-center gap-2 group">
-        <div class="w-3 h-3 rounded-full bg-primary"></div>
-        <span class="font-heading text-xl font-bold tracking-tight">ELLIS.</span>
+      <a href="/portfolio/index.html" class="flex items-center gap-3 group" aria-label="Inicio — LAURA PORTFOLIO">
+        <img src="assets/logo.png" alt="Logo" class="h-8 w-auto shrink-0" loading="eager">
+        <span class="font-heading text-lg font-semibold tracking-tight text-[#00374E] hidden sm:inline whitespace-nowrap uppercase">
+          LAURA PORTFOLIO
+        </span>
       </a>
-      <a href="/portfolio/index.html#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md hover:scale-[1.02] active:scale-95 transition-transform">Work with me</a>
+      <div class="hidden sm:flex items-center gap-8">
+        <a href="/portfolio/index.html#work" class="text-sm font-medium hover:text-primary transition-colors">Selected Works</a>
+        <a href="/portfolio/index.html#philosophy" class="text-sm font-medium hover:text-primary transition-colors">Philosophy</a>
+        <a href="/portfolio/index.html#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+      </div>
+      <a href="/portfolio/index.html#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md ring-1 ring-primary hover:scale-[1.02] active:scale-95 transition-transform">
+        Work with me
+      </a>
     </div>
   </nav>
+
   <main>
     <header class="pt-24 pb-16 lg:pt-36">
       <div class="mx-auto max-w-5xl px-6 lg:px-12">
@@ -42,12 +54,16 @@
         <p class="mt-8 text-xl lg:text-2xl text-ink/70 max-w-3xl leading-relaxed">Designing nurturing environments where early childhood experiences are guided by clarity, safety, and emotional structure.</p>
       </div>
     </header>
-    <section class="mx-auto max-w-7xl px-6 lg:px-12 mb-24">
+
+    <!-- Hero image alineada al ancho del H1 (max-w-5xl) -->
+    <section class="mx-auto max-w-5xl px-6 lg:px-12 mb-24">
       <div class="relative overflow-hidden rounded-3xl ring-1 ring-ink/5 shadow-xl">
         <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1600&auto=format&fit=crop" alt="Safari Nursery" class="w-full object-cover" loading="eager">
       </div>
     </section>
-    <article class="mx-auto max-w-3xl px-6 lg:px-12 pb-32">
+
+    <!-- Artículo extendido a max-w-5xl; barra sticky mantiene md:col-span-4 -->
+    <article class="mx-auto max-w-5xl px-6 lg:px-12 pb-32">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
         <aside class="md:col-span-4">
           <div class="sticky top-28 space-y-8">
@@ -66,11 +82,17 @@
       </div>
     </article>
   </main>
+
+  <!-- Footer igual a Index -->
   <footer class="bg-ink text-white/30 text-xs py-10 border-t border-white/5">
     <div class="mx-auto max-w-7xl px-6 lg:px-12 flex justify-between items-center">
-      <p>© 2024 Ellis Design Studio</p>
-      <div class="flex gap-6"><a href="#" class="hover:text-white">Dribbble</a><a href="#" class="hover:text-white">Twitter</a><a href="#" class="hover:text-white">LinkedIn</a></div>
+      <p>© 2026 Laura Portfolio powered by Inkling, a multimodal AI model created by Thinking Machines 💜</p>
+      <div class="flex gap-8">
+        <a href="#" class="hover:text-white transition-colors">Medium</a>
+        <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+      </div>
     </div>
   </footer>
+
 </body>
 </html>
