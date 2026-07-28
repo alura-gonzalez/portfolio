@@ -1,77 +1,490 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="assets/fav_icon.png" type="image/png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Lever — Ellis</title>
-  <meta name="description" content="Case study: The Lever by Ellis, Product Designer & UX Strategy.">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>The Lever — Laura Portfolio</title>
+  <meta name="description" content="Case study: The Lever website redesign by Laura, Product Designer.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="assets/fav_icon.png" type="image/png">
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com/3.4.0"></script>
+  
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: { canvas: '#F8F6F3', ink: '#00374E', soft: '#F0EDE8', primary: '#002EF5', neon: '#D4F23D' },
+          colors: { canvas: '#F1F2FF', ink: '#00374E', soft: '#F0EDE8', primary: '#002EF5', neon: '#D4F23D' },
           fontFamily: { heading: ['"Syne"', 'sans-serif'], body: ['"Plus Jakarta Sans"', 'sans-serif'] },
         }
       }
     }
   </script>
+  
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8F6F3; color: #00374E; }
     ::selection { background: #D4F23D; color: #00374E; }
+
+    .md\:col-span-8 p,
+    .md\:col-span-8 li,
+    .md\:col-span-8 blockquote,
+    .md\:col-span-8 h2,
+    .md\:col-span-8 h3,
+    .md\:col-span-8 ol,
+    .md\:col-span-8 ul {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+      max-width: 100%;
+    }
+
+    .md\:col-span-8 {
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .case-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0.75rem;
+    }
+
+    .image-container {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      background-color: #F0EDE8;
+      border: 1px solid rgba(0, 55, 78, 0.05);
+    }
+
+    .image-container:not(:first-child) {
+      margin-top: 1rem;
+    }
+
+    /* Contenedor de video */
+    .video-container {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      background-color: #0a0a0a;
+      border: 1px solid rgba(0, 55, 78, 0.05);
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+
+    @media (max-width: 768px) {
+      .md\:col-span-8 {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    /* LIGHTBOX */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-out;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      padding: 2rem;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-overlay img {
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active img {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 1.5rem;
+      right: 2rem;
+      z-index: 10000;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-overlay.active ~ .lightbox-close {
+      display: flex;
+    }
+
+    .image-container {
+      cursor: pointer;
+    }
+
+    .image-container img {
+      pointer-events: none;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-canvas font-body text-ink selection:bg-neon selection:text-ink">
-  <nav class="sticky top-0 z-50 w-full bg-canvas/80 backdrop-blur-md border-b border-ink/5">
+
+  <!-- Nav -->
+  <nav class="sticky top-0 z-50 w-full bg-[#E7F3F6]/80 backdrop-blur-md border-b border-ink/5">
     <div class="mx-auto max-w-7xl px-6 lg:px-12 h-20 flex items-center justify-between">
-      <a href="/portfolio/index.html" class="flex items-center gap-2 group">
-        <div class="w-3 h-3 rounded-full bg-primary"></div>
-        <span class="font-heading text-xl font-bold tracking-tight">ELLIS.</span>
+      <a href="/portfolio/index.html" class="flex items-center gap-3 group" aria-label="Inicio — LAURA PORTFOLIO">
+        <img src="assets/logo.png" alt="Logo" class="h-8 w-auto shrink-0" loading="eager">
+        <span class="font-heading text-lg font-semibold tracking-tight text-[#00374E] hidden sm:inline whitespace-nowrap uppercase">
+          LAURA PORTFOLIO
+        </span>
       </a>
-      <a href="/portfolio/index.html#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md hover:scale-[1.02] active:scale-95 transition-transform">Work with me</a>
+      <div class="hidden sm:flex items-center gap-8">
+        <a href="/portfolio/index.html#work" class="text-sm font-medium hover:text-primary transition-colors">Selected Works</a>
+        <a href="/portfolio/index.html#philosophy" class="text-sm font-medium hover:text-primary transition-colors">Philosophy</a>
+        <a href="/portfolio/index.html#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+      </div>
+      <a href="/portfolio/index.html#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md ring-1 ring-primary hover:scale-[1.02] active:scale-95 transition-transform">
+        Work with me
+      </a>
     </div>
   </nav>
+
   <main>
-    <header class="pt-24 pb-16 lg:pt-36">
+    <!-- Header -->
+    <header class="pt-24 pb-12 lg:pt-36">
       <div class="mx-auto max-w-5xl px-6 lg:px-12">
         <a href="/portfolio/index.html#work" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ink/40 hover:text-primary mb-8 transition-colors">← Back to works</a>
-        <span class="inline-block bg-neon text-ink px-3 py-1 text-[10px] font-bold uppercase tracking-tighter rounded-md mb-6">Strategy / Impact</span>
+        <span class="inline-block bg-neon text-ink px-3 py-1 text-[10px] font-bold uppercase tracking-tighter rounded-md mb-6">News · Web Design</span>
         <h1 class="font-heading text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.05]">The Lever</h1>
-        <p class="mt-8 text-xl lg:text-2xl text-ink/70 max-w-3xl leading-relaxed">Strategic design that moves the needle—aligning product experience with business outcomes through focused, measurable interventions.</p>
+        <p class="mt-8 text-xl lg:text-2xl text-ink/70 max-w-full leading-relaxed">A visual overhaul for a nonpartisan investigative news outlet.</p>
       </div>
     </header>
-    <section class="mx-auto max-w-7xl px-6 lg:px-12 mb-24">
-      <div class="relative overflow-hidden rounded-3xl ring-1 ring-ink/5 shadow-xl">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop" alt="The Lever" class="w-full object-cover" loading="eager">
+
+    <!-- Hero image -->
+    <section class="mx-auto max-w-5xl px-6 lg:px-12 mb-16">
+      <div class="relative overflow-hidden rounded-3xl ring-1 ring-ink/5 shadow-xl max-h-[400px] flex items-center justify-center bg-soft/50">
+        <img src="assets/the-lever.png" alt="The Lever" class="w-full h-full object-contain" loading="eager">
       </div>
     </section>
-    <article class="mx-auto max-w-3xl px-6 lg:px-12 pb-32">
+
+    <!-- Artículo completo -->
+    <article class="mx-auto max-w-5xl px-6 lg:px-12 pb-16">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
+        <!-- Sidebar sticky -->
         <aside class="md:col-span-4">
           <div class="sticky top-28 space-y-8">
-            <div><h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Role</h3><p class="font-bold">Product Design Lead</p></div>
-            <div><h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Timeline</h3><p class="font-bold">Q4 2024 — Q1 2025</p></div>
-            <div><h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Services</h3><p class="font-bold">UX Strategy, System Design, Prototyping</p></div>
+            <div>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Role</h3>
+              <p class="font-bold">Web Designer</p>
+            </div>
+            <div>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Timeline</h3>
+              <p class="font-bold">2022</p>
+            </div>
+            <div>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Services</h3>
+              <p class="font-bold">Web Design · Visual Identity · Responsive Design</p>
+            </div>
             <a href="/portfolio/index.html#contact" class="inline-block bg-primary text-white px-5 py-3 text-sm font-bold rounded-lg hover:scale-[1.02] active:scale-95 transition-transform mt-2">Discuss a project</a>
           </div>
         </aside>
+
+        <!-- Contenido principal -->
         <div class="md:col-span-8 space-y-12">
-          <section><h2 class="font-heading text-3xl font-bold tracking-tight mb-6">The Problem</h2><p class="text-[#456F80] leading-relaxed">The product had strong user engagement but failed to convert that traction into revenue growth. The disconnect between experience and business metrics was unclear.</p></section>
-          <section><h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Strategic Approach</h2><p class="text-[#456F80] leading-relaxed mb-4">We identified the key lever: onboarding flow optimization. By redesigning the first-run experience with strategic milestones and progressive disclosure, users reached value faster.</p><p class="text-[#456F80] leading-relaxed">Every change was tied to a measurable KPI—activation rate, trial conversion, and feature adoption.</p></section>
-          <section><h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Outcome</h2><p class="text-[#456F80] leading-relaxed">Trial-to-paid conversion increased by 22%. The lever framework is now applied to two additional product lines.</p></section>
-          <section><h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Reflection</h2><p class="text-[#456F80] leading-relaxed">Not every feature needs to change the world—some need to change the metric that matters. Knowing which lever to pull is strategic design.</p></section>
+
+          <!-- The Challenge -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">The Challenge</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              <a href="https://www.levernews.com/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">The Lever</a> is a nonpartisan, reader-supported investigative news outlet that holds accountable the people and corporations manipulating the levers of power. Founded in 2020 by David Sirota — an award-winning journalist and Oscar-nominated writer — the organization needed a website that reflected its brand values and made its investigative journalism accessible to a growing audience.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              <strong>Brand values:</strong> Radical Content · Nihilistic · Optimistic · Human · Courageous.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              The challenge was to translate these values into a visual identity and user experience that:
+            </p>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-1 mt-4">
+              <li>Communicates trust and authority.</li>
+              <li>Highlights investigative journalism.</li>
+              <li>Works seamlessly across desktop and mobile.</li>
+              <li>Supports reader engagement and subscriptions.</li>
+            </ul>
+          </section>
+
+          <!-- My Role & Approach -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">My Role &amp; Approach</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              As <strong>Product Designer</strong>, I led the redesign of The Lever's website — from visual strategy to responsive implementation. My focus was on creating a design that reflects the brand's bold, courageous spirit while ensuring readability and ease of navigation for a news-focused audience.
+            </p>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2 mt-4">
+              <li><strong>Visual identity:</strong> Bold typography, a considered color palette, and a layout that feels authoritative and approachable.</li>
+              <li><strong>Information architecture:</strong> Organizing articles, podcasts, e-books, and team information in a clear hierarchy.</li>
+              <li><strong>Responsive design:</strong> Ensuring a seamless experience across desktop and mobile.</li>
+            </ul>
+          </section>
+
+          <!-- Visual Design Strategy -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Visual Design Strategy</h2>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Desktop Design</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                The desktop experience emphasizes:
+              </p>
+              <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-1 mt-2">
+                <li>Hero stories with strong visual impact.</li>
+                <li>Clean grid layouts for article listings.</li>
+                <li>Clear calls to action for subscriptions and donations.</li>
+                <li>Podcast and e-book sections integrated into the content flow.</li>
+              </ul>
+              <div class="mt-4 image-container">
+                <img src="assets/lever-desktop-home.png" alt="Desktop design — homepage" class="case-image" loading="lazy">
+              </div>
+              <div class="mt-4 image-container">
+                <img src="assets/lever-desktop-article.png" alt="Desktop design — article view" class="case-image" loading="lazy">
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Mobile Design</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                The mobile experience maintains the same visual integrity while adapting to smaller screens:
+              </p>
+              <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-1 mt-2">
+                <li>Collapsible navigation for a clean header.</li>
+                <li>Responsive grids that stack content vertically.</li>
+                <li>Touch-optimized interactions for easy reading on the go.</li>
+              </ul>
+              <div class="mt-4 image-container">
+                <img src="assets/lever-mobile-home.png" alt="Mobile design — homepage" class="case-image" loading="lazy">
+              </div>
+              <div class="mt-4 image-container">
+                <img src="assets/lever-mobile-article.png" alt="Mobile design — article view" class="case-image" loading="lazy">
+              </div>
+            </div>
+          </section>
+
+          <!-- Design System -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Design System</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              The redesign was built on a cohesive design system that ensures consistency across all pages and devices. Key elements include:
+            </p>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2 mt-4">
+              <li><strong>Typography:</strong> Bold, authoritative fonts that reflect the brand's fearless journalism.</li>
+              <li><strong>Color Palette:</strong> A restrained palette with accent colors for calls to action and emphasis.</li>
+              <li><strong>Grid System:</strong> A flexible grid that adapts to content needs across device sizes.</li>
+              <li><strong>Components:</strong> Reusable UI elements for articles, podcasts, team profiles, and e-books.</li>
+            </ul>
+            <div class="mt-4 image-container">
+              <img src="assets/lever-style-guide.png" alt="Style guide" class="case-image" loading="lazy">
+            </div>
+          </section>
+
+          <!-- Video Presentation -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Website Walkthrough</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              A video walkthrough of the redesigned website, showcasing the visual identity, responsive behavior, and key interactions.
+            </p>
+            <div class="mt-4 video-container">
+              <video controls width="100%" loading="lazy">
+                <source src="assets/lever-walkthrough.mp4" type="video/mp4">
+                <p class="text-sm text-white/70 italic p-4">Your browser does not support the video tag. You can <a href="assets/lever-walkthrough.mp4" download class="text-primary hover:underline">download it here</a>.</p>
+              </video>
+            </div>
+          </section>
+
+          <!-- Impact -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Impact</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              The redesign positioned The Lever as a modern, credible, and reader-focused news outlet. The new visual identity and improved user experience support the organization's mission to hold power accountable — making investigative journalism accessible and engaging for a growing audience.
+            </p>
+          </section>
+
+          <!-- Key Takeaways -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Key Takeaways</h2>
+            <ol class="list-decimal pl-6 text-[#456F80] leading-relaxed space-y-4">
+              <li><strong>Design must reflect brand values.</strong> The visual identity is not just about aesthetics — it's about communicating who you are and what you stand for.</li>
+              <li><strong>Responsive is non-negotiable.</strong> News is consumed everywhere. A seamless mobile experience is critical for engagement.</li>
+              <li><strong>Typography is a tool for authority.</strong> Bold, well-chosen typography can communicate trust and urgency without saying a word.</li>
+              <li><strong>Clarity drives conversion.</strong> Clear navigation and calls to action make it easy for readers to support the mission.</li>
+            </ol>
+          </section>
+
         </div>
       </div>
     </article>
+
   </main>
-  <footer class="bg-ink text-white/30 text-xs py-10 border-t border-white/5">
-    <div class="mx-auto max-w-7xl px-6 lg:px-12 flex justify-between items-center">
-      <p>© 2024 Ellis Design Studio</p>
-      <div class="flex gap-6"><a href="#" class="hover:text-white">Dribbble</a><a href="#" class="hover:text-white">Twitter</a><a href="#" class="hover:text-white">LinkedIn</a></div>
+
+  <!-- Keep exploring - Sección de recomendación de casos de estudio -->
+  <section class="py-24 lg:py-32 border-t border-ink/5" style="background-color: #E7F3F6;">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-heading text-4xl lg:text-5xl font-bold tracking-tight leading-tight">More case studies</h2>
+        <p class="mt-4 text-lg text-ink/60">Continue exploring how I approach design challenges across different industries.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        
+        <!-- Tarjeta 1: Research to Growth -->
+        <a href="works-research-to-growth.html" class="group block h-full">
+          <div class="flex flex-col h-full relative overflow-hidden rounded-2xl bg-white/80 ring-1 ring-ink/5 transition-all duration-300 hover:scale-[1.02] hover:ring-primary/20 hover:shadow-lg">
+            <div class="aspect-[16/9] overflow-hidden bg-soft flex-shrink-0">
+              <img src="assets/health.png" alt="CRO Audit" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            </div>
+            <div class="flex flex-col flex-grow p-6 lg:p-8">
+              <div class="flex items-center gap-3">
+                <span class="inline-block bg-neon text-ink px-2 py-0.5 text-[10px] font-bold uppercase tracking-tighter rounded">Health Tech</span>
+              </div>
+              <h3 class="mt-3 font-heading text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Turn Research into Growth</h3>
+              <p class="mt-2 text-sm text-ink/60 leading-relaxed">A CRO Audit that uncovered a core communication problem and built a roadmap to fix it.</p>
+              <div class="mt-auto pt-4 inline-flex items-center text-sm font-bold text-primary">
+                Read case study 
+                <svg class="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Tarjeta 2: Bounce -->
+        <a href="works-bag-storage.html" class="group block h-full">
+          <div class="flex flex-col h-full relative overflow-hidden rounded-2xl bg-white/80 ring-1 ring-ink/5 transition-all duration-300 hover:scale-[1.02] hover:ring-primary/20 hover:shadow-lg">
+            <div class="aspect-[16/9] overflow-hidden bg-soft flex-shrink-0">
+              <img src="assets/bounce.png" alt="Bounce" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            </div>
+            <div class="flex flex-col flex-grow p-6 lg:p-8">
+              <div class="flex items-center gap-3">
+                <span class="inline-block bg-neon text-ink px-2 py-0.5 text-[10px] font-bold uppercase tracking-tighter rounded">Service Tech</span>
+              </div>
+              <h3 class="mt-3 font-heading text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Bounce: The Bag Storage</h3>
+              <p class="mt-2 text-sm text-ink/60 leading-relaxed">A payment flow audit that identified friction points and delivered an 8% lift in conversion rate.</p>
+              <div class="mt-auto pt-4 inline-flex items-center text-sm font-bold text-primary">
+                Read case study 
+                <svg class="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-ink text-white/60 text-xs py-10 border-t border-white/5">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p>© 2026 Laura Portfolio powered by Inkling, a multimodal AI model created by Thinking Machines 💜</p>
+      <div class="flex gap-8">
+        <a href="https://medium.com/@alura-gonzalez" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Medium</a>
+        <a href="https://www.linkedin.com/in/laura-gonzalez-0102/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">LinkedIn</a>
+      </div>
     </div>
   </footer>
+
+  <!-- Lightbox overlay -->
+  <div class="lightbox-overlay" id="lightbox-overlay">
+    <img src="" alt="Lightbox" id="lightbox-image">
+  </div>
+  <div class="lightbox-close" id="lightbox-close">✕</div>
+
+  <script>
+    (function() {
+      const overlay = document.getElementById('lightbox-overlay');
+      const lightboxImg = document.getElementById('lightbox-image');
+      const closeBtn = document.getElementById('lightbox-close');
+
+      const imageContainers = document.querySelectorAll('.image-container');
+
+      function openLightbox(imageSrc) {
+        if (!imageSrc) return;
+        lightboxImg.src = imageSrc;
+        overlay.classList.add('active');
+        closeBtn.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        overlay.classList.remove('active');
+        closeBtn.style.display = 'none';
+        document.body.style.overflow = '';
+        setTimeout(() => { lightboxImg.src = ''; }, 300);
+      }
+
+      imageContainers.forEach(container => {
+        container.addEventListener('click', function(e) {
+          const img = this.querySelector('img');
+          if (img && img.src) {
+            openLightbox(img.src);
+          }
+        });
+      });
+
+      overlay.addEventListener('click', closeLightbox);
+
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeLightbox();
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
+    })();
+  </script>
+
 </body>
 </html>
