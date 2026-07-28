@@ -6,6 +6,9 @@
   <title>UX Intervention for a Legal Provider App — Laura Portfolio</title>
   <meta name="description" content="Case study: RayNa Corp by Laura, UX/UI Designer & Growth Strategy.">
   
+  <!-- Favicon -->
+  <link rel="icon" href="assets/fav_icon.png" type="image/png">
+  
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com/3.4.0"></script>
   
@@ -15,7 +18,7 @@
     tailwind.config = {
       theme: {
         extend: {
-          colors: { canvas: '#F1F2FF', ink: '#00374E', soft: '#F0EDE8', primary: '#002EF5', neon: '#D4F23D' },
+          colors: { canvas: '#F8F6F3', ink: '#00374E', soft: '#F0EDE8', primary: '#002EF5', neon: '#D4F23D' },
           fontFamily: { heading: ['"Syne"', 'sans-serif'], body: ['"Plus Jakarta Sans"', 'sans-serif'] },
         }
       }
@@ -61,14 +64,21 @@
       border: 1px solid rgba(0, 55, 78, 0.05);
     }
 
+    .image-container:not(:first-child) {
+      margin-top: 1rem;
+    }
+
     /* Contenedor de video */
     .video-container {
       width: 100%;
       overflow: hidden;
       border-radius: 0.75rem;
-      background-color: #F0EDE8;
+      background-color: #0a0a0a;
       border: 1px solid rgba(0, 55, 78, 0.05);
       aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .video-container video {
@@ -216,7 +226,7 @@
             </div>
             <div>
               <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Services</h3>
-              <p class="font-bold">UX Audit · User Research · UI Design · Prototyping</p>
+              <p class="font-bold">UX Audit · User Research · Prototyping</p>
             </div>
             <a href="/portfolio/index.html#contact" class="inline-block bg-primary text-white px-5 py-3 text-sm font-bold rounded-lg hover:scale-[1.02] active:scale-95 transition-transform mt-2">Discuss a project</a>
           </div>
@@ -271,13 +281,11 @@
               <li>The issues reported at the beginning of the project</li>
             </ul>
 
-            <div class="mt-4 grid grid-cols-2 gap-4">
-              <div class="image-container">
-                <img src="assets/rayna_pre_1.jpg" alt="Preliminary analysis 1" class="case-image" loading="lazy">
-              </div>
-              <div class="image-container">
-                <img src="assets/rayna_pre_2.jpg" alt="Preliminary analysis 2" class="case-image" loading="lazy">
-              </div>
+            <div class="mt-4 image-container">
+              <img src="assets/rayna_pre_1.jpg" alt="Preliminary analysis 1" class="case-image" loading="lazy">
+            </div>
+            <div class="image-container">
+              <img src="assets/rayna_pre_2.jpg" alt="Preliminary analysis 2" class="case-image" loading="lazy">
             </div>
 
             <p class="text-[#456F80] leading-relaxed mt-4">
@@ -359,13 +367,11 @@
               <p class="text-[#456F80] leading-relaxed mt-2">
                 We kept the corporate colors and started working with a LoFi prototype to focus on interactions, functionality, and user flow before investing in high-fidelity visuals.
               </p>
-              <div class="mt-4 grid grid-cols-2 gap-4">
-                <div class="image-container">
-                  <img src="assets/rayna_style.jpg" alt="Visual style 1" class="case-image" loading="lazy">
-                </div>
-                <div class="image-container">
-                  <img src="assets/rayna_style_2.jpg" alt="Visual style 2" class="case-image" loading="lazy">
-                </div>
+              <div class="mt-4 image-container">
+                <img src="assets/rayna_style.jpg" alt="Visual style 1" class="case-image" loading="lazy">
+              </div>
+              <div class="image-container">
+                <img src="assets/rayna_style_2.jpg" alt="Visual style 2" class="case-image" loading="lazy">
               </div>
             </div>
           </section>
@@ -381,9 +387,9 @@
               <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Prototype walkthrough</h3>
               <p class="text-[#456F80] leading-relaxed mt-2">A walkthrough of the validated prototypes for both Law Firms and Providers flows.</p>
               <div class="mt-4 video-container">
-                <video controls class="w-full h-full" loading="lazy">
-                  <source src="assets/rayna_prototype.mp4" type="video/quicktime">
-                  <p class="text-sm text-ink/50 italic p-4">Your browser does not support the video tag. You can <a href="assets/rayna_prototype.mov" download class="text-primary hover:underline">download it here</a>.</p>
+                <video controls width="100%" loading="lazy">
+                  <source src="assets/rayna_prototype.mp4" type="video/mp4">
+                  <p class="text-sm text-white/70 italic p-4">Your browser does not support the video tag. You can <a href="assets/rayna_prototype.mp4" download class="text-primary hover:underline">download it here</a>.</p>
                 </video>
               </div>
             </div>
@@ -458,18 +464,18 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
         
-        <!-- Tarjeta 1: Safari Nursery -->
-        <a href="safari-nursery.html" class="group block h-full">
+        <!-- Tarjeta 1: Research to Growth -->
+        <a href="works-research-to-growth.html" class="group block h-full">
           <div class="flex flex-col h-full relative overflow-hidden rounded-2xl bg-white/80 ring-1 ring-ink/5 transition-all duration-300 hover:scale-[1.02] hover:ring-primary/20 hover:shadow-lg">
             <div class="aspect-[16/9] overflow-hidden bg-soft flex-shrink-0">
-              <img src="assets/Safari-BAE-l.png" alt="Safari Nursery" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+              <img src="assets/health.png" alt="CRO Audit" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
             </div>
             <div class="flex flex-col flex-grow p-6 lg:p-8">
               <div class="flex items-center gap-3">
-                <span class="inline-block bg-neon text-ink px-2 py-0.5 text-[10px] font-bold uppercase tracking-tighter rounded">Ed-Tech</span>
+                <span class="inline-block bg-neon text-ink px-2 py-0.5 text-[10px] font-bold uppercase tracking-tighter rounded">Health Tech</span>
               </div>
-              <h3 class="mt-3 font-heading text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Safari Nursery</h3>
-              <p class="mt-2 text-sm text-ink/60 leading-relaxed">Driving retention through emotional engagement: +3.5pp Day 1 Retention · 65–70% Sustained Engagement.</p>
+              <h3 class="mt-3 font-heading text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Turn Research into Growth</h3>
+              <p class="mt-2 text-sm text-ink/60 leading-relaxed">A CRO Audit that uncovered a core communication problem and built a roadmap to fix it.</p>
               <div class="mt-auto pt-4 inline-flex items-center text-sm font-bold text-primary">
                 Read case study 
                 <svg class="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -492,28 +498,6 @@
               </div>
               <h3 class="mt-3 font-heading text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Bounce: The Bag Storage</h3>
               <p class="mt-2 text-sm text-ink/60 leading-relaxed">A payment flow audit that identified friction points and delivered an 8% lift in conversion rate.</p>
-              <div class="mt-auto pt-4 inline-flex items-center text-sm font-bold text-primary">
-                Read case study 
-                <svg class="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <!-- Tarjeta 3: Turn Research into Growth -->
-        <a href="works-research-to-growth.html" class="group block h-full">
-          <div class="flex flex-col h-full relative overflow-hidden rounded-2xl bg-white/80 ring-1 ring-ink/5 transition-all duration-300 hover:scale-[1.02] hover:ring-primary/20 hover:shadow-lg">
-            <div class="aspect-[16/9] overflow-hidden bg-soft flex-shrink-0">
-              <img src="assets/health.png" alt="CRO Audit" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-            </div>
-            <div class="flex flex-col flex-grow p-6 lg:p-8">
-              <div class="flex items-center gap-3">
-                <span class="inline-block bg-neon text-ink px-2 py-0.5 text-[10px] font-bold uppercase tracking-tighter rounded">Health Tech</span>
-              </div>
-              <h3 class="mt-3 font-heading text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Turn Research into Growth</h3>
-              <p class="mt-2 text-sm text-ink/60 leading-relaxed">A CRO Audit that uncovered a core communication problem and built a roadmap to fix it.</p>
               <div class="mt-auto pt-4 inline-flex items-center text-sm font-bold text-primary">
                 Read case study 
                 <svg class="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
