@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Research to Growth — Ellis</title>
-  <meta name="description" content="Case study: Research to Growth by Ellis, Product Designer & UX Strategy.">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Turn Research into Growth — Laura Portfolio</title>
+  <meta name="description" content="Case study: CRO Audit by Laura, Product Designer & Growth Strategy.">
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com/3.4.0"></script>
+  
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  
   <script>
     tailwind.config = {
       theme: {
@@ -17,60 +21,486 @@
       }
     }
   </script>
+  
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8F6F3; color: #00374E; }
     ::selection { background: #D4F23D; color: #00374E; }
+
+    .md\:col-span-8 p,
+    .md\:col-span-8 li,
+    .md\:col-span-8 blockquote,
+    .md\:col-span-8 h2,
+    .md\:col-span-8 h3,
+    .md\:col-span-8 ol,
+    .md\:col-span-8 ul {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+      max-width: 100%;
+    }
+
+    .md\:col-span-8 {
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    /* Imágenes a tamaño completo - alto automático */
+    .case-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0.75rem;
+    }
+
+    .image-container {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      background-color: #F0EDE8;
+      border: 1px solid rgba(0, 55, 78, 0.05);
+    }
+
+    @media (max-width: 768px) {
+      .md\:col-span-8 {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      /* Lightbox - Fondo oscuro */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  padding: 2rem;
+}
+
+.lightbox-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.lightbox-overlay img {
+  max-width: 95%;
+  max-height: 95%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+  cursor: zoom-out;
+}
+
+.lightbox-overlay.active img {
+  transform: scale(1);
+}
+
+/* Botón de cerrar */
+.lightbox-close {
+  position: fixed;
+  top: 1.5rem;
+  right: 2rem;
+  z-index: 10000;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.lightbox-overlay.active ~ .lightbox-close {
+  display: flex;
+}
+
+/* Hacer que las imágenes tengan cursor de "click" */
+.image-container {
+  cursor: pointer;
+}
+
+.image-container img {
+  pointer-events: none; /* El clic se captura en el contenedor */
+}
+    }
   </style>
 </head>
 <body class="min-h-screen bg-canvas font-body text-ink selection:bg-neon selection:text-ink">
-  <nav class="sticky top-0 z-50 w-full bg-canvas/80 backdrop-blur-md border-b border-ink/5">
+
+  <!-- Nav -->
+  <nav class="sticky top-0 z-50 w-full bg-[#E7F3F6]/80 backdrop-blur-md border-b border-ink/5">
     <div class="mx-auto max-w-7xl px-6 lg:px-12 h-20 flex items-center justify-between">
-      <a href="/portfolio/index.html" class="flex items-center gap-2 group">
-        <div class="w-3 h-3 rounded-full bg-primary"></div>
-        <span class="font-heading text-xl font-bold tracking-tight">ELLIS.</span>
+      <a href="/portfolio/index.html" class="flex items-center gap-3 group" aria-label="Inicio — LAURA PORTFOLIO">
+        <img src="assets/logo.png" alt="Logo" class="h-8 w-auto shrink-0" loading="eager">
+        <span class="font-heading text-lg font-semibold tracking-tight text-[#00374E] hidden sm:inline whitespace-nowrap uppercase">
+          LAURA PORTFOLIO
+        </span>
       </a>
-      <a href="/portfolio/index.html#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md hover:scale-[1.02] active:scale-95 transition-transform">Work with me</a>
+      <div class="hidden sm:flex items-center gap-8">
+        <a href="/portfolio/index.html#work" class="text-sm font-medium hover:text-primary transition-colors">Selected Works</a>
+        <a href="/portfolio/index.html#philosophy" class="text-sm font-medium hover:text-primary transition-colors">Philosophy</a>
+        <a href="/portfolio/index.html#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+      </div>
+      <a href="/portfolio/index.html#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md ring-1 ring-primary hover:scale-[1.02] active:scale-95 transition-transform">
+        Work with me
+      </a>
     </div>
   </nav>
+
   <main>
-    <header class="pt-24 pb-16 lg:pt-36">
+    <!-- Header -->
+    <header class="pt-24 pb-12 lg:pt-36">
       <div class="mx-auto max-w-5xl px-6 lg:px-12">
         <a href="/portfolio/index.html#work" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ink/40 hover:text-primary mb-8 transition-colors">← Back to works</a>
-        <span class="inline-block bg-neon text-ink px-3 py-1 text-[10px] font-bold uppercase tracking-tighter rounded-md mb-6">Research / Strategy</span>
-        <h1 class="font-heading text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.05]">Research to Growth</h1>
-        <p class="mt-8 text-xl lg:text-2xl text-ink/70 max-w-3xl leading-relaxed">Transforming qualitative insights into strategic product direction that drives measurable business outcomes.</p>
+        <span class="inline-block bg-neon text-ink px-3 py-1 text-[10px] font-bold uppercase tracking-tighter rounded-md mb-6">Health-Tech · CRO</span>
+        <h1 class="font-heading text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.05]">Turn Research into Growth</h1>
+        <p class="mt-8 text-xl lg:text-2xl text-ink/70 max-w-full leading-relaxed">A CRO Audit that uncovered a core communication problem and built a roadmap to fix it.</p>
       </div>
     </header>
-    <section class="mx-auto max-w-7xl px-6 lg:px-12 mb-24">
-      <div class="relative overflow-hidden rounded-3xl ring-1 ring-ink/5 shadow-xl">
-        <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=1600&auto=format&fit=crop" alt="Research to Growth" class="w-full object-cover" loading="eager">
+
+    <!-- Hero image -->
+    <section class="mx-auto max-w-5xl px-6 lg:px-12 mb-16">
+      <div class="relative overflow-hidden rounded-3xl ring-1 ring-ink/5 shadow-xl max-h-[400px] flex items-center justify-center bg-soft/50">
+        <img src="assets/cro-audit-hero.png" alt="CRO Audit" class="w-full h-full object-contain" loading="eager">
       </div>
     </section>
-    <article class="mx-auto max-w-3xl px-6 lg:px-12 pb-32">
+
+    <!-- Artículo completo -->
+    <article class="mx-auto max-w-5xl px-6 lg:px-12 pb-16">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
+        <!-- Sidebar sticky -->
         <aside class="md:col-span-4">
           <div class="sticky top-28 space-y-8">
-            <div><h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Role</h3><p class="font-bold">Product Design Lead</p></div>
-            <div><h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Timeline</h3><p class="font-bold">Q2 — Q3 2024</p></div>
-            <div><h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Services</h3><p class="font-bold">UX Strategy, System Design, Prototyping</p></div>
+            <div>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Role</h3>
+              <p class="font-bold">CRO Lead</p>
+            </div>
+            <div>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Timeline</h3>
+              <p class="font-bold">Q2 2023</p>
+            </div>
+            <div>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Services</h3>
+              <p class="font-bold">CRO Audit · UX Strategy · Growth Design</p>
+            </div>
             <a href="/portfolio/index.html#contact" class="inline-block bg-primary text-white px-5 py-3 text-sm font-bold rounded-lg hover:scale-[1.02] active:scale-95 transition-transform mt-2">Discuss a project</a>
           </div>
         </aside>
+
+        <!-- Contenido principal -->
         <div class="md:col-span-8 space-y-12">
-          <section><h2 class="font-heading text-3xl font-bold tracking-tight mb-6">The Problem</h2><p class="text-[#456F80] leading-relaxed">Teams collected research but struggled to translate findings into product decisions. Insights lived in documents rather than design systems.</p></section>
-          <section><h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Strategic Approach</h2><p class="text-[#456F80] leading-relaxed mb-4">We created a framework that maps user behaviors directly to feature priorities and OKRs. This bridges the gap between research and execution.</p><p class="text-[#456F80] leading-relaxed">Each insight is tagged with impact potential and implementation effort, creating a shared language between design and leadership.</p></section>
-          <section><h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Outcome</h2><p class="text-[#456F80] leading-relaxed">Feature adoption aligned with user needs increased by 40%. The framework is now embedded in quarterly planning cycles.</p></section>
-          <section><h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Reflection</h2><p class="text-[#456F80] leading-relaxed">Research without strategy is noise. The goal isn't more data—it's better decisions.</p></section>
+
+          <!-- The Challenge -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">The Challenge</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              A health-tech company reached out to us. They had a great value proposition, a consolidated service, and a fantastic team working daily to make it even better. Despite all this, the client-facing communication was confusing enough to take us almost two months to fully understand how people could access their service.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              The opportunity was clear: identify the friction points in the user journey and build a roadmap to optimize conversion across all user segments.
+            </p>
+          </section>
+
+          <!-- My Role & Approach -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">My Role &amp; Approach</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              As part of the <strong>Conversion Rate Optimization (CRO) team</strong>, I jumped into a CRO Audit to identify the most significant opportunities. While the findings suggested there were high-level best practices the client could take advantage of, the most valuable optimization opportunity came from a more profound level of intervention.
+            </p>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2 mt-4">
+              <li><strong>Audit first:</strong> Gather findings from available sources — comparative analysis, psychological triggers, and best practices.</li>
+              <li><strong>Benchmark:</strong> Align with current trends of direct competitors and best-performance companies.</li>
+              <li><strong>User-centric:</strong> Focus on building trust through low-scope / high-impact experiments.</li>
+              <li><strong>Storytelling:</strong> Use user journeys to shift stakeholder conversations from opinions to possibilities.</li>
+            </ul>
+          </section>
+
+          <!-- Part 1: Audit & Benchmark -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Part 1: Audit &amp; Benchmark</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              A CRO Audit gathers findings from available sources, such as comparative analysis, psychological triggers that impact behavior, and best practices applied to the client's digital assets.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              The CRO Audit was run on the high-traffic pages and primary user flow from the website, mobile and desktop variations included.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              When running this kind of audit, we go from low-scope opportunities (H1 copy, supportive paragraph, loading time, screen sequences, social proof, voice, message, CTAs copy) to high-scope optimization (adding screens, features, interactions, search engines, and so on).
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4 font-semibold">Our principle:</p>
+            <p class="text-[#456F80] leading-relaxed">
+              Since we are all humans, the most important thing is to build trust. That's why we always focus our proposals on those lowest-scope / highest-impact experiments.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              The Benchmark helped us align with current trends of direct competitors and best-performance companies. Having those insights in the loop embraced our proposals, validated solutions, and repurposed best practices.
+            </p>
+          </section>
+
+          <!-- Part 2: The User Journey -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Part 2: The User Journey</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              One of the biggest challenges was negotiating with stakeholders. While everyone's job is essential, the capacity for execution is limited. Prioritizing efforts and strategies that would translate into business outcomes was crucial. That's where storytelling played its part.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              Users' journeys helped the stakeholders imagine themselves in the flow — and to find themselves in a position where friction was happening. The conversation moved from <em>"I think this is the best solution"</em> to <em>"how we can help users solve this problem."</em> The speech changed completely. It became less about beliefs and more about possibilities.
+            </p>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">The Discovery</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                There were four personas for the health-tech company. Each persona had interacted with the company differently. Once we let the client know about these four personas, we showed how the current flow impacted the interaction with the different users.
+              </p>
+              <p class="text-[#456F80] leading-relaxed mt-4">
+                The main concern: The client's communication was focused on only one segment, overlooking the other three segments of personas that had no reason to stay in the flow.
+              </p>
+              <div class="mt-4 image-container">
+                <img src="assets/cro-personas.png" alt="Personas and user journey" class="case-image" loading="lazy">
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">The Proposals</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                The proposals we presented focused on how they could help mitigate the negative impact on the other segments of personas while boosting their current audience experience.
+              </p>
+              <p class="text-[#456F80] leading-relaxed mt-4">
+                The tests were presented as <strong>9 Mockups in Figma</strong>. Each test got:
+              </p>
+              <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-1 mt-2">
+                <li>Context</li>
+                <li>Hypothesis</li>
+                <li>Test name</li>
+                <li>KPI</li>
+                <li>Mockup</li>
+                <li>Competitor example</li>
+              </ul>
+              <p class="text-[#456F80] leading-relaxed mt-4">They were divided into three buckets:</p>
+              <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-1 mt-2">
+                <li><strong>Lowest scope tests</strong> — easiest to implement.</li>
+                <li><strong>Middle scope tests.</strong></li>
+                <li><strong>Most impactful tests</strong> — currently the hardest to implement.</li>
+              </ul>
+              <div class="mt-4 image-container">
+                <img src="assets/cro-test-preview.png" alt="Test preview from experiments file" class="case-image" loading="lazy">
+              </div>
+            </div>
+          </section>
+
+          <!-- Part 3: The Roadmap -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Part 3: The Roadmap</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              After having the first conversation with the client, we set up a Roadmap to focus on the optimization goal.
+            </p>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Step 1: Map segments to the funnel</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                We mapped the segments of personas into the marketing funnel stages to set each flow's purpose.
+              </p>
+              <div class="mt-4 image-container">
+                <img src="assets/cro-funnel.png" alt="Segments in Marketing Funnel" class="case-image" loading="lazy">
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Step 2: Create optimized user journeys</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                Once we identified the purpose of the different flows, we created the user journeys that best accomplish that purpose and are optimized enough to work between them with the minimum amount of implementation work.
+              </p>
+              <div class="mt-4 image-container">
+                <img src="assets/cro-new-flows.png" alt="New flows proposal" class="case-image" loading="lazy">
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Step 3: Align experiments to business outcomes</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                We took that information into the Roadmap to align the experiments to business outcomes. This has been a WIP roadmap since, on each iteration, it suffered adjustments according to the client and experiments requests. Nevertheless, the primary purpose of the Roadmap is to keep track of the experiments, document results, and inform the testing plan.
+              </p>
+              <p class="text-[#456F80] leading-relaxed mt-4 font-semibold">Currently, the Roadmap is a spreadsheet that communicates:</p>
+              <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2 mt-2">
+                <li><strong>Basic Information:</strong> Test name, Test Goal, Cross-Business Goals, Segment, Status.</li>
+                <li><strong>Description:</strong> Brief description, Pages where the experiment runs, Platform, Comments.</li>
+                <li><strong>Analyze and Plan:</strong> Baseline Conversion Rate %, Target Conversion Rate %, Total Variations, Variations Preview, Start-End date, Traffic Allocation.</li>
+                <li><strong>Results:</strong> Result % (Lift/Loss), What should you investigate further? How does this test impact roadmap prioritization?</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Part 4: Gather Insights & Iterate -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Part 4: Gather Insights &amp; Iterate</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              After running tests for months, we collected incredible findings on people's preferences and behavior. Some of these were expected, and other results were completely mind-blowing.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              We encountered significant interaction, and the middle is moving in a good direction overall, but more importantly, tests kept giving us information on how to tailor our next strategy — and helped us understand what is going on in the person's life beyond the screens.
+            </p>
+          </section>
+
+          <!-- Key Takeaways -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Key Takeaways</h2>
+            <ol class="list-decimal pl-6 text-[#456F80] leading-relaxed space-y-4">
+              <li><strong>Testing is a reminder of our human condition.</strong> In many cases, I have seen how great projects put their hard work out on the internet, getting nothing from people, interaction, and results.</li>
+              <li><strong>Small tweaks matter.</strong> After watching the same mistake repeatedly and how the little tweaks have helped to increase that desired metric, we must identify the concerns and motivations that drive people to take action.</li>
+              <li><strong>CRO can not be a disconnected strategy.</strong> It feeds from research, marketing, sales, content, growth, development, and every possible team behind these projects.</li>
+              <li><strong>CRO is about taking care of people.</strong> To me, CRO has been the door through which we can take care of people while they are using our digital products.</li>
+            </ol>
+          </section>
+
         </div>
       </div>
     </article>
+
   </main>
-  <footer class="bg-ink text-white/30 text-xs py-10 border-t border-white/5">
-    <div class="mx-auto max-w-7xl px-6 lg:px-12 flex justify-between items-center">
-      <p>© 2024 Ellis Design Studio</p>
-      <div class="flex gap-6"><a href="#" class="hover:text-white">Dribbble</a><a href="#" class="hover:text-white">Twitter</a><a href="#" class="hover:text-white">LinkedIn</a></div>
+
+  <!-- Keep exploring - Sección de recomendación de casos de estudio -->
+  <section class="py-24 lg:py-32 border-t border-ink/5" style="background-color: #E7F3F6;">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-heading text-4xl lg:text-5xl font-bold tracking-tight leading-tight">More case studies</h2>
+        <p class="mt-4 text-lg text-ink/60">Continue exploring how I approach design challenges across different industries.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        
+        <!-- Tarjeta 1: Safari Nursery -->
+        <a href="safari-nursery.html" class="group block h-full">
+          <div class="flex flex-col h-full relative overflow-hidden rounded-2xl bg-white/80 ring-1 ring-ink/5 transition-all duration-300 hover:scale-[1.02] hover:ring-primary/20 hover:shadow-lg">
+            <div class="aspect-[16/9] overflow-hidden bg-soft flex-shrink-0">
+              <img src="assets/project-thumbnail-1.jpg" alt="Safari Nursery" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            </div>
+            <div class="flex flex-col flex-grow p-6 lg:p-8">
+              <div class="flex items-center gap-3">
+                <span class="inline-block bg-neon text-ink px-2 py-0.5 text-[10px] font-bold uppercase tracking-tighter rounded">Ed-Tech</span>
+              </div>
+              <h3 class="mt-3 font-heading text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Safari Nursery</h3>
+              <p class="mt-2 text-sm text-ink/60 leading-relaxed">Driving retention through emotional engagement: +3.5pp Day 1 Retention · 65–70% Sustained Engagement.</p>
+              <div class="mt-auto pt-4 inline-flex items-center text-sm font-bold text-primary">
+                Read case study 
+                <svg class="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Tarjeta 2: Bounce -->
+        <a href="works-bag-storage.html" class="group block h-full">
+          <div class="flex flex-col h-full relative overflow-hidden rounded-2xl bg-white/80 ring-1 ring-ink/5 transition-all duration-300 hover:scale-[1.02] hover:ring-primary/20 hover:shadow-lg">
+            <div class="aspect-[16/9] overflow-hidden bg-soft flex-shrink-0">
+              <img src="assets/project-thumbnail-2.jpg" alt="Bounce" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            </div>
+            <div class="flex flex-col flex-grow p-6 lg:p-8">
+              <div class="flex items-center gap-3">
+                <span class="inline-block bg-neon text-ink px-2 py-0.5 text-[10px] font-bold uppercase tracking-tighter rounded">Travel Tech</span>
+              </div>
+              <h3 class="mt-3 font-heading text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Bounce</h3>
+              <p class="mt-2 text-sm text-ink/60 leading-relaxed">How a simple copy change increased conversion by 8% in the payment flow.</p>
+              <div class="mt-auto pt-4 inline-flex items-center text-sm font-bold text-primary">
+                Read case study 
+                <svg class="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-ink text-white/60 text-xs py-10 border-t border-white/5">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p>© 2026 Laura Portfolio powered by Inkling, a multimodal AI model created by Thinking Machines 💜</p>
+      <div class="flex gap-8">
+        <a href="https://medium.com/@alura-gonzalez" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Medium</a>
+        <a href="https://www.linkedin.com/in/laura-gonzalez-0102/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">LinkedIn</a>
+      </div>
     </div>
   </footer>
+  
+  <!-- Lightbox overlay -->
+  <div class="lightbox-overlay" id="lightbox-overlay">
+    <img src="" alt="Lightbox" id="lightbox-image">
+  </div>
+  <div class="lightbox-close" id="lightbox-close">✕</div>
+
+    <script>
+    (function() {
+      const overlay = document.getElementById('lightbox-overlay');
+      const lightboxImg = document.getElementById('lightbox-image');
+      const closeBtn = document.getElementById('lightbox-close');
+
+      // Seleccionar todos los contenedores de imagen con la clase 'image-container'
+      const imageContainers = document.querySelectorAll('.image-container');
+
+      function openLightbox(imageSrc) {
+        if (!imageSrc) return;
+        lightboxImg.src = imageSrc;
+        overlay.classList.add('active');
+        closeBtn.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Evita scroll
+      }
+
+      function closeLightbox() {
+        overlay.classList.remove('active');
+        closeBtn.style.display = 'none';
+        document.body.style.overflow = '';
+        // Limpiar src para evitar que se vea en transición
+        setTimeout(() => { lightboxImg.src = ''; }, 300);
+      }
+
+      // Asignar evento click a cada contenedor
+      imageContainers.forEach(container => {
+        container.addEventListener('click', function(e) {
+          const img = this.querySelector('img');
+          if (img && img.src) {
+            openLightbox(img.src);
+          }
+        });
+      });
+
+      // Cerrar al hacer click en el overlay (fondo oscuro)
+      overlay.addEventListener('click', closeLightbox);
+
+      // Cerrar con botón
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeLightbox();
+      });
+
+      // Cerrar con tecla ESC
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
