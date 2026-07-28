@@ -1,77 +1,706 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <link rel="icon" href="assets/fav_icon.png" type="image/png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Enarm — Ellis</title>
-  <meta name="description" content="Case study: Enarm by Ellis, Product Designer & UX Strategy.">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Plataforma ENARM — Laura Portfolio</title>
+  <meta name="description" content="Case study: Plataforma ENARM by Laura, Product Designer & Growth Strategy.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="assets/fav_icon.png" type="image/png">
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com/3.4.0"></script>
+  
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: { canvas: '#F8F6F3', ink: '#00374E', soft: '#F0EDE8', primary: '#002EF5', neon: '#D4F23D' },
+          colors: { canvas: '#F1F2FF', ink: '#00374E', soft: '#F0EDE8', primary: '#002EF5', neon: '#D4F23D' },
           fontFamily: { heading: ['"Syne"', 'sans-serif'], body: ['"Plus Jakarta Sans"', 'sans-serif'] },
         }
       }
     }
   </script>
+  
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8F6F3; color: #00374E; }
     ::selection { background: #D4F23D; color: #00374E; }
+
+    .md\:col-span-8 p,
+    .md\:col-span-8 li,
+    .md\:col-span-8 blockquote,
+    .md\:col-span-8 h2,
+    .md\:col-span-8 h3,
+    .md\:col-span-8 ol,
+    .md\:col-span-8 ul {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+      max-width: 100%;
+    }
+
+    .md\:col-span-8 {
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .case-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0.75rem;
+    }
+
+    .image-container {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      background-color: #F0EDE8;
+      border: 1px solid rgba(0, 55, 78, 0.05);
+    }
+
+    .image-container:not(:first-child) {
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .md\:col-span-8 {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    /* LIGHTBOX */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-out;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      padding: 2rem;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-overlay img {
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active img {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 1.5rem;
+      right: 2rem;
+      z-index: 10000;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-overlay.active ~ .lightbox-close {
+      display: flex;
+    }
+
+    .image-container {
+      cursor: pointer;
+    }
+
+    .image-container img {
+      pointer-events: none;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-canvas font-body text-ink selection:bg-neon selection:text-ink">
-  <nav class="sticky top-0 z-50 w-full bg-canvas/80 backdrop-blur-md border-b border-ink/5">
+
+  <!-- Nav -->
+  <nav class="sticky top-0 z-50 w-full bg-[#E7F3F6]/80 backdrop-blur-md border-b border-ink/5">
     <div class="mx-auto max-w-7xl px-6 lg:px-12 h-20 flex items-center justify-between">
-      <a href="/portfolio/index.html" class="flex items-center gap-2 group">
-        <div class="w-3 h-3 rounded-full bg-primary"></div>
-        <span class="font-heading text-xl font-bold tracking-tight">ELLIS.</span>
+      <a href="/portfolio/index.html" class="flex items-center gap-3 group" aria-label="Inicio — LAURA PORTFOLIO">
+        <img src="assets/logo.png" alt="Logo" class="h-8 w-auto shrink-0" loading="eager">
+        <span class="font-heading text-lg font-semibold tracking-tight text-[#00374E] hidden sm:inline whitespace-nowrap uppercase">
+          LAURA PORTFOLIO
+        </span>
       </a>
-      <a href="/portfolio/index.html#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md hover:scale-[1.02] active:scale-95 transition-transform">Work with me</a>
+      <div class="hidden sm:flex items-center gap-8">
+        <a href="/portfolio/index.html#work" class="text-sm font-medium hover:text-primary transition-colors">Selected Works</a>
+        <a href="/portfolio/index.html#philosophy" class="text-sm font-medium hover:text-primary transition-colors">Philosophy</a>
+        <a href="/portfolio/index.html#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+      </div>
+      <a href="/portfolio/index.html#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md ring-1 ring-primary hover:scale-[1.02] active:scale-95 transition-transform">
+        Work with me
+      </a>
     </div>
   </nav>
+
   <main>
-    <header class="pt-24 pb-16 lg:pt-36">
+    <!-- Header -->
+    <header class="pt-24 pb-12 lg:pt-36">
       <div class="mx-auto max-w-5xl px-6 lg:px-12">
         <a href="/portfolio/index.html#work" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ink/40 hover:text-primary mb-8 transition-colors">← Back to works</a>
-        <span class="inline-block bg-neon text-ink px-3 py-1 text-[10px] font-bold uppercase tracking-tighter rounded-md mb-6">Health / Strategy</span>
-        <h1 class="font-heading text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.05]">Enarm</h1>
-        <p class="mt-8 text-xl lg:text-2xl text-ink/70 max-w-3xl leading-relaxed">Simplifying complex medical interfaces for critical care workflows where clarity and speed save lives.</p>
+        <span class="inline-block bg-neon text-ink px-3 py-1 text-[10px] font-bold uppercase tracking-tighter rounded-md mb-6">E-Learning · EdTech</span>
+        <h1 class="font-heading text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.05]">Plataforma de Estudio de Especialidades Médicas</h1>
+        <p class="mt-8 text-xl lg:text-2xl text-ink/70 max-w-full leading-relaxed">Cómo un enfoque UX transformó una plataforma obsoleta en una experiencia de aprendizaje flexible y autogestionable.</p>
       </div>
     </header>
-    <section class="mx-auto max-w-7xl px-6 lg:px-12 mb-24">
-      <div class="relative overflow-hidden rounded-3xl ring-1 ring-ink/5 shadow-xl">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop" alt="Enarm" class="w-full object-cover" loading="eager">
+
+    <!-- Hero image -->
+    <section class="mx-auto max-w-5xl px-6 lg:px-12 mb-16">
+      <div class="relative overflow-hidden rounded-3xl ring-1 ring-ink/5 shadow-xl max-h-[400px] flex items-center justify-center bg-soft/50">
+        <img src="assets/enarm.png" alt="Plataforma ENARM" class="w-full h-full object-contain" loading="eager">
       </div>
     </section>
-    <article class="mx-auto max-w-3xl px-6 lg:px-12 pb-32">
+
+    <!-- NDA Notice - VERSIÓN CORTA AL INICIO (en español) -->
+    <section class="mx-auto max-w-5xl px-6 lg:px-12 mb-16">
+      <div class="bg-soft/80 rounded-2xl p-5 border border-ink/10">
+        <div class="flex items-start gap-3">
+          <span class="text-lg">⚠️</span>
+          <div>
+            <h3 class="font-heading text-base font-bold tracking-tight">Caso de estudio completo disponible bajo solicitud</h3>
+            <p class="text-[#456F80] leading-relaxed text-sm mt-1">
+              Este caso de estudio contiene información confidencial sobre la estrategia de producto y métricas internas de Plataforma ENARM. La versión completa — incluyendo wireframes detallados, flujos de usuario y presentaciones con stakeholders — está protegida bajo NDA.
+            </p>
+            <p class="text-[#456F80] leading-relaxed text-sm mt-2">
+              <span class="font-semibold">📩 To request access / Para solicitar acceso:</span>
+              <a href="mailto:alura.gonzalez@gmail.com?subject=Plataforma%20ENARM%20Full%20Case%20Study%20Request" class="text-primary font-bold text-sm hover:underline ml-1">
+                Contact me →
+              </a>
+            </p>
+            <p class="text-[#456F80] leading-relaxed text-xs mt-2 italic">
+              This case study is written in Spanish. An English version is available upon request.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Artículo completo -->
+    <article class="mx-auto max-w-5xl px-6 lg:px-12 pb-16">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
+        <!-- Sidebar sticky -->
         <aside class="md:col-span-4">
           <div class="sticky top-28 space-y-8">
-            <div><h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Role</h3><p class="font-bold">Product Design Lead</p></div>
-            <div><h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Timeline</h3><p class="font-bold">Q1 — Q2 2024</p></div>
-            <div><h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Services</h3><p class="font-bold">UX Strategy, System Design, Prototyping</p></div>
+            <div>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Rol</h3>
+              <p class="font-bold">Product Designer · Researcher</p>
+            </div>
+            <div>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Duración</h3>
+              <p class="font-bold">4 meses (MVP) · 2022</p>
+            </div>
+            <div>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Servicios</h3>
+              <p class="font-bold">UX Research · UI Design · Prototyping · User Testing</p>
+            </div>
+            <div>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Cliente</h3>
+              <p class="font-bold">Plataforma ENARM</p>
+            </div>
             <a href="/portfolio/index.html#contact" class="inline-block bg-primary text-white px-5 py-3 text-sm font-bold rounded-lg hover:scale-[1.02] active:scale-95 transition-transform mt-2">Discuss a project</a>
           </div>
         </aside>
+
+        <!-- Contenido principal -->
         <div class="md:col-span-8 space-y-12">
-          <section><h2 class="font-heading text-3xl font-bold tracking-tight mb-6">The Problem</h2><p class="text-[#456F80] leading-relaxed">Medical staff navigated dense interfaces under extreme time pressure, increasing risk of human error during critical procedures.</p></section>
-          <section><h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Strategic Approach</h2><p class="text-[#456F80] leading-relaxed mb-4">We prioritized hierarchical information design and tactile feedback. The interface was rebuilt around the most frequent emergency actions.</p><p class="text-[#456F80] leading-relaxed">Accessibility and high-contrast visibility were non-negotiable constraints from day one.</p></section>
-          <section><h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Outcome</h2><p class="text-[#456F80] leading-relaxed">Task completion speed improved by 33%, and error reports related to interface confusion dropped sharply.</p></section>
-          <section><h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Reflection</h2><p class="text-[#456F80] leading-relaxed">In healthcare design, every millisecond and every visual cue matters. Precision is empathy.</p></section>
+
+          <!-- Introducción -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Introducción</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              En el mundo actual altamente competitivo, la eficiencia y flexibilidad de los procesos es esencial para mejorar el nivel de calidad de aquel atributo que nos coloque en la posición adecuada para llevar a cabo nuestras metas profesionales y personales.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              <strong>Plataforma ENARM</strong>, líder en la preparación para El Examen Nacional de Aspirantes a Residencias Médicas (ENARM) en México, reconoce la necesidad de aprovechar su vasta experiencia dentro de la preparación para este examen y decide focalizar sus esfuerzos en lo que compete a la mejora de su experiencia educativa.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              Este caso de estudio profundiza en el viaje de Plataforma ENARM embarcándose en un proyecto para desarrollar un software de aprendizaje en línea. El objetivo principal del software era reducir el acompañamiento 1:1 entre personal de soporte al cliente y estudiantes, así como mejorar la eficiencia y eficacia general de la experiencia asíncrona a lo largo del proceso de aprendizaje. Al implementar un enfoque centrado en el usuario, Plataforma ENARM pretendía dotar a los estudiantes de su plataforma una guía para la autogestión de contenidos densos dentro de un marco de tiempo definido. La solución simplificaría sus tareas, mejoraría la experiencia de aprendizaje y disminuiría la tasa de contacto 1:1 con personal de soporte al cliente.
+            </p>
+          </section>
+
+          <!-- Descubriendo la Historia -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Descubriendo la Historia detrás del Proyecto</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              El proceso de diseño de la plataforma se enfoca en optimizar la experiencia de aprendizaje, mejorar la eficiencia y relevancia de los contenidos presentados bajo una situación en específica, y agilizar la comunicación entre los actores involucrados. Cada uno de estos aspectos fueron meticulosamente considerados para alinear los requerimientos específicos de Plataforma ENARM.
+            </p>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Conocer al cliente, primer paso</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                Plataforma ENARM es una compañía que ofrece el curso online más completo de entrenamiento para aprobar con éxito el examen ENARM. El equipo está integrado por más de 20 médicos especialistas en casi todas las áreas de la medicina.
+              </p>
+              <p class="text-[#456F80] leading-relaxed mt-4">
+                Plataforma ENARM cuenta con múltiples sistemas de aprendizaje, es decir, su contenido multimedia se adapta a las distintas preferencias de aprendizaje. Se cuenta con vídeo-clases, resúmenes, mini resúmenes, flash cards, cuadros comparativos, esquemas, tips, y más.
+              </p>
+              <p class="text-[#456F80] leading-relaxed mt-4">
+                <strong>El porcentaje de aceptación de sus alumnos rebasan el 80%</strong>, de los cuales 8 de cada 10 acreditan su pase a la residencia desde el primer intento.
+              </p>
+              <p class="text-[#456F80] leading-relaxed mt-4">
+                La compañía se enfrentaba a un reto de crecimiento el cual demandaba la actualización del sistema, así como sus flujos de trabajo, ya que contaban con un onboarding lento y lleno de fricciones. Cada vez que se incorporaba un estudiante a la experiencia de aprendizaje, se vivía una situación frustrante entre el equipo de soporte al cliente y el estudiante. Sin mencionar carencias técnicas como la versión móvil y la consulta offline de los recursos de aprendizaje.
+              </p>
+              <p class="text-[#456F80] leading-relaxed mt-4">
+                La meta colectiva era desarrollar la Plataforma de Aprendizaje ENARM que pudiera evolucionar en una experiencia dinámica y flexible alineada tanto a los esfuerzos directivos existentes como a la visión a la que se pretende llegar.
+              </p>
+            </div>
+          </section>
+
+          <!-- Mi Proceso de Diseño -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Mi Proceso de Diseño</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              Abrazo y acepto el proceso de design thinking porque me permite crear soluciones que realmente resuenan en los usuarios. Siguiendo este enfoque iterativo y centrado en el ser humano, puedo empatizar con los usuarios, descubrir sus necesidades no satisfechas y definir el planteamiento del problema con claridad.
+            </p>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2 mt-4">
+              <li><strong>Empatizar:</strong> Me sumerjo en la perspectiva del usuario, realizando investigaciones y entrevistas para obtener una visión profunda de sus necesidades, motivaciones y puntos débiles.</li>
+              <li><strong>Definir:</strong> Formulo los hallazgos de la investigación en un enunciado claro del problema que captura el desafío del usuario y establece una dirección enfocada para el proceso de diseño.</li>
+              <li><strong>Idear:</strong> Genero una amplia gama de ideas creativas sin juzgar, fomentando la lluvia de ideas y la colaboración para explorar posibles soluciones.</li>
+              <li><strong>Prototipar:</strong> Transformo las ideas en representaciones tangibles, construyendo prototipos de baja/alta fidelidad que permiten pruebas y refinamientos iterativos.</li>
+              <li><strong>Testear:</strong> Recopilo comentarios de los usuarios a través de pruebas de prototipos, observo sus interacciones e incorporo sus conocimientos para perfeccionar aún más los diseños.</li>
+              <li><strong>Iterar:</strong> Vuelvo repetidamente a los pasos anteriores, perfeccionando y mejorando el diseño en función de los comentarios y conocimientos de los usuarios.</li>
+              <li><strong>Implementar:</strong> Finalizo el diseño para la implementación, considerando la viabilidad técnica, la escalabilidad y la aceptación del usuario, y lo preparo para el lanzamiento.</li>
+              <li><strong>Evaluar:</strong> Evalúo el impacto y el éxito de la solución implementada, recopilando comentarios y datos para medir su efectividad e identificar áreas de mejora adicional.</li>
+            </ul>
+          </section>
+
+          <!-- El Proyecto de Plataforma ENARM -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">El Proyecto de Plataforma ENARM</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              Este estudio de caso detalla cómo la aplicación ayudó al cliente a identificar y abordar de manera proactiva posibles brechas en la interacción vivida entre el estudiante y la plataforma, al mismo tiempo que mejoró la eficiencia y eficacia general de las operaciones de soporte al cliente.
+            </p>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Comenzamos identificando los problemas</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                Mi fase de investigación implicó hablar con los usuarios finales y las partes interesadas para identificar los puntos débiles y los desafíos que enfrentaban en su trabajo diario y con la plataforma. A continuación un pequeño resumen sobre algunas de las ideas clave que descubrí.
+              </p>
+              <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2 mt-4">
+                <li><strong>Software obsoleto:</strong> Muchos empleados de soporte al cliente se sentían frustrados por el software obsoleto que utilizaban. Este sistema estaba estructurado bajo un sitio web de Wordpress, el cual era torpe y difícil de navegar.</li>
+                <li><strong>Mala experiencia de usuario:</strong> En consecuencia, muchos empleados y estudiantes descubrieron que el software existente tenía una mala UX. El diseño era a menudo confuso y contrario a la intuición.</li>
+                <li><strong>Se muestran demasiados elementos en la pantalla:</strong> Muchos estudiantes se sintieron abrumados por la cantidad de información que se les presentaba en una sola pantalla.</li>
+                <li><strong>Flujo principal desorganizado y sin contexto:</strong> Muchos estudiantes tenían que depender de hojas de cálculo o archivos PDF obsoletos para mantener registro de su avance en el proceso de aprendizaje.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Superar los desafíos del proyecto -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Superar los desafíos del proyecto</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              Diseñar una aplicación de aprendizaje para los estudiantes, abordar con características y funcionalidades necesarias la situación con soporte al cliente, mientras se contemplan los requerimientos técnicos, fue una tarea compleja y desafiante. Enfrenté varios obstáculos a lo largo del proceso de diseño, que iban desde equilibrar las expectativas de las partes interesadas con las necesidades del usuario final hasta la integración con contenido y sistema existente.
+            </p>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2 mt-4">
+              <li><strong>Equilibrar las expectativas de los agentes directivos y las necesidades del usuario final:</strong> Programé reuniones periódicas con las partes interesadas para comunicar mis decisiones de diseño y recopilar sus comentarios. También creé una base de datos con reseñas de usuarios que habían utilizado su plataforma para comunicar a las partes interesadas dónde se encontraban los puntos débiles de la experiencia.</li>
+              <li><strong>Simplificando flujos confusos:</strong> Creé múltiples versiones de la arquitectura de la información y las cotejé con pruebas con usuarios para ver cuál era la más efectiva.</li>
+              <li><strong>Integración con sistema y contenido existente:</strong> Colaboré estrechamente con el equipo de desarrollo para garantizar que la plataforma pudiera integrarse eficazmente al sistema.</li>
+              <li><strong>Cumplir plazos ajustados:</strong> Prioricé las funciones clave y trabajé en estrecha colaboración con el equipo de desarrollo para asegurarme de que pudieran entregar el código de manera rápida y eficiente.</li>
+            </ul>
+          </section>
+
+          <!-- Definir el público objetivo -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Definir el público objetivo</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              Definir el público objetivo de una plataforma e-learning implica identificar los grupos de usuarios clave y comprender sus características, necesidades y objetivos. Así es como abordé la definición del público objetivo y el desarrollo de personas para este proyecto.
+            </p>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2 mt-4">
+              <li><strong>Aportes de los agentes directivos:</strong> Colaboré con los agentes directivos, incluidos parte del personal médico y el personal de soporte al cliente, para recopilar sus conocimientos y perspectivas sobre los usuarios principales de la aplicación.</li>
+              <li><strong>Investigación de usuarios:</strong> Realicé métodos de investigación cualitativa, como entrevistas, grupos focales y observaciones digitales, para conocer el contexto de los estudiantes de este tipo de plataformas.</li>
+            </ul>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Creando user personas</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                La cantidad de personas creadas depende de la complejidad del panorama de usuarios y de los distintos grupos de usuarios identificados durante la fase de investigación. En este proyecto de plataforma e-learning, desarrollé tres personas que representan diferentes perfiles de interacción con la plataforma.
+              </p>
+              <div class="mt-4 image-container">
+                <img src="assets/enarm-personas.png" alt="User personas" class="case-image" loading="lazy">
+              </div>
+            </div>
+          </section>
+
+          <!-- La importancia de la investigación de usuarios -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">La importancia de la investigación de usuarios</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              La fase de investigación de usuarios jugó un papel fundamental en el desarrollo de la Plataforma ENARM. Comprender las necesidades, preferencias y puntos débiles de los estudiantes fue crucial para crear un diseño centrado en el usuario que mejorara su eficiencia y experiencia general.
+            </p>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Realizar investigaciones de usuarios y centrarse en la recopilación de datos</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                Llevé a cabo varios métodos de investigación cualitativa para recopilar información e informar el diseño de la lógica de los flujos de la plataforma.
+              </p>
+              <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2 mt-4">
+                <li><strong>Encuestas:</strong> Se llevaron a cabo para recopilar comentarios sobre la experiencia utilizada actualmente.</li>
+                <li><strong>Observación Digital:</strong> Generé una base de datos a partir de reseñas compartidas en redes sociales sobre la experiencia de haber utilizado Plataforma ENARM y otras soluciones de la competencia.</li>
+                <li><strong>Grupos focales:</strong> Organicé un pequeño grupo focal con los integrantes de soporte al cliente. Como moderadora, guié las discusiones, permitiendo a los participantes expresar abiertamente sus experiencias, puntos débiles y sugerencias.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Construyendo una arquitectura de información adecuada -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Construyendo una arquitectura de información adecuada</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              El éxito de nuestra plataforma de educación en línea que se adecúe a distintos ritmos de estudio depende en gran medida de una arquitectura de información bien diseñada que satisfaga las necesidades de nuestros usuarios finales.
+            </p>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Creación de arquitectura de información y flujo de usuarios</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                Para asegurarme de que la aplicación fuera intuitiva y fácil de usar, creé esquemas de arquitectura de información y flujos de usuarios. El esquema proporcionó una vista de alto nivel de toda la plataforma. Los flujos de usuarios desglosaron tareas e interacciones específicas de los usuarios, mostrando cómo los usuarios se moverían a través de la plataforma y lograrían sus objetivos.
+              </p>
+              <div class="mt-4 image-container">
+                <img src="assets/enarm-ia.png" alt="Information architecture" class="case-image" loading="lazy">
+              </div>
+              <div class="mt-4 image-container">
+                <img src="assets/enarm-user-flows.png" alt="User flows" class="case-image" loading="lazy">
+              </div>
+            </div>
+          </section>
+
+          <!-- Sesión de lluvia de ideas y primeros bocetos -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Sesión de lluvia de ideas y primeros bocetos</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              Una vez que tuve una lista definitiva de las funcionalidades clave y los flujos de usuarios, comencé a esbozar el diseño y la interfaz de usuario de la plataforma. Los bocetos eran dibujos rápidos y aproximados que capturaban el layout y la estructura básicos de la plataforma.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              Después de algunas sesiones de lluvia de ideas internas con el líder de desarrollo, decidimos la estructura final de la plataforma, luego la discutimos con los agentes directivos y continuamos con los wireframes de alta fidelidad.
+            </p>
+            <div class="mt-4 image-container">
+              <img src="assets/enarm-sketches.png" alt="Sketches" class="case-image" loading="lazy">
+            </div>
+          </section>
+
+          <!-- Preparando los wireframes -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Preparando los wireframes</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              Una vez que tuve una comprensión clara del espacio problemático y las necesidades del usuario, comencé a esbozar diseños potenciales para la aplicación. Estos bocetos me ayudaron a explorar diferentes ideas y conceptos, y a obtener comentarios de las partes interesadas.
+            </p>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Ant Design como sistema de diseño</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                Para la realización de este proyecto se trabajó bajo el sistema de diseño <strong>Ant Design</strong>. Este Sistema de Diseño agilizó la implementación con el equipo de desarrollo gracias a sus bibliotecas de Componentes React UI de gran calidad. Además aceleró la etapa de ideación de los wireframes de alta fidelidad ya que se pudo experimentar con componentes existentes.
+              </p>
+            </div>
+          </section>
+
+          <!-- Los Prototipos -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Los Prototipos</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              Una vez que tuve una idea aproximada del diseño, comencé a crear prototipos que mostraban el diseño y la estructura básica de cada pantalla. Estos wireframes me ayudaron a refinar aún más el diseño y obtener comentarios de los usuarios finales.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              Los wireframes mostraban el diseño más detallado de cada pantalla, incluido el color, la tipografía y otros elementos visuales propios de la marca de Plataforma ENARM. El prototipo permitió a las partes interesadas y a los usuarios interactuar con la aplicación y probar el diseño en un entorno más realista.
+            </p>
+          </section>
+
+          <!-- Realización de sesiones de prueba de usuarios -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Realización de sesiones de prueba de usuarios</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              Uno de los pasos más importantes en mi proceso de diseño fue la prueba de usuario. Sin embargo, debido a la naturaleza remota de mi trabajo, realizar sesiones de prueba de usuarios en persona no era una opción. En lugar de eso, tuve que idear una forma de realizar sesiones de prueba de usuarios remotos que generaran hallazgos y comentarios valiosos.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              Para probar el prototipo con los usuarios finales, realicé sesiones de prueba individuales de usabilidad. Primero, recluté participantes para las sesiones de prueba de usuarios. Me comuniqué con estudiantes que estaban activos en la plataforma.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              A continuación, creé un plan de prueba y un guión que describían las tareas que quería que completaran los usuarios y las preguntas que quería hacerles. Me aseguré de mantener las tareas y preguntas lo más objetivas y específicas posible para minimizar el sesgo en la retroalimentación.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              Para realizar las sesiones, utilicé una combinación de software de videoconferencia y herramientas para compartir pantalla. Mientras los usuarios compartían pantalla, yo solicitaba que completaran las tareas, observaba y hacía preguntas.
+            </p>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Hallazgos</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                En general, si bien realizar sesiones de prueba de usuarios remotas presentó algunos desafíos, como dificultades técnicas y dificultad para leer el lenguaje corporal y las expresiones faciales, pude adaptarme y crear un proceso que arrojó información valiosa de los usuarios. Esto me permitió crear una plataforma de aprendizaje optimizada para las necesidades de los estudiantes así como para el personal de soporte al cliente.
+              </p>
+              <p class="text-[#456F80] leading-relaxed mt-4">
+                El resultado de las pruebas proporcionó información valiosa y recomendaciones para futuras mejoras, que se incorporaron al diseño del producto final.
+              </p>
+            </div>
+          </section>
+
+          <!-- Diseño de producto final -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Diseño de producto final</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              Después de algunas iteraciones y rondas de comentarios, la plataforma finalmente estuvo lista para su lanzamiento. El producto final incluyó todas las características y funcionalidades descritas en la documentación y la hoja de ruta del producto, así como un diseño optimizado para los estudiantes y personal de soporte al cliente. La plataforma era fácil de usar e intuitiva, lo que facilitaba a los usuarios encontrar y gestionar el denso contenido bajo un tiempo determinado.
+            </p>
+
+            <div class="mt-4 image-container">
+              <img src="assets/enarm-final-1.png" alt="Final design 1" class="case-image" loading="lazy">
+            </div>
+            <div class="mt-4 image-container">
+              <img src="assets/enarm-final-2.png" alt="Final design 2" class="case-image" loading="lazy">
+            </div>
+            <div class="mt-4 image-container">
+              <img src="assets/enarm-final-3.png" alt="Final design 3" class="case-image" loading="lazy">
+            </div>
+            <div class="mt-4 image-container">
+              <img src="assets/enarm-final-4.png" alt="Final design 4" class="case-image" loading="lazy">
+            </div>
+            <div class="mt-4 image-container">
+              <img src="assets/enarm-final-5.png" alt="Final design 5" class="case-image" loading="lazy">
+            </div>
+            <div class="mt-4 image-container">
+              <img src="assets/enarm-final-6.png" alt="Final design 6" class="case-image" loading="lazy">
+            </div>
+          </section>
+
+          <!-- Registro de avance semiautomatizado -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Registro de avance semiautomatizado</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              El registro de avance permite al usuario conocer cuál ha sido su avance en un marco de tiempo. También le brinda la posibilidad de hacer cálculos sencillos para adaptar y personalizar su ritmo de aprendizaje.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              En el caso particular de este proyecto, se introdujo una funcionalidad de registro de avance que se adaptó a los requerimientos técnicos y alcances en cuestiones de tiempo y recursos. Este sistema de registro se propuso como <strong>semiautomatizado</strong> porque requiere que el estudiante ingrese como completado un campo de un módulo checklist que, a su vez, comunica al estado global de la aplicación qué contenido se ha revisado hasta ese momento y, por ende, el avance obtenido.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              Esta funcionalidad permite a los usuarios refinar su ritmo de estudio, adaptarse a posibles interrupciones o variables en el marco del tiempo, y también proporciona una sensación de progreso para fomentar el compromiso de terminar la tarea completamente.
+            </p>
+            <div class="mt-4 image-container">
+              <img src="assets/enarm-progress.png" alt="Progress tracking" class="case-image" loading="lazy">
+            </div>
+          </section>
+
+          <!-- Simuladores y Retroalimentación -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Simuladores y Retroalimentación</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              Los simuladores permiten a los estudiantes tener una experiencia más cercana a la realidad de lo que vivirán al momento de realizar el examen ENARM. Las cualidades de este examen consisten en responder correctamente el mayor número de preguntas posibles bajo un tiempo estipulado. Los estudiantes, por ende, se encuentran trabajando bajo presión por lo que entre más se familiarice con simulaciones al hecho, más le será sencillo afrontar esta experiencia exitosamente.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              Este proyecto contaba con un gran número de simuladores que, aunque en términos de contenido estaban bien estructurados, sí se trabajó en la optimización de las interacciones y en su interfaz, para que fuera más intuitiva y semejante a la experiencia real.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              Cada simulador, y cada intento del estudiante en el simulador genera una retroalimentación. Aquí se propuso una funcionalidad de registro y digestión de intentos para que el estudiante pudiera comparar los resultados obtenidos a lo largo de sus intentos.
+            </p>
+            <div class="mt-4 image-container">
+              <img src="assets/enarm-simulators.png" alt="Simulators" class="case-image" loading="lazy">
+            </div>
+          </section>
+
+          <!-- Midiendo el éxito -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Midiendo el éxito</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              Medir el éxito de la implementación de la plataforma de aprendizaje ENARM implica evaluar indicadores clave de rendimiento (KPI) que reflejan el impacto de la aplicación en el proceso de aprendizaje, la productividad del personal de soporte al cliente, la satisfacción del estudiante y los resultados financieros.
+            </p>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Métricas clave</h3>
+              <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2 mt-4">
+                <li><strong>Informe de mejora de la eficiencia:</strong> Disminución del tiempo promedio de procesamiento y menor tasa de demanda de los estudiantes para apropiarse de la experiencia de la plataforma (onboarding).</li>
+                <li><strong>Análisis de mejora de la productividad:</strong> Reducción de tiempo en finalización de casos, lo que indica que la plataforma facilitó una gestión de dudas más rápida y eficiente.</li>
+                <li><strong>Evaluación de la satisfacción del estudiante:</strong> Incluye datos de encuestas de comentarios del usuario y Net Promoter Score (NPS), que demuestran mejores experiencias y satisfacción general con el proceso de aprendizaje.</li>
+                <li><strong>Métricas de Evaluación de Impacto Financiero:</strong> Reducción de costos por parte del equipo de soporte al cliente, mostrando la eficacia de la plataforma para maximizar los resultados financieros al disminuir las tareas 1:1 y fomentar automatizaciones.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Pensamientos finales -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Pensamientos finales</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              Estos resultados validan la eficacia de la plataforma para lograr los objetivos del proyecto y destacan su contribución al éxito general de los distintos esfuerzos de esta plataforma de aprendizaje.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              Me enorgullece confirmar que a partir de una inversión en la experiencia centrada en el usuario, se puede combatir un objetivo de negocio con éxito, en donde por medio de una buena experiencia de usuario distintos agentes pueden realizar sus tareas y alcanzar sus metas de una forma más amena, amigable y flexible.
+            </p>
+          </section>
+
+          <!-- NDA Notice - VERSIÓN COMPLETA AL FINAL DEL CONTENIDO -->
+          <section class="mt-16 pt-8 border-t border-ink/10">
+            <div class="bg-soft/50 rounded-2xl p-8 border border-ink/5">
+              <h3 class="font-heading text-xl font-bold tracking-tight mb-3">⚠️ Caso de estudio completo disponible bajo solicitud</h3>
+              <p class="text-[#456F80] leading-relaxed text-sm">
+                Este caso de estudio contiene información confidencial sobre la estrategia de producto, investigación de usuarios y métricas internas de Plataforma ENARM. La versión completa — incluyendo wireframes detallados, flujos de usuario y presentaciones con stakeholders — está protegida bajo NDA.
+              </p>
+              <p class="text-[#456F80] leading-relaxed text-sm mt-4 font-semibold">
+                📩 Para solicitar acceso / To request access:
+              </p>
+              <a href="mailto:alura.gonzalez@gmail.com?subject=Plataforma%20ENARM%20Full%20Case%20Study%20Request" class="inline-block mt-3 text-primary font-bold text-sm hover:underline">
+                Contact me →
+              </a>
+              <p class="text-[#456F80] leading-relaxed text-xs mt-4 italic">
+                This case study is written in Spanish. An English version is available upon request.
+              </p>
+            </div>
+          </section>
+
         </div>
       </div>
     </article>
+
   </main>
-  <footer class="bg-ink text-white/30 text-xs py-10 border-t border-white/5">
-    <div class="mx-auto max-w-7xl px-6 lg:px-12 flex justify-between items-center">
-      <p>© 2024 Ellis Design Studio</p>
-      <div class="flex gap-6"><a href="#" class="hover:text-white">Dribbble</a><a href="#" class="hover:text-white">Twitter</a><a href="#" class="hover:text-white">LinkedIn</a></div>
+
+  <!-- Keep exploring - Sección de recomendación de casos de estudio -->
+  <section class="py-24 lg:py-32 border-t border-ink/5" style="background-color: #E7F3F6;">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-heading text-4xl lg:text-5xl font-bold tracking-tight leading-tight">More case studies</h2>
+        <p class="mt-4 text-lg text-ink/60">Continue exploring how I approach design challenges across different industries.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        
+        <!-- Tarjeta 1: Research to Growth -->
+        <a href="works-research-to-growth.html" class="group block h-full">
+          <div class="flex flex-col h-full relative overflow-hidden rounded-2xl bg-white/80 ring-1 ring-ink/5 transition-all duration-300 hover:scale-[1.02] hover:ring-primary/20 hover:shadow-lg">
+            <div class="aspect-[16/9] overflow-hidden bg-soft flex-shrink-0">
+              <img src="assets/health.png" alt="CRO Audit" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            </div>
+            <div class="flex flex-col flex-grow p-6 lg:p-8">
+              <div class="flex items-center gap-3">
+                <span class="inline-block bg-neon text-ink px-2 py-0.5 text-[10px] font-bold uppercase tracking-tighter rounded">Health Tech</span>
+              </div>
+              <h3 class="mt-3 font-heading text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Turn Research into Growth</h3>
+              <p class="mt-2 text-sm text-ink/60 leading-relaxed">A CRO Audit that uncovered a core communication problem and built a roadmap to fix it.</p>
+              <div class="mt-auto pt-4 inline-flex items-center text-sm font-bold text-primary">
+                Read case study 
+                <svg class="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Tarjeta 2: Bounce -->
+        <a href="works-bag-storage.html" class="group block h-full">
+          <div class="flex flex-col h-full relative overflow-hidden rounded-2xl bg-white/80 ring-1 ring-ink/5 transition-all duration-300 hover:scale-[1.02] hover:ring-primary/20 hover:shadow-lg">
+            <div class="aspect-[16/9] overflow-hidden bg-soft flex-shrink-0">
+              <img src="assets/bounce.png" alt="Bounce" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            </div>
+            <div class="flex flex-col flex-grow p-6 lg:p-8">
+              <div class="flex items-center gap-3">
+                <span class="inline-block bg-neon text-ink px-2 py-0.5 text-[10px] font-bold uppercase tracking-tighter rounded">Service Tech</span>
+              </div>
+              <h3 class="mt-3 font-heading text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Bounce: The Bag Storage</h3>
+              <p class="mt-2 text-sm text-ink/60 leading-relaxed">A payment flow audit that identified friction points and delivered an 8% lift in conversion rate.</p>
+              <div class="mt-auto pt-4 inline-flex items-center text-sm font-bold text-primary">
+                Read case study 
+                <svg class="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-ink text-white/60 text-xs py-10 border-t border-white/5">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p>© 2026 Laura Portfolio powered by Inkling, a multimodal AI model created by Thinking Machines 💜</p>
+      <div class="flex gap-8">
+        <a href="https://medium.com/@alura-gonzalez" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Medium</a>
+        <a href="https://www.linkedin.com/in/laura-gonzalez-0102/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">LinkedIn</a>
+      </div>
     </div>
   </footer>
+
+  <!-- Lightbox overlay -->
+  <div class="lightbox-overlay" id="lightbox-overlay">
+    <img src="" alt="Lightbox" id="lightbox-image">
+  </div>
+  <div class="lightbox-close" id="lightbox-close">✕</div>
+
+  <script>
+    (function() {
+      const overlay = document.getElementById('lightbox-overlay');
+      const lightboxImg = document.getElementById('lightbox-image');
+      const closeBtn = document.getElementById('lightbox-close');
+
+      const imageContainers = document.querySelectorAll('.image-container');
+
+      function openLightbox(imageSrc) {
+        if (!imageSrc) return;
+        lightboxImg.src = imageSrc;
+        overlay.classList.add('active');
+        closeBtn.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        overlay.classList.remove('active');
+        closeBtn.style.display = 'none';
+        document.body.style.overflow = '';
+        setTimeout(() => { lightboxImg.src = ''; }, 300);
+      }
+
+      imageContainers.forEach(container => {
+        container.addEventListener('click', function(e) {
+          const img = this.querySelector('img');
+          if (img && img.src) {
+            openLightbox(img.src);
+          }
+        });
+      });
+
+      overlay.addEventListener('click', closeLightbox);
+
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeLightbox();
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
+    })();
+  </script>
+
 </body>
 </html>
