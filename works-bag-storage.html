@@ -60,6 +60,11 @@
       border-radius: 0.75rem;
       background-color: #F0EDE8;
       border: 1px solid rgba(0, 55, 78, 0.05);
+      cursor: pointer;
+    }
+
+    .image-container img {
+      pointer-events: none;
     }
 
     @media (max-width: 768px) {
@@ -67,6 +72,72 @@
         padding-left: 0;
         padding-right: 0;
       }
+    }
+
+    /* LIGHTBOX */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-out;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      padding: 2rem;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-overlay img {
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active img {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 1.5rem;
+      right: 2rem;
+      z-index: 10000;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-overlay.active ~ .lightbox-close {
+      display: flex;
     }
   </style>
 </head>
@@ -99,17 +170,16 @@
         <a href="/portfolio/index.html#work" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ink/40 hover:text-primary mb-8 transition-colors">← Back to works</a>
         <span class="inline-block bg-neon text-ink px-3 py-1 text-[10px] font-bold uppercase tracking-tighter rounded-md mb-6">Service Sector</span>
         <h1 class="font-heading text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.05]">Bounce: The Bag Storage</h1>
-        <!-- Subtítulo expandido a todo el ancho -->
         <p class="mt-8 text-xl lg:text-2xl text-ink/70 max-w-full leading-relaxed">A payment flow audit that identified friction points and delivered an 8% lift in conversion rate.</p>
       </div>
     </header>
 
     <!-- Hero image -->
-<section class="mx-auto max-w-5xl px-6 lg:px-12 mb-16">
-  <div class="relative overflow-hidden rounded-3xl ring-1 ring-ink/5 shadow-xl max-h-[400px] flex items-center justify-center bg-soft/50">
-    <img src="assets/bounce.png" alt="Bounce" class="w-full h-full object-contain" loading="eager">
-  </div>
-</section>
+    <section class="mx-auto max-w-5xl px-6 lg:px-12 mb-16">
+      <div class="relative overflow-hidden rounded-3xl ring-1 ring-ink/5 shadow-xl max-h-[400px] flex items-center justify-center bg-soft/50">
+        <img src="assets/bounce.png" alt="Bounce" class="w-full h-full object-contain" loading="eager">
+      </div>
+    </section>
 
     <!-- Artículo completo -->
     <article class="mx-auto max-w-5xl px-6 lg:px-12 pb-16">
@@ -350,7 +420,7 @@
 
   </main>
 
-      <!-- Keep exploring - Sección de recomendación de casos de estudio -->
+  <!-- Keep exploring - Sección de recomendación de casos de estudio -->
   <section class="py-24 lg:py-32 border-t border-ink/5" style="background-color: #E7F3F6;">
     <div class="mx-auto max-w-7xl px-6 lg:px-12">
       <div class="text-center max-w-2xl mx-auto mb-16">
@@ -417,6 +487,59 @@
       </div>
     </div>
   </footer>
+
+  <!-- Lightbox overlay -->
+  <div class="lightbox-overlay" id="lightbox-overlay">
+    <img src="" alt="Lightbox" id="lightbox-image">
+  </div>
+  <div class="lightbox-close" id="lightbox-close">✕</div>
+
+  <script>
+    (function() {
+      const overlay = document.getElementById('lightbox-overlay');
+      const lightboxImg = document.getElementById('lightbox-image');
+      const closeBtn = document.getElementById('lightbox-close');
+
+      const imageContainers = document.querySelectorAll('.image-container');
+
+      function openLightbox(imageSrc) {
+        if (!imageSrc) return;
+        lightboxImg.src = imageSrc;
+        overlay.classList.add('active');
+        closeBtn.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        overlay.classList.remove('active');
+        closeBtn.style.display = 'none';
+        document.body.style.overflow = '';
+        setTimeout(() => { lightboxImg.src = ''; }, 300);
+      }
+
+      imageContainers.forEach(container => {
+        container.addEventListener('click', function(e) {
+          const img = this.querySelector('img');
+          if (img && img.src) {
+            openLightbox(img.src);
+          }
+        });
+      });
+
+      overlay.addEventListener('click', closeLightbox);
+
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeLightbox();
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
