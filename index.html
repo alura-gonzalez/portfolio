@@ -310,11 +310,31 @@
   <script>
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('menu-overlay');
 
-    menuBtn.addEventListener('click', () => {
+    function toggleMenu() {
       const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuBtn.setAttribute('aria-expanded', !isOpen);
-      mobileMenu.classList.toggle('hidden');
+      const willBeOpen = !isOpen;
+
+      menuBtn.setAttribute('aria-expanded', willBeOpen);
+      mobileMenu.classList.toggle('-translate-x-full', !willBeOpen);
+      overlay.classList.toggle('hidden', !willBeOpen);
+      document.body.style.overflow = willBeOpen ? 'hidden' : '';
+    }
+
+    function closeMenu() {
+      menuBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    menuBtn.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', closeMenu);
+
+    // Cerrar menú al hacer click en un enlace
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', closeMenu);
     });
   </script>
 </body>
