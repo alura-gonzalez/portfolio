@@ -152,24 +152,51 @@
 <body class="min-h-screen bg-canvas font-body text-ink selection:bg-neon selection:text-ink">
 
   <!-- Nav -->
-  <nav class="sticky top-0 z-50 w-full bg-[#E7F3F6]/80 backdrop-blur-md border-b border-ink/5">
-    <div class="mx-auto max-w-7xl px-6 lg:px-12 h-20 flex items-center justify-between">
-      <a href="/portfolio/index.html" class="flex items-center gap-3 group" aria-label="Inicio — LAURA PORTFOLIO">
-        <img src="assets/logo.png" alt="Logo" class="h-8 w-auto shrink-0" loading="eager">
-        <span class="font-heading text-lg font-semibold tracking-tight text-[#00374E] hidden sm:inline whitespace-nowrap uppercase">
-          LAURA PORTFOLIO
-        </span>
-      </a>
-      <div class="hidden sm:flex items-center gap-8">
-        <a href="/portfolio/index.html#work" class="text-sm font-medium hover:text-primary transition-colors">Selected Works</a>
-        <a href="/portfolio/index.html#philosophy" class="text-sm font-medium hover:text-primary transition-colors">Philosophy</a>
-        <a href="/portfolio/index.html#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
-      </div>
-      <a href="/portfolio/index.html#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md ring-1 ring-primary hover:scale-[1.02] active:scale-95 transition-transform">
-        Work with me
-      </a>
+<nav class="sticky top-0 z-50 w-full bg-[#E7F3F6]/80 backdrop-blur-md border-b border-ink/5">
+  <div class="mx-auto max-w-7xl px-6 lg:px-12 h-20 flex items-center justify-between">
+    <!-- Botón Hamburguesa (izquierda) -->
+    <button id="menu-btn" class="md:hidden flex flex-col items-center justify-center w-8 h-8 gap-1 group z-50" aria-label="Menú" aria-expanded="false">
+      <span class="block w-6 h-0.5 bg-ink transition-all duration-300 group-aria-expanded:rotate-45 group-aria-expanded:translate-y-1.5"></span>
+      <span class="block w-6 h-0.5 bg-ink transition-all duration-300 group-aria-expanded:opacity-0"></span>
+      <span class="block w-6 h-0.5 bg-ink transition-all duration-300 group-aria-expanded:-rotate-45 group-aria-expanded:-translate-y-1.5"></span>
+    </button>
+
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center gap-3 group md:ml-0 ml-[-8px]" aria-label="Inicio — LAURA PORTFOLIO">
+      <img src="assets/logo.png" alt="Logo" class="h-8 w-auto shrink-0" loading="eager">
+      <span class="font-heading text-lg font-semibold tracking-tight text-[#00374E] hidden sm:inline whitespace-nowrap uppercase">
+        LAURA PORTFOLIO
+      </span>
+    </a>
+
+    <!-- Menú Desktop -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html#work" class="text-sm font-medium hover:text-primary transition-colors">Selected Works</a>
+      <a href="index.html#philosophy" class="text-sm font-medium hover:text-primary transition-colors">Philosophy</a>
+      <a href="index.html#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
     </div>
-  </nav>
+
+    <!-- Botón "Work with me" -->
+    <a href="index.html#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md ring-1 ring-primary hover:scale-[1.02] active:scale-95 transition-transform">
+      Work with me
+    </a>
+  </div>
+</nav>
+
+<!-- Overlay oscuro -->
+<div id="menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden" aria-hidden="true"></div>
+
+<!-- Menú Mobile con "X" -->
+<div id="mobile-menu" class="fixed top-0 left-0 h-full w-72 bg-[#E7F3F6] z-50 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden shadow-2xl">
+  <div class="flex flex-col h-full px-6 pt-6 pb-8">
+    <button id="close-menu-btn" class="self-start w-8 h-8 flex items-center justify-center text-2xl font-light text-ink hover:text-primary transition-colors mb-6" aria-label="Cerrar menú">
+      ✕
+    </button>
+    <a href="index.html#work" class="text-lg font-medium hover:text-primary transition-colors py-3 border-b border-ink/5">Selected Works</a>
+    <a href="index.html#philosophy" class="text-lg font-medium hover:text-primary transition-colors py-3 border-b border-ink/5">Philosophy</a>
+    <a href="index.html#contact" class="text-lg font-medium hover:text-primary transition-colors py-3">Contact</a>
+  </div>
+</div>
 
   <main>
     <!-- Header -->
@@ -695,6 +722,41 @@
       });
     })();
   </script>
+
+  <script>
+  // Hamburguesa
+  const menuBtn = document.getElementById('menu-btn');
+  const closeMenuBtn = document.getElementById('close-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const overlay = document.getElementById('menu-overlay');
+
+  if (menuBtn && mobileMenu && overlay) {
+    function toggleMenu() {
+      const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+      const willBeOpen = !isOpen;
+
+      menuBtn.setAttribute('aria-expanded', willBeOpen);
+      mobileMenu.classList.toggle('-translate-x-full', !willBeOpen);
+      overlay.classList.toggle('hidden', !willBeOpen);
+      document.body.style.overflow = willBeOpen ? 'hidden' : '';
+    }
+
+    function closeMenu() {
+      menuBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    menuBtn.addEventListener('click', toggleMenu);
+    if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+</script>
 
 </body>
 </html>
