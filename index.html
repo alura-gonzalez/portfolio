@@ -62,8 +62,15 @@
    <!-- Nav -->
   <nav class="sticky top-0 z-50 w-full bg-[#E7F3F6]/80 backdrop-blur-md border-b border-ink/5">
     <div class="mx-auto max-w-7xl px-6 lg:px-12 h-20 flex items-center justify-between">
-      <!-- Logo -->
-      <a href="/portfolio/index.html" class="flex items-center gap-3 group" aria-label="Inicio — LAURA PORTFOLIO">
+      <!-- Botón Hamburguesa (izquierda) -->
+      <button id="menu-btn" class="md:hidden flex flex-col items-center justify-center w-8 h-8 gap-1 group z-50" aria-label="Menú" aria-expanded="false">
+        <span class="block w-6 h-0.5 bg-ink transition-all duration-300 group-aria-expanded:rotate-45 group-aria-expanded:translate-y-1.5"></span>
+        <span class="block w-6 h-0.5 bg-ink transition-all duration-300 group-aria-expanded:opacity-0"></span>
+        <span class="block w-6 h-0.5 bg-ink transition-all duration-300 group-aria-expanded:-rotate-45 group-aria-expanded:-translate-y-1.5"></span>
+      </button>
+
+      <!-- Logo (centrado en mobile, izquierda en desktop) -->
+      <a href="/portfolio/index.html" class="flex items-center gap-3 group md:ml-0 ml-[-8px]" aria-label="Inicio — LAURA PORTFOLIO">
         <img src="assets/logo.png" alt="Logo" class="h-8 w-auto shrink-0" loading="eager">
         <span class="font-heading text-lg font-semibold tracking-tight text-[#00374E] hidden sm:inline whitespace-nowrap uppercase">
           LAURA PORTFOLIO
@@ -77,25 +84,24 @@
         <a href="#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
       </div>
 
-      <!-- Botón Hamburguesa (mobile) -->
-      <button id="menu-btn" class="md:hidden flex flex-col items-center justify-center w-8 h-8 gap-1 group" aria-label="Menú" aria-expanded="false">
-        <span class="block w-6 h-0.5 bg-ink transition-all duration-300 group-aria-expanded:rotate-45 group-aria-expanded:translate-y-1.5"></span>
-        <span class="block w-6 h-0.5 bg-ink transition-all duration-300 group-aria-expanded:opacity-0"></span>
-        <span class="block w-6 h-0.5 bg-ink transition-all duration-300 group-aria-expanded:-rotate-45 group-aria-expanded:-translate-y-1.5"></span>
-      </button>
-
       <!-- Botón "Work with me" (siempre visible) -->
       <a href="#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md ring-1 ring-primary hover:scale-[1.02] active:scale-95 transition-transform">
         Work with me
       </a>
     </div>
+  </nav>
 
-    <!-- Menú Mobile desplegable -->
-    <div id="mobile-menu" class="md:hidden hidden bg-[#E7F3F6] border-t border-ink/5 px-6 py-4 flex flex-col gap-4">
-      <a href="#work" class="text-sm font-medium hover:text-primary transition-colors">Selected Works</a>
-      <a href="#philosophy" class="text-sm font-medium hover:text-primary transition-colors">Philosophy</a>
-      <a href="#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+  <!-- Overlay oscuro (fondo del menú) -->
+  <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden" aria-hidden="true"></div>
+
+  <!-- Menú Mobile desplegable desde la izquierda -->
+  <div id="mobile-menu" class="fixed top-0 left-0 h-full w-72 bg-[#E7F3F6] z-50 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden shadow-2xl">
+    <div class="flex flex-col h-full px-6 pt-24 pb-8">
+      <a href="#work" class="text-lg font-medium hover:text-primary transition-colors py-3 border-b border-ink/5">Selected Works</a>
+      <a href="#philosophy" class="text-lg font-medium hover:text-primary transition-colors py-3 border-b border-ink/5">Philosophy</a>
+      <a href="#contact" class="text-lg font-medium hover:text-primary transition-colors py-3">Contact</a>
     </div>
+  </div>
   </nav>
 
   <main>
