@@ -4,13 +4,16 @@
   <link rel="icon" href="assets/fav_icon.png" type="image/png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>UX Intervention Case Study — Laura | Product Designer & UX Strategist</title>
-  <meta name="description" content="Case study: How a strategic UX intervention rescued a stalled legal tech product for RayNa Corp, unblocking product delivery through intuitive information architecture.">
+  <title>UX Intervention for a Legal Provider App — Laura Portfolio</title>
+  <meta name="description" content="Case study: RayNa Corp by Laura, UX/UI Designer & Growth Strategy.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="assets/fav_icon.png" type="image/png">
   
   <!-- Tailwind CDN -->
-  <script src="https://tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.0"></script>
   
-  <link href="https://googleapis.com" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   
   <script>
     tailwind.config = {
@@ -46,101 +49,214 @@
       overflow: hidden;
     }
 
+    /* Imágenes a tamaño completo - alto automático */
+    .case-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0.75rem;
+    }
+
+    .image-container {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      background-color: #F0EDE8;
+      border: 1px solid rgba(0, 55, 78, 0.05);
+    }
+
+    .image-container:not(:first-child) {
+      margin-top: 1rem;
+    }
+
+    /* Contenedor de video */
+    .video-container {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      background-color: #0a0a0a;
+      border: 1px solid rgba(0, 55, 78, 0.05);
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+
     @media (max-width: 768px) {
       .md\:col-span-8 {
         padding-left: 0;
         padding-right: 0;
       }
     }
+
+    /* LIGHTBOX - FUERA DEL MEDIA QUERY */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-out;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      padding: 2rem;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-overlay img {
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active img {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 1.5rem;
+      right: 2rem;
+      z-index: 10000;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-overlay.active ~ .lightbox-close {
+      display: flex;
+    }
+
+    .image-container {
+      cursor: pointer;
+    }
+
+    .image-container img {
+      pointer-events: none;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-canvas font-body text-ink selection:bg-neon selection:text-ink">
 
-  <!-- Nav -->
-  <nav class="sticky top-0 z-50 w-full bg-[#E7F3F6]/80 backdrop-blur-md border-b border-ink/5">
-    <div class="mx-auto max-w-7xl px-6 lg:px-12 h-20 flex items-center justify-between">
-      <button id="menu-btn" class="md:hidden flex flex-col items-center justify-center w-8 h-8 gap-1 group z-50" aria-label="Menú" aria-expanded="false">
-        <span class="block w-6 h-0.5 bg-ink transition-all duration-300"></span>
-        <span class="block w-6 h-0.5 bg-ink transition-all duration-300"></span>
-        <span class="block w-6 h-0.5 bg-ink transition-all duration-300"></span>
-      </button>
+ <!-- Nav -->
+<nav class="sticky top-0 z-50 w-full bg-[#E7F3F6]/80 backdrop-blur-md border-b border-ink/5">
+  <div class="mx-auto max-w-7xl px-6 lg:px-12 h-20 flex items-center justify-between">
+    <!-- Botón Hamburguesa (izquierda) -->
+    <button id="menu-btn" class="md:hidden flex flex-col items-center justify-center w-8 h-8 gap-1 group z-50" aria-label="Menú" aria-expanded="false">
+      <span class="block w-6 h-0.5 bg-ink transition-all duration-300 group-aria-expanded:rotate-45 group-aria-expanded:translate-y-1.5"></span>
+      <span class="block w-6 h-0.5 bg-ink transition-all duration-300 group-aria-expanded:opacity-0"></span>
+      <span class="block w-6 h-0.5 bg-ink transition-all duration-300 group-aria-expanded:-rotate-45 group-aria-expanded:-translate-y-1.5"></span>
+    </button>
 
-      <a href="index.html" class="flex items-center gap-3 group md:ml-0 ml-[-8px]" aria-label="Inicio — LAURA PORTFOLIO">
-        <img src="assets/logo.png" alt="Logo" class="h-8 w-auto shrink-0" loading="eager">
-        <span class="font-heading text-lg font-semibold tracking-tight text-[#00374E] hidden sm:inline whitespace-nowrap uppercase">
-          LAURA PORTFOLIO
-        </span>
-      </a>
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center gap-3 group md:ml-0 ml-[-8px]" aria-label="Inicio — LAURA PORTFOLIO">
+      <img src="assets/logo.png" alt="Logo" class="h-8 w-auto shrink-0" loading="eager">
+      <span class="font-heading text-lg font-semibold tracking-tight text-[#00374E] hidden sm:inline whitespace-nowrap uppercase">
+        LAURA PORTFOLIO
+      </span>
+    </a>
 
-      <div class="hidden md:flex items-center gap-8">
-        <a href="index.html#work" class="text-sm font-medium hover:text-primary transition-colors">Selected Works</a>
-        <a href="index.html#philosophy" class="text-sm font-medium hover:text-primary transition-colors">Philosophy</a>
-        <a href="index.html#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
-      </div>
-
-      <a href="index.html#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md ring-1 ring-primary hover:scale-[1.02] active:scale-95 transition-transform">
-        Work with me
-      </a>
+    <!-- Menú Desktop -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html#work" class="text-sm font-medium hover:text-primary transition-colors">Selected Works</a>
+      <a href="index.html#philosophy" class="text-sm font-medium hover:text-primary transition-colors">Philosophy</a>
+      <a href="index.html#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
     </div>
-  </nav>
 
-  <!-- Overlay oscuro -->
-  <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden" aria-hidden="true"></div>
-
-  <!-- Menú Mobile -->
-  <div id="mobile-menu" class="fixed top-0 left-0 h-full w-72 bg-[#E7F3F6] z-50 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden shadow-2xl">
-    <div class="flex flex-col h-full px-6 pt-6 pb-8">
-      <button id="close-menu-btn" class="self-start w-8 h-8 flex items-center justify-center text-2xl font-light text-ink hover:text-primary transition-colors mb-6" aria-label="Cerrar menú">
-        ✕
-      </button>
-      <a href="index.html#work" class="text-lg font-medium hover:text-primary transition-colors py-3 border-b border-ink/5">Selected Works</a>
-      <a href="index.html#philosophy" class="text-lg font-medium hover:text-primary transition-colors py-3 border-b border-ink/5">Philosophy</a>
-      <a href="index.html#contact" class="text-lg font-medium hover:text-primary transition-colors py-3">Contact</a>
-    </div>
+    <!-- Botón "Work with me" -->
+    <a href="index.html#contact" class="inline-flex items-center bg-primary text-white px-3 py-2 text-sm font-medium rounded-md ring-1 ring-primary hover:scale-[1.02] active:scale-95 transition-transform">
+      Work with me
+    </a>
   </div>
+</nav>
+
+<!-- Overlay oscuro -->
+<div id="menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden" aria-hidden="true"></div>
+
+<!-- Menú Mobile con "X" -->
+<div id="mobile-menu" class="fixed top-0 left-0 h-full w-72 bg-[#E7F3F6] z-50 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden shadow-2xl">
+  <div class="flex flex-col h-full px-6 pt-6 pb-8">
+    <button id="close-menu-btn" class="self-start w-8 h-8 flex items-center justify-center text-2xl font-light text-ink hover:text-primary transition-colors mb-6" aria-label="Cerrar menú">
+      ✕
+    </button>
+    <a href="index.html#work" class="text-lg font-medium hover:text-primary transition-colors py-3 border-b border-ink/5">Selected Works</a>
+    <a href="index.html#philosophy" class="text-lg font-medium hover:text-primary transition-colors py-3 border-b border-ink/5">Philosophy</a>
+    <a href="index.html#contact" class="text-lg font-medium hover:text-primary transition-colors py-3">Contact</a>
+  </div>
+</div>
 
   <main>
     <!-- Header -->
     <header class="pt-24 pb-12 lg:pt-36">
       <div class="mx-auto max-w-5xl px-6 lg:px-12">
-        <a href="index.html#work" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ink/40 hover:text-primary mb-8 transition-colors">← Back to works</a>
+        <a href="/portfolio/index.html#work" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ink/40 hover:text-primary mb-8 transition-colors">← Back to works</a>
         <span class="inline-block bg-neon text-ink px-3 py-1 text-[10px] font-bold uppercase tracking-tighter rounded-md mb-6">Legal Tech</span>
         <h1 class="font-heading text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.05]">UX Intervention for a Legal Provider Web App</h1>
-        <p class="mt-8 text-xl lg:text-2xl text-ink/70 max-w-full leading-relaxed">Rescuing a stalled legal tech platform by restructuring its information architecture and conducting usability testing to successfully unblock project delivery.</p>
+        <p class="mt-8 text-xl lg:text-2xl text-ink/70 max-w-full leading-relaxed">How a UX-led approach resolved client friction and turned a stalled legal tech project into a successful delivery.</p>
       </div>
     </header>
 
     <!-- Hero image -->
     <section class="mx-auto max-w-5xl px-6 lg:px-12 mb-16">
       <div class="relative overflow-hidden rounded-3xl ring-1 ring-ink/5 shadow-xl max-h-[400px] flex items-center justify-center bg-soft/50">
-        <img src="assets/Safari-BAE-l.png" alt="RayNa Corp Web App Overview" class="w-full h-full object-contain" loading="eager">
+        <img src="assets/rayna_web-app.png" alt="RayNa Corp Web App" class="w-full h-full object-contain" loading="eager">
       </div>
     </section>
 
     <!-- Artículo completo -->
     <article class="mx-auto max-w-5xl px-6 lg:px-12 pb-16">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
-        
         <!-- Sidebar sticky -->
         <aside class="md:col-span-4">
           <div class="sticky top-28 space-y-8">
             <div>
-              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">My Role</h3>
-              <p class="font-bold text-base text-ink">Product Designer</p>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Role</h3>
+              <p class="font-bold">UX/UI Designer</p>
             </div>
             <div>
               <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Timeline</h3>
-              <p class="font-bold text-base text-ink">Sep – Oct 2020</p>
+              <p class="font-bold">Sep – Oct 2020</p>
             </div>
             <div>
               <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Services</h3>
-              <p class="font-bold text-base text-ink">UX Intervention · Information Architecture · Usability Testing</p>
+              <p class="font-bold">UX Audit · User Research · Prototyping</p>
             </div>
-            <div>
-              <h3 class="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-2">Key Outcome</h3>
-              <p class="text-xl font-bold text-primary">Unblocked Project Delivery</p>
-            </div>
-            <a href="index.html#contact" class="inline-flex bg-primary text-white px-5 py-3 text-sm font-bold rounded-lg hover:scale-[1.02] active:scale-95 transition-transform mt-2">Discuss a project</a>
+            <a href="/portfolio/index.html#contact" class="inline-block bg-primary text-white px-5 py-3 text-sm font-bold rounded-lg hover:scale-[1.02] active:scale-95 transition-transform mt-2">Discuss a project</a>
           </div>
         </aside>
 
@@ -148,111 +264,379 @@
         <div class="md:col-span-8 space-y-12">
 
           <!-- The Challenge -->
-          <section class="space-y-4">
-            <h2 class="font-heading text-2xl font-bold text-ink">The Challenge</h2>
-            <p class="text-base text-ink/80 leading-relaxed">
-              RayNa Corp optimizes complex administrative workflows for modern law firms. While a third-party development partner spent a year architecting their core legal Web App, critical friction issues arose prior to launch. The system wasn't bottlenecked by code defects, but by major user experience gaps that severely threatened client satisfaction.
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">The Challenge</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              <a href="https://www.raynacorp.com/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">RayNa Corp</a> helps law firms accelerate administrative tasks by using technology and experience to develop systems that best fit each client.
             </p>
-            <p class="text-base text-ink/80 leading-relaxed">
-              With development stalled and executive stakeholders dissatisfied, the objective required a strategic UX intervention: diagnostic friction points needed identification, and an intuitive interface solution had to be deployed rapidly within the existing development framework to secure client alignment.
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              A development partner had been working on a dedicated Web App for RayNa Corp for about a year. At some point, the client reported a couple of issues — but they weren't bugs. They were <strong>poor user experience</strong>.
+            </p>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              The project was stalled. The client wasn't satisfied, and the development team couldn't move forward without a clear direction. The goal was clear: <strong>resolve the client's objections using a UX approach</strong>, deliver a design that was easy to use for a diverse audience, and work within the existing development environment.
             </p>
           </section>
 
           <!-- My Role & Approach -->
-          <section class="space-y-4">
-            <h2 class="font-heading text-2xl font-bold text-ink">My Role & Approach</h2>
-            <p class="text-base text-ink/80 leading-relaxed">
-              Stepping into an in-progress cycle as the Product Designer, I prioritized neutralizing stakeholder friction. My methodology centered on executing a lightweight UI audit, bridging complex engineering environment limitations with user expectations, and formulating a validated dashboard blueprint without forcing an expensive backend overhaul.
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">My Role &amp; Approach</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              As <strong>UX Designer</strong>, I stepped into a project that was already in progress. My role was to:
             </p>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2 mt-4">
+              <li>Identify the friction points causing client dissatisfaction.</li>
+              <li>Propose improvements that could be implemented without rebuilding the entire application.</li>
+              <li>Bridge the gap between the development team's constraints and the client's expectations.</li>
+            </ul>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              My approach was grounded in empathy: I needed to understand how users were actually interacting with the product, what was frustrating them, and what would make their work easier.
+            </p>
+
+            <div class="mt-4 image-container">
+              <img src="assets/rayna_methodology.png" alt="Design methodology" class="case-image" loading="lazy">
+            </div>
           </section>
 
           <!-- Discovery & Research -->
-          <section class="space-y-4">
-            <h2 class="font-heading text-2xl font-bold text-ink">Heuristic Discovery & User Flow Audit</h2>
-            <p class="text-base text-ink/80 leading-relaxed">
-              I executed a preliminary heuristic audit across the transactional layout to map structural issues slowing down internal legal operations. The diagnostic phase isolated clear UX gaps requiring immediate structural changes:
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Discovery &amp; Research</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              Before any meetings, I ran a preliminary analysis of the current Web App to get familiar with:
             </p>
-            <ul class="list-disc pl-6 text-base text-ink/80 space-y-2">
-              <li>Transforming text-entry fields into standardized geographical dropdown protocols to eliminate data fragmentation.</li>
-              <li>Accelerating internal legal matching flows through global search algorithms, advanced filtering, and list sorting.</li>
-              <li>Deploying explicit status tracking mechanisms and visual feedback systems to ensure workflow alignment.</li>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-1 mt-4">
+              <li>Functionality</li>
+              <li>List of features</li>
+              <li>The issues reported at the beginning of the project</li>
             </ul>
+
+            <div class="mt-4 image-container">
+              <img src="assets/rayna_pre_1.jpg" alt="Preliminary analysis 1" class="case-image" loading="lazy">
+            </div>
+            <div class="image-container">
+              <img src="assets/rayna_pre_2.jpg" alt="Preliminary analysis 2" class="case-image" loading="lazy">
+            </div>
+
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              This analysis revealed that the Web App needed improvements in at least the following areas:
+            </p>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-1 mt-2">
+              <li>Add dropdown menus to select States (instead of forcing users to type them in).</li>
+              <li>Speed up the process with search filters and sorting.</li>
+              <li>Use visual hints to improve communication.</li>
+            </ul>
+
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              <strong>Internal kick-off:</strong> We presented the demo and walked through it. In this meeting, we defined the scope, listed bugs, proposed recommendations, and prepared to move forward.
+            </p>
           </section>
 
-          <!-- User Research & Insights -->
-          <section class="space-y-4">
-            <h2 class="font-heading text-2xl font-bold text-ink">User Research & Workspace Empathy</h2>
-            <p class="text-base text-ink/80 leading-relaxed">
-              To validate these early insights, we conducted workspace interviews via Zoom and analyzed user behavioral routines recorded on Loom. Gathering direct feedback from diverse administrative legal professionals surfaced the core requirements needed to transform fragmented client legacy tools into high-adoption dashboards:
+          <!-- User Research & Empathy -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">User Research &amp; Empathy</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              We conducted interviews with the RayNa Corp team/users via Zoom. Additionally, Loom videos were used to record how the most common tasks were accomplished at that time.
             </p>
-            <div class="bg-soft/40 p-6 rounded-xl space-y-3">
-              <p class="text-sm font-bold text-ink">Core Ecosystem Requirements Matrix:</p>
-              <ul class="list-disc pl-6 text-sm text-ink/80 space-y-1">
-                <li><strong>Law Firms & Admins:</strong> High-efficiency portals to request updates, manage patient folders, and track transaction history logs.</li>
-                <li><strong>Providers:</strong> Integrated search frameworks, multi-column sorting (State + Provider Type), and instant database import mechanics.</li>
-                <li><strong>Visual Indicators:</strong> Low-friction, color-coded verification statuses to manage multi-provider legal claims.</li>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Key insights from the interviews</h3>
+              <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2 mt-4">
+                <li><strong>Law Firms:</strong> Allow them to update requests.</li>
+                <li><strong>Admins:</strong> Allow adding &amp; updating Patient files.</li>
+                <li><strong>Providers:</strong> Add colored verified indicators.</li>
+                <li><strong>Dashboard:</strong> Add search filters &amp; sorting across lists.</li>
+                <li><strong>Requests:</strong> Allow multiple providers per Request, but create separate Requests for each.</li>
+                <li><strong>Tracking:</strong> Keep track of every action taken by an Admin or a Law Firm.</li>
+                <li><strong>State selection:</strong> Use dropdown menus instead of typing.</li>
               </ul>
             </div>
           </section>
 
-          <!-- Design Strategy & IA -->
-          <section class="space-y-4">
-            <h2 class="font-heading text-2xl font-bold text-ink">Architecture Restructuring & Strategy</h2>
-            <p class="text-base text-ink/80 leading-relaxed">
-              We restructured the product's information architecture to seamlessly align large volumes of administrative data with user mental models. Benchmarking data-heavy enterprise platforms led to the implementation of optimized data tables featuring explicit micro-copy instructions, alert dialogs to mitigate data loss, and color-coded status timelines (traffic light hierarchy) that dramatically lowered user hesitation.
+          <!-- Information Architecture & User Flow -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Information Architecture &amp; User Flow</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              We restructured the information architecture to support the new requirements and improve navigation.
             </p>
+            <div class="mt-4 image-container">
+              <img src="assets/rayna_information_arq.jpg" alt="Information architecture" class="case-image" loading="lazy">
+            </div>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Benchmarking</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                We analyzed similar products to find the best solutions for working with large amounts of data. Dashboards represented the best fit, but we needed to remain simple while still providing personality and a professional look.
+              </p>
+              <div class="mt-4 image-container">
+                <img src="assets/rayna_benchmark.jpg" alt="Benchmark analysis" class="case-image" loading="lazy">
+              </div>
+            </div>
+          </section>
+
+          <!-- Design Strategy -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Design Strategy</h2>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Key decisions</h3>
+              <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-2 mt-4">
+                <li>Keep the table concept but update it with a more modern style.</li>
+                <li>Add columns to present the most important information upfront.</li>
+                <li>Implement search filters + search engine to manipulate data.</li>
+                <li>Use colors as timeframes indicators (traffic light system).</li>
+                <li>Improve iconography for better communication.</li>
+                <li>Maintain corporate style for formality.</li>
+                <li>Include support messages to guide users.</li>
+                <li>Use pop-ups to prevent data loss.</li>
+              </ul>
+            </div>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Visual style</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                We kept the corporate colors and started working with a LoFi prototype to focus on interactions, functionality, and user flow before investing in high-fidelity visuals.
+              </p>
+              <div class="mt-4 image-container">
+                <img src="assets/rayna_style.jpg" alt="Visual style 1" class="case-image" loading="lazy">
+              </div>
+              <div class="image-container">
+                <img src="assets/rayna_style_2.jpg" alt="Visual style 2" class="case-image" loading="lazy">
+              </div>
+            </div>
           </section>
 
           <!-- Prototype & Validation -->
-          <section class="space-y-4">
-            <h2 class="font-heading text-2xl font-bold text-ink">Low-Fidelity Prototyping & Iteration</h2>
-            <p class="text-base text-ink/80 leading-relaxed">
-              Operating under tight engineering deadlines, I built comprehensive Low-Fidelity prototypes in Adobe XD to isolate interaction mechanics before investing in high-fidelity visual styling. Running internal validation cycles with the Project Manager and Lead Developer ensured that every design layout remained 100% viable within the active codebase constraints.
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Prototype &amp; Validation</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              We validated both prototypes (Law Firms &amp; Providers flow) with the Developer Manager and Project Manager's requirements.
             </p>
-            <p class="text-base text-ink/80 leading-relaxed">
-              Subsequent usability tests with real RayNa Corp users unlocked invaluable iteration vectors. We simplified verification parameters into 3 concise states (Verified within the year, Verified over a year ago, Never verified) and transformed multi-name fields into dynamic UI tags, ensuring optimal usability before moving to final handoff.
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Prototype walkthrough</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">A walkthrough of the validated prototypes for both Law Firms and Providers flows.</p>
+              <div class="mt-4 video-container">
+                <video controls width="100%" loading="lazy">
+                  <source src="assets/rayna_prototype.mp4" type="video/mp4">
+                  <p class="text-sm text-white/70 italic p-4">Your browser does not support the video tag. You can <a href="assets/rayna_prototype.mp4" download class="text-primary hover:underline">download it here</a>.</p>
+                </video>
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary">Testing with real users</h3>
+              <p class="text-[#456F80] leading-relaxed mt-2">
+                After internal approval, we ran tests with RayNa Corp actual users to observe reactions, study how tasks were completed, and collect feedback.
+              </p>
+            </div>
+          </section>
+
+          <!-- Feedback & Iteration -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Feedback &amp; Iteration</h2>
+            <p class="text-[#456F80] leading-relaxed font-semibold">Key feedback collected from testing:</p>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-1 mt-4">
+              <li>Remove the "Last updated" column (unnecessary for the client's team).</li>
+              <li>Add "Send Bills by" and "Send Records by" columns to the dashboard.</li>
+              <li>Simplify verification colors: only need A) Verified within the last year, B) Verified over a year ago, C) Never verified.</li>
+              <li>Add a "Verify" button to the dashboard screen.</li>
+              <li>Make AKA names work as tags (since there will be more than one).</li>
+              <li>Ensure State abbreviations are used (not full names).</li>
+              <li>Keep "Send Bills by" and "Send Records by" at the top of the provider flow.</li>
+              <li>Add ability to sort by multiple columns (e.g., State + Provider type).</li>
+              <li>Ensure easy import of lists into the database.</li>
+            </ul>
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              I updated the two prototypes based on this feedback and presented them to the client. <strong>The client approved the designs</strong>, and we moved to development.
             </p>
           </section>
 
-          <!-- Results & Takeaways -->
-          <section class="space-y-4">
-            <h2 class="font-heading text-2xl font-bold text-ink">Validated Outcomes & Handoff</h2>
-            <p class="text-base text-ink/80 leading-relaxed">
-              <strong>The Impact:</strong> After months of being completely stalled, the redesigned framework unblocked the entire development velocity loop. The client enthusiastically approved the structured LoFi user experience blueprints with zero high-fidelity visual overhead required—saving valuable product delivery cycles.
+          <!-- Results & Handoff -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Results &amp; Handoff</h2>
+            <p class="text-[#456F80] leading-relaxed">
+              <strong>The outcome:</strong> After months of being stalled, the project was approved and successfully delivered. The client accepted the LoFi prototype with only minor tweaks — mostly on the color side. No HiFi prototype was needed.
             </p>
-            <p class="text-base text-ink/80 leading-relaxed">
-              I executed a seamless technical handoff by supplying the development team with two finalized interactive prototypes (Law Firm Portal & Provider Workspace), fully compliant with US accessibility standards (WCAG). This strategic alignment successfully turned a high-friction crisis into a highly valued product delivery.
+            <p class="text-[#456F80] leading-relaxed mt-4">
+              <strong>Handoff:</strong> The Development Manager received two XD prototypes:
             </p>
+            <ul class="list-disc pl-6 text-[#456F80] leading-relaxed space-y-1 mt-4">
+              <li><a href="https://xd.adobe.com/view/a402fdd3-076d-484d-b6db-8da82c262ee0-f151/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Law Firm Prototype</a></li>
+              <li><a href="https://xd.adobe.com/view/61d17268-860c-48de-b2f3-3ff644707bdd-3482/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Providers Prototype</a></li>
+            </ul>
+          </section>
+
+          <!-- Key Takeaways -->
+          <section>
+            <h2 class="font-heading text-3xl font-bold tracking-tight mb-6">Key Takeaways</h2>
+            <ol class="list-decimal pl-6 text-[#456F80] leading-relaxed space-y-4">
+              <li><strong>Empathy is critical when a project is stalled.</strong> The client's frustration wasn't just about bugs — it was about feeling heard. Taking a UX approach meant understanding their pain points and showing them we were listening.</li>
+              <li><strong>Balance is everything.</strong> My attention was always divided between the development team's constraints and the client's expectations. Finding that balance was key to moving forward.</li>
+              <li><strong>LoFi is enough — if it's thoughtful.</strong> We didn't need a HiFi prototype. A well-structured, validated LoFi prototype was enough to build trust and get approval.</li>
+              <li><strong>Testing with real users changes everything.</strong> The feedback we collected from testing was invaluable. It helped us refine the product and gave the client confidence that their needs were being addressed.</li>
+            </ol>
           </section>
 
         </div>
       </div>
     </article>
+
   </main>
 
-  <!-- Script Menu Mobile -->
-  <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const closeBtn = document.getElementById('close-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const overlay = document.getElementById('menu-overlay');
+  <!-- Keep exploring - Sección de recomendación de casos de estudio -->
+  <section class="py-24 lg:py-32 border-t border-ink/5" style="background-color: #E7F3F6;">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-heading text-4xl lg:text-5xl font-bold tracking-tight leading-tight">More case studies</h2>
+        <p class="mt-4 text-lg text-ink/60">Continue exploring how I approach design challenges across different industries.</p>
+      </div>
 
-    function toggleMenu() {
-      const isOpen = mobileMenu.classList.contains('translate-x-0');
-      if (isOpen) {
-        mobileMenu.classList.remove('translate-x-0');
-        mobileMenu.classList.add('-translate-x-full');
-        overlay.classList.add('hidden');
-      } else {
-        mobileMenu.classList.remove('-translate-x-full');
-        mobileMenu.classList.add('translate-x-0');
-        overlay.classList.remove('hidden');
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        
+        <!-- Tarjeta 1: Research to Growth -->
+        <a href="works-research-to-growth.html" class="group block h-full">
+          <div class="flex flex-col h-full relative overflow-hidden rounded-2xl bg-white/80 ring-1 ring-ink/5 transition-all duration-300 hover:scale-[1.02] hover:ring-primary/20 hover:shadow-lg">
+            <div class="aspect-[16/9] overflow-hidden bg-soft flex-shrink-0">
+              <img src="assets/health.png" alt="CRO Audit" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            </div>
+            <div class="flex flex-col flex-grow p-6 lg:p-8">
+              <div class="flex items-center gap-3">
+                <span class="inline-block bg-neon text-ink px-2 py-0.5 text-[10px] font-bold uppercase tracking-tighter rounded">Health Tech</span>
+              </div>
+              <h3 class="mt-3 font-heading text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Turn Research into Growth</h3>
+              <p class="mt-2 text-sm text-ink/60 leading-relaxed">A CRO Audit that uncovered a core communication problem and built a roadmap to fix it.</p>
+              <div class="mt-auto pt-4 inline-flex items-center text-sm font-bold text-primary">
+                Read case study 
+                <svg class="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Tarjeta 2: Bounce -->
+        <a href="works-bag-storage.html" class="group block h-full">
+          <div class="flex flex-col h-full relative overflow-hidden rounded-2xl bg-white/80 ring-1 ring-ink/5 transition-all duration-300 hover:scale-[1.02] hover:ring-primary/20 hover:shadow-lg">
+            <div class="aspect-[16/9] overflow-hidden bg-soft flex-shrink-0">
+              <img src="assets/bounce.png" alt="Bounce" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            </div>
+            <div class="flex flex-col flex-grow p-6 lg:p-8">
+              <div class="flex items-center gap-3">
+                <span class="inline-block bg-neon text-ink px-2 py-0.5 text-[10px] font-bold uppercase tracking-tighter rounded">Service Tech</span>
+              </div>
+              <h3 class="mt-3 font-heading text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Bounce: The Bag Storage</h3>
+              <p class="mt-2 text-sm text-ink/60 leading-relaxed">A payment flow audit that identified friction points and delivered an 8% lift in conversion rate.</p>
+              <div class="mt-auto pt-4 inline-flex items-center text-sm font-bold text-primary">
+                Read case study 
+                <svg class="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-ink text-white/60 text-xs py-10 border-t border-white/5">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p>© 2026 Laura Portfolio powered by Inkling, a multimodal AI model created by Thinking Machines 💜</p>
+      <div class="flex gap-8">
+        <a href="https://medium.com/@alura-gonzalez" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Medium</a>
+        <a href="https://www.linkedin.com/in/laura-gonzalez-0102/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox overlay -->
+  <div class="lightbox-overlay" id="lightbox-overlay">
+    <img src="" alt="Lightbox" id="lightbox-image">
+  </div>
+  <div class="lightbox-close" id="lightbox-close">✕</div>
+
+  <script>
+    (function() {
+      const overlay = document.getElementById('lightbox-overlay');
+      const lightboxImg = document.getElementById('lightbox-image');
+      const closeBtn = document.getElementById('lightbox-close');
+
+      const imageContainers = document.querySelectorAll('.image-container');
+
+      function openLightbox(imageSrc) {
+        if (!imageSrc) return;
+        lightboxImg.src = imageSrc;
+        overlay.classList.add('active');
+        closeBtn.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
       }
+
+      function closeLightbox() {
+        overlay.classList.remove('active');
+        closeBtn.style.display = 'none';
+        document.body.style.overflow = '';
+        setTimeout(() => { lightboxImg.src = ''; }, 300);
+      }
+
+      imageContainers.forEach(container => {
+        container.addEventListener('click', function(e) {
+          const img = this.querySelector('img');
+          if (img && img.src) {
+            openLightbox(img.src);
+          }
+        });
+      });
+
+      overlay.addEventListener('click', closeLightbox);
+
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeLightbox();
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
+    })();
+  </script>
+
+  <script>
+  // Hamburguesa
+  const menuBtn = document.getElementById('menu-btn');
+  const closeMenuBtn = document.getElementById('close-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const overlay = document.getElementById('menu-overlay');
+
+  if (menuBtn && mobileMenu && overlay) {
+    function toggleMenu() {
+      const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+      const willBeOpen = !isOpen;
+
+      menuBtn.setAttribute('aria-expanded', willBeOpen);
+      mobileMenu.classList.toggle('-translate-x-full', !willBeOpen);
+      overlay.classList.toggle('hidden', !willBeOpen);
+      document.body.style.overflow = willBeOpen ? 'hidden' : '';
     }
 
-    if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
-    if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
-    if (overlay) overlay.addEventListener('click', toggleMenu);
-  </script>
+    function closeMenu() {
+      menuBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    menuBtn.addEventListener('click', toggleMenu);
+    if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+</script>
+
 </body>
 </html>
