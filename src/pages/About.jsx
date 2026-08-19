@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
+import NavBar from "../components/NavBar";
 import Footer from '../components/Footer';
 import seedlingIcon from '../assets/seedling-fill.svg';
 import profilePhoto from '../assets/case-studies/your-photo.jpg';
@@ -9,7 +9,7 @@ export default function About() {
     <div className="min-h-screen text-[#1a1a1a] bg-[#f4f3ec] flex flex-col justify-between">
       
       {/* Navbar Modular */}
-      <Navbar />
+      <NavBar />
 
       {/* Hero Section de orilla a orilla */}
       <section className="w-full min-h-[450px] bg-[#D2E823] flex flex-col justify-center items-center text-center px-4 pt-36 pb-16">
