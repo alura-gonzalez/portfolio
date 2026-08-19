@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import NavBar from "./NavBar"; // <--- Quitamos "components/" porque ya estamos ahí
+import Navbar from "./Navbar"; // <--- Quitamos "components/" porque ya estamos ahí
 import Contact from './Contact';
 import Footer from './Footer'; // <--- Quitamos "components/" también
 
@@ -31,7 +31,7 @@ export function CaseStudyTemplate({
     <div className="min-h-screen bg-[#f4f3ec] font-body text-[#1a1a1a] selection:bg-[#D2E823] selection:text-[#111111]">
       
       {/* Navbar Modular */}
-      <NavBar />
+      <Navbar />
 
       <main>
         {/* Header del Caso de Estudio */}
