@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom'; // <--- Nota que ya NO importamos BrowserRouter aquí
-import Navbar from './components/Navbar';
+import Navbar from './components/NavBar';
 import EcommerceBanner from './components/EcommerceBanner';
 import seedlingIcon from './assets/seedling-fill.svg';
 import HeroStack from './components/HeroStack';
@@ -79,7 +79,7 @@ export default function App() {
         <Route path="/cases/research-to-growth" element={<ResearchCaseStudy />} />
         <Route path="/cases/e-learning-enarm" element={<EnarmCaseStudy />} />
         <Route path="/cases/the-lever-website" element={<TheLeverCaseStudy />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/About" element={<About />} />
       </Routes>
     </>
   );
