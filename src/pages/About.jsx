@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/NavBar';
 import Footer from '../components/Footer';
 import seedlingIcon from '../assets/seedling-fill.svg';
 import profilePhoto from '../assets/case-studies/your-photo.jpg';
