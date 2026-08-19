@@ -171,7 +171,9 @@ export default function EcommerceBanner() {
           </p>
           
           <a 
-            href="#get-started" 
+            href="https://e-commerce-audit-dashboard.vercel.app" 
+            target="_blank" 
+            rel="noopener noreferrer" 
             className="inline-block bg-[#D2E823] text-[#111111] text-base font-bold px-8 py-4 rounded-full hover:opacity-90 transition-opacity"
           >
             See it in action
