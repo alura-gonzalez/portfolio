@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom'; // <--- Nota que ya NO importamos BrowserRouter aquí
-import Navbar from './components/NavBar';
+import Navbar from './components/Navbar';
 import EcommerceBanner from './components/EcommerceBanner';
 import seedlingIcon from './assets/seedling-fill.svg';
 import HeroStack from './components/HeroStack';
