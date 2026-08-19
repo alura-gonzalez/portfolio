@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+/* Importación de los pesos que usaremos de Space Grotesk (Títulos) y Plus Jakarta Sans (Párrafos) */
+@import '@fontsource/space-grotesk/400.css';
+@import '@fontsource/space-grotesk/700.css';
+@import '@fontsource/space-grotesk/700.css'; /* Si usas pesos más altos como bold */
+@import '@fontsource/plus-jakarta-sans/400.css';
+@import '@fontsource/plus-jakarta-sans/500.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/plus-jakarta-sans/800.css';
+
+@theme {
+  --color-brand-bg: #f4f3ec;
+  --color-brand-yellow: #FFE600;
+  --color-brand-coral: #FF5757;
+  --color-brand-purple: #7B61FF;
+  --color-brand-mint: #00E599;
+  --color-brand-dark: #1A1A1A;
+  
+  --shadow-flat: 4px 4px 0px #1A1A1A;
+  --shadow-flat-sm: 2px 2px 0px #1A1A1A;
+
+  /* Definición de fuentes personalizadas para Tailwind */
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
+
+body {
+  background-color: var(--color-brand-bg);
+  font-family: var(--font-sans); /* Aplica Plus Jakarta Sans por defecto a los párrafos */
+}
+
+/* Aplica Space Grotesk solo a los títulos principales h1, h2 y h4-h6 */
+h1, h2, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Y si quieres que los h3 usen Plus Jakarta Sans explícitamente: */
+h3 {
+  font-family: var(--font-sans);
+  
+}
