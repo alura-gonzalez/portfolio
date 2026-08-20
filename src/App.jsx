@@ -53,7 +53,9 @@ function Home() {
       </div>
 
       {/* Sección de Filosofía modular */}
-      <Philosophy />
+      <div id="philosophy">
+        <Philosophy />
+      </div>
 
       {/* Sección de Contact */}
       <div id="contact">
